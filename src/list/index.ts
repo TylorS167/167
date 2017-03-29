@@ -63,5 +63,6 @@ export * from './takeWhile'
 export * from './times'
 export * from './uniq'
 export * from './uniqBy'
+export * from './uniqWith'
 
 export * from './isArrayLike'
