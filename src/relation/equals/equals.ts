@@ -8,12 +8,16 @@ export const equals: EqualsArity2 = curry2(
 )
 
 function type(value: any): string {
-  return value === null ? 'Null' :
-    value === void 0 ? 'Undefined' :
-    Object.prototype.toString.call(value).slice(8, -1)
+  if (value === null)
+    return `Null`
+
+  if (value === void 0)
+    return `Undefined`
+
+  return Object.prototype.toString.call(value).slice(8, -1)
 }
 
-function functionName(f: any) {
+function functionName(f: Function) {
   if (f.name) return f.name
 
   const m = String(f).match(/^function\s*([\w$]+)/)
@@ -31,10 +35,6 @@ function isEqual(a: any, b: any, stackA: Array<any>, stackB: Array<any>): boolea
   // tslint:disable-next-line
   if (a == null || b == null)
     return false
-
-  if (typeof a.equals === 'function' || typeof b.equals === 'function')
-    return typeof a.equals === 'function' && a.equals(b) &&
-      typeof b.equals === 'function' && b.equals(a)
 
   switch (type(a)) {
   case 'Arguments':
