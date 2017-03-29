@@ -62,5 +62,6 @@ export * from './takeLastWhile'
 export * from './takeWhile'
 export * from './times'
 export * from './uniq'
+export * from './uniqBy'
 
 export * from './isArrayLike'
