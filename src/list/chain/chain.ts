@@ -1,5 +1,6 @@
 import { ChainArity2 } from './types'
 import { curry2 } from '@typed/curry'
+import { isArrayLike } from '../isArrayLike'
 
 /**
  * chain maps a function over a list and concatenates the results.
@@ -15,7 +16,8 @@ export const chain: ChainArity2 = curry2(
 
     for (let i = 0; i < length; ++i)
     {
-      newList.push.apply(newList, f(list[i]))
+      const b = f(list[i])
+      newList.push.apply(newList, isArrayLike(b) ? b : [ b ])
     }
 
     return newList

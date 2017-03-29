@@ -8,12 +8,12 @@ import { curry2 } from '@typed/curry'
  * Dispatches to the filter method of the second argument, if present.
  */
 export const filter: FilterArity2 = curry2(
-  function filter<A>(predicate: (a: A) => boolean, list: Array<A>): any {
+  function filter<A>(predicate: (a: A, index?: number) => boolean, list: Array<A>): any {
     const length = list.length
     const newList = []
 
     for (let i = 0; i < length; ++i)
-      if (predicate(list[i]))
+      if (predicate(list[i], i))
         newList.push(list[i])
 
     return newList

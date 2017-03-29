@@ -122,11 +122,13 @@ function watch(rootPath, srcPatterns, testPatterns) {
 
       if (!fs.existsSync(file)) {
         destroyCache()
-
-        return watch(join(__dirname, '..'))
+        srcDirectories = findFiles(['src/**/*'], 'isDirectory').concat(srcPath)
+        srcFiles = findFiles(srcPatterns)
+        testFiles = findFiles(testPatterns)
+        return
       }
 
-      if (fs.existsSync(file) && fs.lstatSync(file).isDirectory()) {
+      if (fs.lstatSync(file).isDirectory()) {
         srcDirectories.push(file)
         watchDirectory(file)
         return
