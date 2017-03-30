@@ -16,6 +16,9 @@
       200
     ],
     "no-param-reassign": false,
-    "multiline-arrow": false
+    "multiline-arrow": false,
+    "no-invalid-this": [
+      false
+    ]
   }
 }
