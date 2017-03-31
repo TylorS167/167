@@ -1,12 +1,12 @@
 {
-  "name": "77",
+  "name": "167",
   "version": "0.1.0",
   "description": "Type-safe functional utilities",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "jsnext:main": "lib.es2015/index.js",
   "module": "lib.es2015/index.js",
-  "repository": "https://github.com/TylorS/77",
+  "repository": "https://github.com/TylorS/167",
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "devDependencies": {
