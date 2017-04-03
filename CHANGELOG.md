@@ -1,3 +1,13 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/TylorS/167/compare/v0.2.0...v0.3.0) (2017-04-03)
+
+
+### Features
+
+* **curry:** reimplement curry locally ([ff77d9f](https://github.com/TylorS/167/commit/ff77d9f))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/TylorS/167/compare/v0.1.0...v0.2.0) (2017-03-31)
 
