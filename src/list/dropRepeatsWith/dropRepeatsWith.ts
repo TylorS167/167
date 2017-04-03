@@ -1,6 +1,6 @@
 import { DropRepeats, DropRepeatsWithArity2 } from './types'
 
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { equals } from '../../relation/equals'
 
 /**

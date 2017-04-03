@@ -1,5 +1,5 @@
 import { ForEachArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Iterate over an input list, calling a provided function fn for each

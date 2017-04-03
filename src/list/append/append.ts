@@ -1,5 +1,5 @@
 import { AppendArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns a new list containing the contents of the given list,

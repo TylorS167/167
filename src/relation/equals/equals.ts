@@ -1,5 +1,5 @@
 import { EqualsArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const equals: EqualsArity2 = curry2(
   function equals<A>(x: A, y: A): boolean {

@@ -1,5 +1,5 @@
 import { GroupByArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Splits a list into sub-lists stored in an object, based on the result of

@@ -1,5 +1,5 @@
 import { IndexByArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Given a function that generates a key, turns a list into an object indexing

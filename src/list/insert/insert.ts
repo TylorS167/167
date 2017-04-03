@@ -1,5 +1,5 @@
 import { InsertArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 /**
  * Inserts the supplied element into the list, at index index. Note that this

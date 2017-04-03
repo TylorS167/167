@@ -1,5 +1,5 @@
 import { PartitionArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const partition: PartitionArity2 = curry2(
   function partition<A>(predicate: (a: A) => boolean, list: Array<A>): [ Array<A>, Array<A> ] {

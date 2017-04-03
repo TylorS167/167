@@ -19,6 +19,8 @@
     "multiline-arrow": false,
     "no-invalid-this": [
       false
-    ]
+    ],
+    "no-arguments": [false],
+    "no-shadowed-variable": false
   }
 }

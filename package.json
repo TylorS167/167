@@ -42,6 +42,7 @@
     "release:minor": "npm version minor -m 'chore(package): v%s'",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "tslint 'src/*.ts src/**/*.ts'",
-    "test:unit": "mocha -r ts-node/register 'src/**/*.test.ts'"
+    "test:unit": "mocha -r ts-node/register 'src/**/*.test.ts'",
+    "test:one": "mocha -r ts-node/register"
   }
 }

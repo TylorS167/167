@@ -1,5 +1,5 @@
 import { MapArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const map: MapArity2 = curry2(
   function map<A, B>(f: (a: A, index?: number) => B, list: Array<A>): Array<B> {

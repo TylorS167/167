@@ -1,7 +1,7 @@
 import { ReduceWhileArity4, ReduceWhilePredicate } from './types'
 
 import { Reducer } from '../reduce'
-import { curry4 } from '@typed/curry'
+import { curry4 } from '../../function/curry'
 
 export const reduceWhile: ReduceWhileArity4 = curry4(
   function reduceWhile<A, B>(p: ReduceWhilePredicate<A, B>, f: Reducer<A, B>, seed: B, list: Array<A>): B {

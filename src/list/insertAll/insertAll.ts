@@ -1,5 +1,5 @@
 import { InsertAllArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const insertAll: InsertAllArity3 = curry3(
   function insertAll<A>(index: number, values: Array<A>, list: Array<A>): Array<A> {

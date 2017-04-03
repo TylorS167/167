@@ -1,5 +1,5 @@
 import { ZipWithArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const zipWith: ZipWithArity3 = curry3(
   function zipWith<A, B, C>(f: (a: A, b: B) => C, xs: Array<A>, ys: Array<B>): ReadonlyArray<C> {

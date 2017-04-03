@@ -1,5 +1,5 @@
 import { TimesArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const times: TimesArity2 = curry2(<A>(f: (n: number) => A, n: number) => {
   const list = Array(n)

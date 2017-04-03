@@ -1,5 +1,5 @@
 import { AscendArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../curry'
 
 export const ascend: AscendArity3 = curry3(
   function ascend<A, B>(f: (a: A) => B, a: A, b: A): 0 | 1 | -1 {

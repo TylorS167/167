@@ -1,5 +1,5 @@
 import { NthArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const nth: NthArity2 = curry2(
   function <A>(index: number, list: Array<A>): A | void {

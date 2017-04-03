@@ -1,5 +1,5 @@
 import { PrependArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const prepend: PrependArity2 = curry2(function<A>(value: A, list: Array<A>) {
   const length = list.length

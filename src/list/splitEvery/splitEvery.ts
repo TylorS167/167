@@ -1,5 +1,5 @@
 import { SplitEveryArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { slice } from '../slice'
 
 export const splitEvery: SplitEveryArity2 = curry2(

@@ -1,5 +1,5 @@
 import { UpdateArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const update: UpdateArity3 = curry3(
   function update<A>(index: number, value: A, list: Array<A>): ReadonlyArray<A> {

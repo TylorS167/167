@@ -1,5 +1,5 @@
 import { FindArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns the first element of the list which matches the predicate,

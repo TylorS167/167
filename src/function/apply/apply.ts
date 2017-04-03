@@ -1,5 +1,5 @@
 import { ApplyArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../curry'
 
 export const apply: ApplyArity2 = curry2(
   function apply<A>(f: (...args: Array<any>) => A, list: Array<any>): A {

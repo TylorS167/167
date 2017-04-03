@@ -1,5 +1,5 @@
 import { UniqByArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const uniqBy: UniqByArity2 = curry2(
   function uniqBy<A, B>(f: (a: A) => B, list: Array<A>): ReadonlyArray<A> {

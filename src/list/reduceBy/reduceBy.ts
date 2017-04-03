@@ -1,5 +1,5 @@
 import { ReduceByArity4 } from './types'
-import { curry4 } from '@typed/curry'
+import { curry4 } from '../../function/curry'
 
 export const reduceBy: ReduceByArity4 = curry4(
   function <A, B>(f: (acc: B, x: A) => B, seed: B, by: (a: A) => string, list: Array<A>): { readonly [key: string]: B } {

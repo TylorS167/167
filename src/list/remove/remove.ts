@@ -1,6 +1,6 @@
 import { RemoveArity3 } from './types'
 import { copy } from '../copy'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const remove: RemoveArity3 = curry3(
   function remove<A>(index: number, amount: number, list: Array<A>): ReadonlyArray<A> {

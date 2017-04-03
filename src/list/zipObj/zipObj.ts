@@ -1,5 +1,5 @@
 import { ZipObjArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const zipObj: ZipObjArity2 = curry2(
   function zipObj<A>(strings: Array<string>, list: Array<A>): { readonly [ key: string ]: A } {

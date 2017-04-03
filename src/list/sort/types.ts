@@ -1,7 +1,4 @@
-export type Comparator<A> =
-  ((a: A, b: A) => -1) |
-  ((a: A, b: A) => 0) |
-  ((a: A, b: A) => 1)
+import { Comparator } from '../../function'
 
 export interface SortArity2 {
   <A>(comparision: Comparator<A>, list: Array<A>): ReadonlyArray<A>

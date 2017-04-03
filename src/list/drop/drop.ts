@@ -1,5 +1,5 @@
 import { DropArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns all but the first n elements of the given list or string.

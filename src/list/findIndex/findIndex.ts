@@ -1,5 +1,5 @@
 import { FindIndexArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns the index of the first element of the list which matches the

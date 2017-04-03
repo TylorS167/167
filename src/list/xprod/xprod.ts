@@ -1,5 +1,5 @@
 import { XProdArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const xprod: XProdArity2 = curry2(
   function xprod<A, B>(xs: Array<A>, ys: Array<B>): ReadonlyArray<[ A, B ]> {

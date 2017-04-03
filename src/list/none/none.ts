@@ -1,5 +1,5 @@
 import { NoneArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const none: NoneArity2 = curry2(
   function none<A>(f: (a: A) => boolean, list: Array<A>): boolean {

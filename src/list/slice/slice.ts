@@ -1,5 +1,5 @@
 import { SliceArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const slice: SliceArity3 = curry3(
   function <A>(start: number, end: number, list: Array<A>): ReadonlyArray<A> {

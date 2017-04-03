@@ -1,5 +1,5 @@
 import { DropLastWhileArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { dropLast } from '../dropLast'
 
 /**

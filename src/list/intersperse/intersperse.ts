@@ -1,5 +1,5 @@
 import { IntersperseArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const intersperse: IntersperseArity2 = curry2(
   function intersperse<A>(value: A, list: Array<A>): Array<A> {

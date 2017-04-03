@@ -1,5 +1,5 @@
 import { TakeWhileArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { slice } from '../slice'
 
 export const takeWhile: TakeWhileArity2 = curry2(_takeWhile)

@@ -1,5 +1,5 @@
 import { DropLastArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns a list containing all but the last n elements of the given list.

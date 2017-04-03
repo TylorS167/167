@@ -1,5 +1,5 @@
 import { ApertureArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns a new list, composed of n-tuples of consecutive elements If n is

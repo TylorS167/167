@@ -1,5 +1,5 @@
 import { LastIndexOfArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { equals } from '../../relation/equals'
 import { findLastIndex } from '../findLastIndex'
 

@@ -1,6 +1,6 @@
 import { Reducer } from '../reduce'
 import { ScanArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const scan: ScanArity3 = curry3(
   function scan<A, B>(f: Reducer<A, B>, seed: B, list: Array<A>): ReadonlyArray<B> {

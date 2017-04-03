@@ -1,5 +1,5 @@
 import { AdjustArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 /**
  * Applies a function to the value at the given index of an array, returning a

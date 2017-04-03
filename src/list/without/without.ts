@@ -1,5 +1,5 @@
 import { WithoutArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const without: WithoutArity2 = curry2(
   function without<A>(values: Array<A>, list: Array<A>): ReadonlyArray<A> {

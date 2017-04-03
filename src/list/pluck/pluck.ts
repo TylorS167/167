@@ -1,5 +1,5 @@
 import { PluckArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 import { map } from '../map'
 import { prop } from '../../object/prop'
 

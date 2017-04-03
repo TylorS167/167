@@ -1,5 +1,5 @@
 import { AllArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns true if all elements of the list match the predicate,

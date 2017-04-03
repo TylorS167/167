@@ -1,5 +1,5 @@
 import { UniqWithArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const uniqWith: UniqWithArity2 = curry2(
   function uniqWith<A>(comparator: (a: A, b: A) => boolean, list: Array<A>) {

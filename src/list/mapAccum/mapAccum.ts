@@ -1,5 +1,5 @@
 import { MapAccumArity3 } from './types'
-import { curry3 } from '@typed/curry'
+import { curry3 } from '../../function/curry'
 
 export const mapAccum: MapAccumArity3 = curry3(
   function mapAccum<A, B, C>(f: (acc: B, value: A) => [B, C], seed: B, list: Array<A>): [B, Array<C>] {

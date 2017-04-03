@@ -1,5 +1,5 @@
 import { RepeatArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 export const repeat: RepeatArity2 = curry2(
   function repeat<A>(value: A, amount: number): ReadonlyArray<A> {

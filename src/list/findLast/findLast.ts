@@ -1,5 +1,5 @@
 import { FindLastArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Returns the last element of the list which matches the predicate,

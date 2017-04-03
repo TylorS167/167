@@ -1,5 +1,5 @@
 import { FilterArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Takes a predicate and a "filterable", and returns a new filterable of the

@@ -1,5 +1,5 @@
 import { GroupWithArity2 } from './types'
-import { curry2 } from '@typed/curry'
+import { curry2 } from '../../function/curry'
 
 /**
  * Takes a list and returns a list of lists where each sublist's elements are
