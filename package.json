@@ -24,9 +24,6 @@
     "typescript": "^2.2.1",
     "validate-commit-msg": "^2.11.2"
   },
-  "dependencies": {
-    "@typed/curry": "^1.0.1"
-  },
   "scripts": {
     "build": "yarn build:commonjs && yarn build:es2015",
     "build:commonjs": "tsc -P .config/tsconfig.commonjs.json",
