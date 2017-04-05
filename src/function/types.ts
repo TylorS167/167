@@ -27,6 +27,11 @@ export type Predicate2<A> = (a: A, b: A) => boolean
 export type ComparisonNumbers = -1 | 0 | 1
 export type Comparator<A> = (a: A, b: A) => ComparisonNumbers
 
+export interface Equality {
+  <A>(a: A, b: A): boolean
+  <A>(a: A): (b: A) => boolean
+}
+
 export type Arity1Bound<that, A, B> = (this: that, a: A) => B
 export type Arity2Bound<that, A, B, C> = (this: that, a: A, b: B) => C
 export type Arity3Bound<that, A, B, C, D> = (this: that, a: A, b: B, c: C) => D
