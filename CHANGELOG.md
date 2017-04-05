@@ -1,3 +1,18 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/TylorS/167/compare/v0.4.0...v0.5.0) (2017-04-05)
+
+
+### Features
+
+* **function:** implement curryN ([9be7084](https://github.com/TylorS/167/commit/9be7084))
+* **function:** implement descend function ([e93adc1](https://github.com/TylorS/167/commit/e93adc1))
+* **function:** implement flip ([f5ecafe](https://github.com/TylorS/167/commit/f5ecafe))
+* **function:** implement invoker ([ebfd51c](https://github.com/TylorS/167/commit/ebfd51c))
+* **function:** implement memoize function ([7fb1f7e](https://github.com/TylorS/167/commit/7fb1f7e))
+* **relation:** implement equality functions ([5a0f402](https://github.com/TylorS/167/commit/5a0f402))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/TylorS/167/compare/v0.3.0...v0.4.0) (2017-04-03)
 
