@@ -14,7 +14,8 @@ export type ArityN<R> = (...args: Array<any>) => R
 export type Predicate<A> = (a: A) => boolean
 export type Predicate2<A> = (a: A, b: A) => boolean
 
-export type Comparator<A> = (a: A, b: A) => -1 | 0 | 1
+export type ComparisonNumbers = -1 | 0 | 1
+export type Comparator<A> = (a: A, b: A) => ComparisonNumbers
 
 export type Arity1Bound<that, A, B> = (this: that, a: A) => B
 export type Arity2Bound<that, A, B, C> = (this: that, a: A, b: B) => C

@@ -1,4 +1,4 @@
-export type ComparisonNumbers = -1 | 0 | 1
+import { ComparisonNumbers } from '../types'
 
 export interface AscendArity3 {
   <A, B>(fn: (a: A) => B, a: A, b: A): ComparisonNumbers
