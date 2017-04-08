@@ -1,3 +1,13 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/TylorS/167/compare/v0.5.0...v0.6.0) (2017-04-08)
+
+
+### Features
+
+* **object:** implement immutable set ([03a8377](https://github.com/TylorS/167/commit/03a8377))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/TylorS/167/compare/v0.4.0...v0.5.0) (2017-04-05)
 
