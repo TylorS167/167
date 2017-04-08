@@ -9,8 +9,6 @@ describe('invoker', () => {
 
       const foo = invoker<number, number, number, typeof obj>(2, 'foo', obj)
 
-      console.log(foo.toString())
-
       assert.strictEqual(obj.foo(1, 2), foo(1)(2))
     })
   })
