@@ -25,7 +25,7 @@
     "validate-commit-msg": "^2.11.2"
   },
   "scripts": {
-    "build": "yarn build:commonjs && yarn build:es2015",
+    "build": "rm -rf lib* && yarn build:commonjs && yarn build:es2015",
     "build:commonjs": "tsc -P .config/tsconfig.commonjs.json",
     "build:es2015": "tsc -P .config/tsconfig.es2015.json",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -p angular",
