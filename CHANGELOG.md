@@ -1,3 +1,13 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/TylorS/167/compare/v0.6.0...v0.7.0) (2017-04-08)
+
+
+### Bug Fixes
+
+* **build:** remove lib folders before publishing ([7ed4bec](https://github.com/TylorS/167/commit/7ed4bec))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/TylorS/167/compare/v0.5.0...v0.6.0) (2017-04-08)
 
