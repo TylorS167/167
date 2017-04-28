@@ -1,7 +1,7 @@
-import { ComposeFn } from './types'
+import { PipeFn } from './types'
 import { reduce } from '../../list/reduce'
 
-export const pipe: ComposeFn = function compose<A, B>(...fns: Array<Function>) {
+export const pipe: PipeFn = function compose<A, B>(...fns: Array<Function>) {
   return function(a: A): B {
     switch (fns.length)
     {
