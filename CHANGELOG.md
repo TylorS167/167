@@ -1,3 +1,13 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/TylorS/167/compare/v0.9.0...v0.10.0) (2017-04-28)
+
+
+### Features
+
+* **object:** implement propEq ([3fd1aaa](https://github.com/TylorS/167/commit/3fd1aaa))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/TylorS/167/compare/v0.8.0...v0.9.0) (2017-04-28)
 
