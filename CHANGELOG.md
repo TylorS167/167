@@ -1,3 +1,18 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/TylorS/167/compare/v0.8.0...v0.9.0) (2017-04-28)
+
+
+### Bug Fixes
+
+* **function:** fix type signature for pipe ([d8ba3ad](https://github.com/TylorS/167/commit/d8ba3ad))
+
+
+### Features
+
+* **function:** implement pipe ([cf1c0c5](https://github.com/TylorS/167/commit/cf1c0c5))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/TylorS/167/compare/v0.7.0...v0.8.0) (2017-04-28)
 
