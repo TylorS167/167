@@ -1,3 +1,13 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/TylorS/167/compare/v0.7.0...v0.8.0) (2017-04-28)
+
+
+### Features
+
+* **function:** implement partial function ([49fae04](https://github.com/TylorS/167/commit/49fae04))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/TylorS/167/compare/v0.6.0...v0.7.0) (2017-04-08)
 
