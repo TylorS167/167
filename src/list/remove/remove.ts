@@ -12,7 +12,7 @@ export const remove: RemoveArity3 = curry3(
     if (index === 0 && amount >= length)
       return []
 
-    const newList = Array(length - Math.abs(index))
+    const newList = Array(length - Math.abs(index) - 1)
 
     for (let i = 0; i < index; ++i)
       newList[i] = list[i]
