@@ -6,6 +6,9 @@ export const join: JoinArity2 = curry2(
     const length = list.length
     let str = ''
 
+    if (length === 0)
+      return str
+
     for (let i = 0; i < length - 1; ++i)
       str += list[i] + separator
 

@@ -6,6 +6,7 @@ describe('join', () => {
   describe('string -> List a', () => {
     it('returns a string', () => {
       assert.strictEqual(join(' ', [ 'a', 'b', 'c' ]), 'a b c')
+      assert.strictEqual(join(' ')([]), '')
     })
   })
 })
