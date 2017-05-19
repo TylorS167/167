@@ -8,7 +8,7 @@ import { curry2 } from '../../function/curry'
  * Dispatches to the filter method of the second argument, if present.
  */
 export const filter: FilterArity2 = curry2(
-  function filter<A>(predicate: (a: A, index?: number) => boolean, list: Array<A>): any {
+  function filter<A>(predicate: (a: A, index: number) => boolean, list: Array<A>): any {
     const length = list.length
     const newList = []
 

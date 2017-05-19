@@ -6,7 +6,7 @@ import { curry2 } from '../../function/curry'
  * element in the list.
  */
 export const forEach: ForEachArity2 = curry2(
-  function forEach<A>(f: (a: A, index?: number) => any, list: Array<A>): Array<A> {
+  function forEach<A>(f: (a: A, index: number) => any, list: Array<A>): Array<A> {
     const length = list.length
 
     for (let i = 0; i < length; ++i)

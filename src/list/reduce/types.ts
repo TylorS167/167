@@ -1,4 +1,6 @@
-export type Reducer<A, B> = (accumulator: B, value: A, index?: number) => B
+export type Reducer<A, B> =
+  ((accumulator: B, value: A, index: number) => B) |
+  ((accumulator: B, value: A) => B)
 
 export interface ReduceArity3 {
   <A, B>(f: Reducer<A, B>, seed: B, list: Array<A>): B
