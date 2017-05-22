@@ -1,3 +1,13 @@
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/TylorS/167/compare/v0.17.0...v0.18.0) (2017-05-22)
+
+
+### Bug Fixes
+
+* **object:** return updated object ([e15db2d](https://github.com/TylorS/167/commit/e15db2d))
+
+
+
 <a name="0.17.0"></a>
 # [0.17.0](https://github.com/TylorS/167/compare/v0.16.0...v0.17.0) (2017-05-19)
 
