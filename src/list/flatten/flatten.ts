@@ -9,7 +9,7 @@ import { reduce } from '../reduce'
  * and putting them in a new array, depth-first.
  */
 export const flatten: FlattenArity1 = function flatten<A>(list: Array<A>): ReadonlyArray<A> {
-  return reduce<A | ReadonlyArray<A>, ReadonlyArray<A>>(flattenReducer, [] as Array<A>, list)
+  return reduce<A | ReadonlyArray<A>, ReadonlyArray<A>>(flattenReducer, [] as Array<A>, list) as any as ReadonlyArray<A>
 } as FlattenArity1
 
 function flattenReducer<A>(acc: Array<A>, value: A | Array<A>): ReadonlyArray<A> {

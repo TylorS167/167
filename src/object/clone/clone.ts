@@ -1,6 +1,10 @@
+import { Just, fromJust, isMaybe, isNothing, just } from '../../maybe'
+
 import { type } from '../../helpers'
 
 export function clone<A extends object>(obj: A): A {
+  if (isMaybe(obj)) return isNothing(obj) ? obj : just(fromJust(obj as any)) as any as A
+
   return _clone(obj, [], [], true)
 }
 

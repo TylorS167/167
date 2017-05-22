@@ -1,3 +1,5 @@
+import { Just, Nothing, fromJust, isJust } from '../../maybe'
+
 import { ChainArity2 } from './types'
 import { curry2 } from '../../function/curry'
 import { isArrayLike } from '../isArrayLike'
@@ -11,6 +13,9 @@ import { isArrayLike } from '../isArrayLike'
  */
 export const chain: ChainArity2 = curry2(
   function chain<A, B>(f: (a: A) => Array<B>, list: any): any {
+    if (!isArrayLike(list))
+      return isJust(list) ? f(fromJust(list as Just<A>)) : list as Nothing
+
     const length = list.length
     const newList: Array<B> = []
 

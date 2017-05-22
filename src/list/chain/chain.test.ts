@@ -1,5 +1,7 @@
 import * as assert from 'assert'
 
+import { Maybe, fromJust, isJust, isMaybe, isNothing, just, nothing } from '../../maybe'
+
 import { chain } from './chain'
 
 describe('chain', () => {
@@ -8,5 +10,13 @@ describe('chain', () => {
     const duplicate = (x: number) => [ x, x ]
 
     assert.deepEqual(chain(duplicate, array), [ 1, 1, 2, 2, 3, 3 ])
+  })
+
+  it('chains a Maybe', () => {
+    const add1 = chain((x: number) => just(x + 1))
+
+    const maybes = [ just(1), nothing() ].map(add1)
+
+    maybes.forEach((maybe) => assert.ok(isMaybe(maybe)))
   })
 })

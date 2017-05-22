@@ -1,8 +1,14 @@
+import { Just, Maybe, Nothing, fromJust, isJust, just } from '../../maybe'
+
 import { MapArity2 } from './types'
 import { curry2 } from '../../function/curry'
+import { isArrayLike } from '../isArrayLike'
 
 export const map: MapArity2 = curry2(
-  function map<A, B>(f: (a: A, index?: number) => B, list: Array<A>): Array<B> {
+  function map<A, B>(f: (a: A, index?: number) => B, list: Array<A>): any {
+    if (!isArrayLike(list))
+      return isJust<A>(list as Maybe<A>) ? just(f(fromJust(list as Just<A>))) : list as Nothing
+
     const length = list.length
     const newList = Array(length)
 
