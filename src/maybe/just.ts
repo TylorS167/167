@@ -1,16 +1,13 @@
 import { Maybe, Nothing } from './'
 
-export class Just<A> {
-  private value: A
-  constructor(value: A) {
-    this.value = value
-  }
-}
+const JUST = '@@167/just'
 
-export const just = <A>(value: A): Just<A> => new Just(value)
+export type Just<A> = { readonly '@@167/just': A }
+
+export const just = <A>(value: A): Just<typeof value> => ({ ['@@167/just']: value })
 
 export function isJust<A>(maybe: Maybe<A>): maybe is Just<A> {
-  return maybe instanceof Just
+  return maybe.hasOwnProperty('@@167/just')
 }
 
-export const fromJust = <A>(just: Just<A>): A => (just as any).value
+export const fromJust = <A>(just: Just<A>): A => just['@@167/just']

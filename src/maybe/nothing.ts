@@ -1,11 +1,11 @@
 import { Just, Maybe } from './'
 
-export class Nothing {}
+export type Nothing = { '@@167/Nothing': true }
 
-const NOTHING: Nothing = new Nothing()
+const NOTHING: Nothing = { '@@167/Nothing': true }
 
 export const nothing = () => NOTHING
 
 export function isNothing<A>(maybe: Maybe<A>): maybe is Nothing {
-  return maybe === NOTHING
+  return (maybe as Nothing)['@@167/Nothing']
 }
