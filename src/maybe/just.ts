@@ -9,9 +9,6 @@ export class Just<A> {
 
 export const just = <A>(value: A): Just<A> => new Just(value)
 
-export function isJust<A>(just: Just<A>): true
-export function isJust(nothing: Nothing): false
-export function isJust<A>(maybe: Maybe<A>): maybe is Just<A>
 export function isJust<A>(maybe: Maybe<A>): maybe is Just<A> {
   return maybe instanceof Just
 }
