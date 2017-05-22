@@ -7,7 +7,7 @@ export const set: SetArity3 = curry3(
 
     clonedObj[key] = value
 
-    return obj
+    return clonedObj
   },
 )
 
