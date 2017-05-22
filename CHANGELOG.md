@@ -1,3 +1,13 @@
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/TylorS/167/compare/v0.19.0...v0.20.0) (2017-05-22)
+
+
+### Bug Fixes
+
+* **maybe:** fix isJust and isNothing types ([ff6da2a](https://github.com/TylorS/167/commit/ff6da2a))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/TylorS/167/compare/v0.18.0...v0.19.0) (2017-05-22)
 
