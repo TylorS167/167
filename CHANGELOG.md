@@ -1,3 +1,13 @@
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/TylorS/167/compare/v0.20.0...v0.21.0) (2017-05-22)
+
+
+### Features
+
+* **maybe:** make Maybe type easily (de)serializable ([3b5508e](https://github.com/TylorS/167/commit/3b5508e))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/TylorS/167/compare/v0.19.0...v0.20.0) (2017-05-22)
 
