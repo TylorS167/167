@@ -1,3 +1,13 @@
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/TylorS/167/compare/v0.21.0...v0.22.0) (2017-05-25)
+
+
+### Features
+
+* **onlyWhen:** add onlyWhen ([a183cb2](https://github.com/TylorS/167/commit/a183cb2))
+
+
+
 <a name="0.21.0"></a>
 # [0.21.0](https://github.com/TylorS/167/compare/v0.20.0...v0.21.0) (2017-05-22)
 
