@@ -11,8 +11,8 @@ describe(`onlyWhen`, () => {
     })
   })
 
-  describe(`given a predicate that is false`, () => {
-    it(`returns default value`, () => {
+  describe(`given a predicate that is true`, () => {
+    it(`returns f a`, () => {
       const expected = 1
       assert.strictEqual(2, onlyWhen((x: number) => x === expected, 0, (x: number) => x + 1, expected))
     })
