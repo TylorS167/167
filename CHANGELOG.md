@@ -1,3 +1,13 @@
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/TylorS/167/compare/v0.22.0...v0.23.0) (2017-05-26)
+
+
+### Features
+
+* **math:** implement math-related functions ([7505bf1](https://github.com/TylorS/167/commit/7505bf1))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/TylorS/167/compare/v0.21.0...v0.22.0) (2017-05-25)
 
