@@ -1,3 +1,4 @@
+export * from './assoc'
 export * from './clone'
 export * from './prop'
 export * from './propEq'
