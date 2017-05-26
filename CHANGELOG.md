@@ -1,3 +1,13 @@
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/TylorS/167/compare/v0.24.0...v0.25.0) (2017-05-26)
+
+
+### Features
+
+* **maybe:** implement fromMaybe ([56c946b](https://github.com/TylorS/167/commit/56c946b))
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/TylorS/167/compare/v0.23.0...v0.24.0) (2017-05-26)
 
