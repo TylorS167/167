@@ -1,3 +1,13 @@
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/TylorS/167/compare/v0.23.0...v0.24.0) (2017-05-26)
+
+
+### Features
+
+* **logic:** implement many logic functions ([9640431](https://github.com/TylorS/167/commit/9640431))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/TylorS/167/compare/v0.22.0...v0.23.0) (2017-05-26)
 
