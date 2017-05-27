@@ -1,6 +1,6 @@
 import { Just, Maybe } from './'
 
-export type Nothing = { '@@167/Nothing': true }
+export interface Nothing { '@@167/Nothing': true }
 
 const NOTHING: Nothing = { '@@167/Nothing': true }
 
