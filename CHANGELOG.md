@@ -1,3 +1,13 @@
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/TylorS/167/compare/v0.25.0...v0.26.0) (2017-05-27)
+
+
+### Features
+
+* **object:** implement keys and values ([90a2a80](https://github.com/TylorS/167/commit/90a2a80))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/TylorS/167/compare/v0.24.0...v0.25.0) (2017-05-26)
 
