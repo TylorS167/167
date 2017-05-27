@@ -1,3 +1,13 @@
+<a name="0.27.0"></a>
+# [0.27.0](https://github.com/TylorS/167/compare/v0.26.0...v0.27.0) (2017-05-27)
+
+
+### Features
+
+* **Maybe:** use interfaces for Just and Nothing ([328a102](https://github.com/TylorS/167/commit/328a102))
+
+
+
 <a name="0.26.0"></a>
 # [0.26.0](https://github.com/TylorS/167/compare/v0.25.0...v0.26.0) (2017-05-27)
 
