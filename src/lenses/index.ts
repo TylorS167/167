@@ -1,5 +1,6 @@
 export * from './types'
 export * from './updateAt'
 export * from './view'
+export * from './lensPath'
 export * from './lensProp'
 export * from './lens'
