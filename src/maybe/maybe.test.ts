@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 
-import { Just, Maybe, Nothing, fromJust, isJust, isMaybe, isNothing, just, nothing } from './'
+import { fromJust, isJust, isMaybe, isNothing, just, nothing } from './'
 
 describe(`Maybe`, () => {
   describe(`Just`, () => {

@@ -25,7 +25,3 @@ describe('aperture', () => {
     })
   })
 })
-
-const x = aperture(3, [ 1, 2, 3 ])
-
-const [ one, two, three ] = x[0]

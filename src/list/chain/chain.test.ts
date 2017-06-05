@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 
-import { Maybe, fromJust, isJust, isMaybe, isNothing, just, nothing } from '../../maybe'
+import { isMaybe, just, nothing } from '../../maybe'
 
 import { chain } from './chain'
 
