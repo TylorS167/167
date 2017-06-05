@@ -1,4 +1,4 @@
-import { Maybe, Nothing } from './'
+import { Maybe } from './'
 
 export interface Just<A> { readonly '@@167/Just': A }
 

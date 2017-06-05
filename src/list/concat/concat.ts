@@ -5,7 +5,7 @@ import { curry2 } from '../../function/curry'
  * Returns the result of concatenating the given lists or strings.
  */
 export const concat: ConcatArity2 = curry2(
-  function <A>(list1: any, list2: any): any {
+  function(list1: any, list2: any): any {
     if (typeof list1 === 'string')
       return (list1 as string) + (list2 as string)
 

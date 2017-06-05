@@ -1,6 +1,5 @@
-import { ReduceArity1, reduce } from '../../list/reduce'
-
 import { multiply } from '../multiply'
+import { reduce } from '../../list/reduce'
 
 export const product: Product = reduce<number, number>(multiply, 1)
 

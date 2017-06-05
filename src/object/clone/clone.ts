@@ -1,5 +1,3 @@
-import { Just, fromJust, isMaybe, isNothing, just } from '../../maybe'
-
 import { type } from '../../helpers'
 
 export function clone<A extends object>(obj: A): A {

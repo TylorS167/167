@@ -7,7 +7,7 @@ export interface GroupWithArity2 {
 }
 
 export interface GroupWithArity1<A> {
-  <A>(list: Array<A>): ReadonlyArray<ReadonlyArray<A>>
-  <A>(list: ArrayLike<A>): ReadonlyArray<ReadonlyArray<A>>
-  <A>(list: ReadonlyArray<A>): ReadonlyArray<ReadonlyArray<A>>
+  (list: Array<A>): ReadonlyArray<ReadonlyArray<A>>
+  (list: ArrayLike<A>): ReadonlyArray<ReadonlyArray<A>>
+  (list: ReadonlyArray<A>): ReadonlyArray<ReadonlyArray<A>>
 }

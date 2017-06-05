@@ -1,4 +1,4 @@
-import { Just, Maybe } from './'
+import { Maybe } from './'
 
 export interface Nothing { '@@167/Nothing': true }
 

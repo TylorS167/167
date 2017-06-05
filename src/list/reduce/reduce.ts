@@ -1,4 +1,4 @@
-import { Just, Maybe, Nothing, fromJust, isJust, just } from '../../maybe'
+import { Just, Maybe, fromJust, isJust, just } from '../../maybe'
 
 import { ReduceArity3 } from './types'
 import { curry3 } from '../../function/curry'

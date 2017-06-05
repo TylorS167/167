@@ -9,7 +9,6 @@ export const slice: SliceArity3 = curry3(
     if (end <= start)
       return []
 
-    const length = list.length
     const newLength = end - start
     const newList = Array(newLength)
 

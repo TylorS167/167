@@ -11,8 +11,8 @@ export const without: WithoutArity2 = curry2(
     {
       const item = list[i]
 
-      if (!set.has(list[i]))
-        newList.push(list[i])
+      if (!set.has(item))
+        newList.push(item)
     }
 
     return newList

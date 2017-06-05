@@ -1,5 +1,3 @@
-import { Arity1, Predicate } from '../../function'
-
 import { Conditional } from '../condOr'
 import { Maybe } from '../../maybe'
 

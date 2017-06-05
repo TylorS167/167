@@ -1,5 +1,4 @@
 import { RemoveArity3 } from './types'
-import { copy } from '../copy'
 import { curry3 } from '../../function/curry'
 
 export const remove: RemoveArity3 = curry3(

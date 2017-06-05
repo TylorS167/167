@@ -1,4 +1,5 @@
 export * from './function'
+export * from './lenses'
 export * from './list'
 export * from './logic'
 export * from './math'
