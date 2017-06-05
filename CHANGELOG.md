@@ -1,3 +1,19 @@
+<a name="0.28.0"></a>
+# [0.28.0](https://github.com/TylorS/167/compare/v0.27.0...v0.28.0) (2017-06-05)
+
+
+### Bug Fixes
+
+* **pluck:** update type signature ([e024cf5](https://github.com/TylorS/167/commit/e024cf5))
+
+
+### Features
+
+* **lenses:** implement lens ([3e6e894](https://github.com/TylorS/167/commit/3e6e894))
+* **lenses:** implement lenses ([78c2e8d](https://github.com/TylorS/167/commit/78c2e8d))
+
+
+
 <a name="0.27.0"></a>
 # [0.27.0](https://github.com/TylorS/167/compare/v0.26.0...v0.27.0) (2017-05-27)
 
