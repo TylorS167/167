@@ -13,6 +13,9 @@ describe('remove', () => {
       assert.deepEqual(remove(2, 1, [ 1, 2, 3 ]).length, 2)
       assert.deepEqual(remove(0, 1, [ 1, 2, 3, 4 ]), [ 2, 3, 4 ])
       assert.deepEqual(remove(0, 1, [ 1, 2, 3, 4 ]).length, 3)
+      // Fix issue #1
+      assert.deepEqual(remove(3, 1, [ 1, 2, 3 ]), [ 1, 2, 3 ])
+      assert.deepEqual(remove(4, 1, [ 1, 2, 3 ]), [ 1, 2, 3 ])
     })
   })
 })
