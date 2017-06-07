@@ -5,7 +5,7 @@ export const remove: RemoveArity3 = curry3(
   function remove<A>(index: number, amount: number, list: Array<A>): ReadonlyArray<A> {
     const length = list.length
 
-    if (amount === 0 || length === 0)
+    if (amount === 0 || length === 0 || index >= length)
       return list
 
     if (index === 0 && amount >= length)
