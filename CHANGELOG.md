@@ -1,3 +1,22 @@
+<a name="0.30.0"></a>
+# [0.30.0](https://github.com/TylorS/167/compare/v0.29.0...v0.30.0) (2017-06-07)
+
+
+### Bug Fixes
+
+* **remove:** return unchanged list on index >= length ([0f1668c](https://github.com/TylorS/167/commit/0f1668c)), closes [#1](https://github.com/TylorS/167/issues/1)
+
+
+### BREAKING CHANGES
+
+* **remove:** Before:
+`remove(3, 1, [ 1, 2, 3 ]) => Range Error`
+
+After:
+`remove(3, 1, [ 1, 2, 3 ]) => [ 1, 2, 3 ]`
+
+
+
 <a name="0.29.0"></a>
 # [0.29.0](https://github.com/TylorS/167/compare/v0.28.0...v0.29.0) (2017-06-05)
 
