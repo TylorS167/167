@@ -1,3 +1,13 @@
+<a name="0.32.0"></a>
+# [0.32.0](https://github.com/TylorS/167/compare/v0.31.0...v0.32.0) (2017-07-07)
+
+
+### Bug Fixes
+
+* **dissoc:** fix type signature for dissoc ([f9d507b](https://github.com/TylorS/167/commit/f9d507b))
+
+
+
 <a name="0.31.0"></a>
 # [0.31.0](https://github.com/TylorS/167/compare/v0.30.0...v0.31.0) (2017-07-07)
 
