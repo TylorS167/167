@@ -1,3 +1,13 @@
+<a name="0.31.0"></a>
+# [0.31.0](https://github.com/TylorS/167/compare/v0.30.0...v0.31.0) (2017-07-07)
+
+
+### Features
+
+* **object:** implement dissoc ([53b49a4](https://github.com/TylorS/167/commit/53b49a4))
+
+
+
 <a name="0.30.0"></a>
 # [0.30.0](https://github.com/TylorS/167/compare/v0.29.0...v0.30.0) (2017-06-07)
 
