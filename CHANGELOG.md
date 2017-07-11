@@ -1,3 +1,13 @@
+<a name="0.35.0"></a>
+# [0.35.0](https://github.com/TylorS167/167/compare/v0.34.0...v0.35.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **list:** export move from index ([595a62c](https://github.com/TylorS167/167/commit/595a62c))
+
+
+
 <a name="0.34.0"></a>
 # [0.34.0](https://github.com/TylorS167/167/compare/v0.33.0...v0.34.0) (2017-07-11)
 
