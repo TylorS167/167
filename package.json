@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "jsnext:main": "lib.es2015/index.js",
   "module": "lib.es2015/index.js",
-  "repository": "https://github.com/TylorS/167",
+  "repository": "https://github.com/TylorS167/167",
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
   "devDependencies": {

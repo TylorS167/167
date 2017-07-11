@@ -1,35 +1,34 @@
 import { curry3 } from '../../function/curry/curry3'
 
-export const move: MoveArity3 = curry3(
-  function move<A>(fromIndex: number, toIndex: number, list: Array<A>): ReadonlyArray<A> {
-    const length = list.length
-    const newArray = Array(length)
-
-    if (fromIndex < 0 || fromIndex >= length || toIndex < 0 || toIndex >= length) 
-      return list
-
-    for (let i = 0; i < length; ++i)
-      newArray[i] = list[findMovedIndex(i, fromIndex, toIndex)]
-      
-    return newArray
-  }
-)
-
-function findMovedIndex(
-  i: number, 
-  fromIndex: number, 
-  toIndex: number): number 
+export const move: MoveArity3 = curry3(function move<A>(
+  fromIndex: number,
+  toIndex: number,
+  list: Array<A>,
+): ReadonlyArray<A>
 {
+  const length = list.length
+  const newArray = Array(length)
+
+  if (fromIndex < 0 || fromIndex >= length || toIndex < 0 || toIndex >= length)
+    return list
+
+  for (let i = 0; i < length; ++i)
+    newArray[i] = list[findMovedIndex(i, fromIndex, toIndex)]
+
+  return newArray
+})
+
+function findMovedIndex(i: number, fromIndex: number, toIndex: number): number {
   if (i === toIndex) return fromIndex
 
-  if(fromIndex < toIndex) {
+  if (fromIndex < toIndex) {
     if (i < fromIndex || i > toIndex) return i
-    
+
     return i + 1
   }
 
   if (i > fromIndex || i < toIndex) return i
-  
+
   return i - 1
 }
 
