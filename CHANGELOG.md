@@ -1,3 +1,14 @@
+<a name="0.34.0"></a>
+# [0.34.0](https://github.com/TylorS167/167/compare/v0.33.0...v0.34.0) (2017-07-11)
+
+
+### Bug Fixes
+
+* **lenses:** fix updateAt type signature ([09eb2c3](https://github.com/TylorS167/167/commit/09eb2c3))
+* **list:** fix uniq type signature ([530fb5d](https://github.com/TylorS167/167/commit/530fb5d)), closes [#5](https://github.com/TylorS167/167/issues/5)
+
+
+
 <a name="0.33.0"></a>
 # [0.33.0](https://github.com/TylorS167/167/compare/v0.32.0...v0.33.0) (2017-07-11)
 
