@@ -1,6 +1,6 @@
 {
   "name": "167",
-  "version": "0.35.0",
+  "version": "0.36.0",
   "description": "Type-safe functional utilities",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
