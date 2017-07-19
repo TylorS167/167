@@ -1,3 +1,13 @@
+<a name="0.36.0"></a>
+# [0.36.0](https://github.com/TylorS167/167/compare/v0.35.0...v0.36.0) (2017-07-19)
+
+
+### Features
+
+* **equals:** fix subtle bug where value is falsy ([9f926ab](https://github.com/TylorS167/167/commit/9f926ab))
+
+
+
 <a name="0.35.0"></a>
 # [0.35.0](https://github.com/TylorS167/167/compare/v0.34.0...v0.35.0) (2017-07-11)
 
