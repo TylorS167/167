@@ -95,7 +95,7 @@ function isEqual(a: any, b: any, stackA: Array<any>, stackB: Array<any>): boolea
   while (idx >= 0) {
     const key = keysA[idx]
 
-    if (!(b[key] && isEqual(b[key], a[key], stackA, stackB)))
+    if (!(Object.prototype.hasOwnProperty.call(b, key) && isEqual(b[key], a[key], stackA, stackB)))
       return false
 
     idx -= 1
