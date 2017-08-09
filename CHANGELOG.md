@@ -1,3 +1,13 @@
+<a name="0.37.0"></a>
+# [0.37.0](https://github.com/TylorS167/167/compare/v0.36.0...v0.37.0) (2017-08-09)
+
+
+### Bug Fixes
+
+* **assoc:** correct assoc type-signature ([7fb5a90](https://github.com/TylorS167/167/commit/7fb5a90))
+
+
+
 <a name="0.36.0"></a>
 # [0.36.0](https://github.com/TylorS167/167/compare/v0.35.0...v0.36.0) (2017-07-19)
 
