@@ -2,7 +2,7 @@ import { clone } from '../clone'
 import { curry3 } from '../../function/curry'
 
 export const set: SetArity3 = curry3(
-  function set<O extends object>(key: keyof O, value: O[typeof key], obj: O): O {
+  function set<O>(key: keyof O, value: O[typeof key], obj: O): O {
     const clonedObj = clone(obj)
 
     clonedObj[key] = value
@@ -12,18 +12,18 @@ export const set: SetArity3 = curry3(
 )
 
 export interface SetArity3 {
-  <O extends object>(key: keyof O, value: O[typeof key], obj: O): O
+  <O>(key: keyof O, value: O[typeof key], obj: O): O
 
-  <O extends object>(key: keyof O, value: O[typeof key]): SetArity1<O>
-  <O extends object>(key: keyof O): SetArity2<O, typeof key>
+  <O>(key: keyof O, value: O[typeof key]): SetArity1<O>
+  <O>(key: keyof O): SetArity2<O, typeof key>
 }
 
-export interface SetArity2<O extends object, K extends keyof O> {
+export interface SetArity2<O, K extends keyof O> {
   (value: O[K], obj: O): O
 
   (value: O[K]): SetArity1<O>
 }
 
-export interface SetArity1<O extends object> {
+export interface SetArity1<O> {
   (obj: O): O
 }

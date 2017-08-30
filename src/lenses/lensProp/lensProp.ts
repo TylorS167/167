@@ -1,11 +1,11 @@
 import { Lens } from '../types'
 import { set } from '../../object/set'
 
-export function lensProp<A extends object>(prop: keyof A): Lens<A, A[typeof prop]> {
-  return new LensProp<A, typeof prop>(prop)
+export function lensProp<A, K extends keyof A>(prop: K): Lens<A, A[K]> {
+  return new LensProp<A, K>(prop)
 }
 
-class LensProp<A extends object, K extends keyof A> implements Lens<A, A[K]> {
+class LensProp<A, K extends keyof A> implements Lens<A, A[K]> {
   protected prop: K
 
   constructor(prop: K) {

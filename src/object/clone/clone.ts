@@ -1,6 +1,6 @@
 import { type } from '../../helpers'
 
-export function clone<A extends object>(obj: A): A {
+export function clone<A>(obj: A): A {
   return _clone(obj, [], [], true)
 }
 

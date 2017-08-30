@@ -2,7 +2,7 @@ import { Lens } from '../types'
 import { curry3 } from '../../function/curry/curry3'
 
 export const updateAt: UpdateAtArity3 = curry3(
-  function updateAt<A extends object, B extends A[keyof A]>(
+  function updateAt<A, B extends A[keyof A]>(
     lens: Lens<A, B>,
     f: (value: B) => B,
     obj: A): A
