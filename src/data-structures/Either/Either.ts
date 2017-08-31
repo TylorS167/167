@@ -1,8 +1,6 @@
 import { Left, fromLeft } from './Left'
 import { Right, fromRight } from './Right'
-
-import { curry2 } from '../function/curry/curry2'
-import { pipe } from '../function/pipe'
+import { curry2, pipe } from '../../categories/function'
 
 export type Either<A, B> = Left<A> | Right<B>
 

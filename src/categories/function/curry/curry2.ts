@@ -1,4 +1,4 @@
-import { Arity2, Curry2 } from '../../types'
+import { Arity2, Curry2 } from '../../../'
 
 export function curry2<A, B, C>(fn: Arity2<A, B, C>): Curry2<A, B, C>
 export function curry2(fn: Arity2<any, any, any>): Curry2<any, any, any>

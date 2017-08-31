@@ -1,7 +1,6 @@
-import { Arity1 } from '../types'
-import { curry2 } from '../function/curry/curry2'
-import { curry3 } from '../function/curry/curry3'
-import { pipe } from '../function/pipe'
+import { curry2, curry3, pipe } from '../../categories/function'
+
+import { Arity1 } from '../../'
 
 export interface Future<A, B> {
   readonly fork: (failure: (value: A) => any, success: (value: B) => any) => void

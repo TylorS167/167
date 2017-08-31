@@ -1,4 +1,4 @@
-import { Arity3, Curry3 } from '../../types'
+import { Arity3, Curry3 } from '../../../'
 
 import { curry2 } from './curry2'
 

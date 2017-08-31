@@ -1,4 +1,4 @@
-import { Arity1 } from '../../types'
+import { Arity1 } from '../../../'
 
 export interface PipeFn {
   <A, B>(f: Arity1<A, B>): Arity1<A, B>

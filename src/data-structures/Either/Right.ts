@@ -1,4 +1,4 @@
-import { prop } from '../object/prop'
+import { prop } from '../../categories/object/prop'
 
 export interface Right<A> {
   readonly '@167/Right': A

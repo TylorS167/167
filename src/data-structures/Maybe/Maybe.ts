@@ -1,8 +1,7 @@
 import { Just, fromJust } from './Just'
+import { curry2, pipe } from '../../categories/function'
 
 import { Nothing } from './Nothing'
-import { curry2 } from '../function/curry/curry2'
-import { pipe } from '../function/pipe'
 
 export type Maybe<A> = Just<A> | Nothing
 

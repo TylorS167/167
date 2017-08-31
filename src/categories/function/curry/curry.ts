@@ -18,7 +18,7 @@ import {
   Curry7,
   Curry8,
   Curry9,
-} from '../../types'
+} from '../../../'
 
 import { curry2 } from './curry2'
 import { curry3 } from './curry3'
