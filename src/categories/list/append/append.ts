@@ -4,6 +4,7 @@ import { curry2 } from '../../function/curry'
 /**
  * Returns a new list containing the contents of the given list,
  * followed by the given element.
+ * @name append<A>(a: A, list: Array<A>): ReadonlyArray<A>
  */
 export const append: AppendArity2 = curry2(function append<A>(a: A, list: Array<A>): Array<A> {
   const length = list.length

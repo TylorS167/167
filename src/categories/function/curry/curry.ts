@@ -72,6 +72,11 @@ export interface CurryFn {
   >
 }
 
+/**
+ * Given a function it will return a new function that will not return until it 
+ * is called with all expected parameters.
+ * @name curry(fn: Function): CurriedFunction
+ */
 export const curry: CurryFn = function curry(fn: Function) {
   switch (fn.length) {
     case 0:

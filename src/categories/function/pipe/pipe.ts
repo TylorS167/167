@@ -1,6 +1,10 @@
 import { PipeFn } from './types'
 import { reduce } from '../../list/reduce'
 
+/**
+ * Left-to-right function composition.
+ * @name pipe(...fns: Array<Function>): Functionå
+ */
 export const pipe: PipeFn = function compose<A, B>(...fns: Array<Function>) {
   return function(a: A): B {
     switch (fns.length) {

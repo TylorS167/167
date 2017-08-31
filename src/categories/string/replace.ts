@@ -1,5 +1,9 @@
 import { curry3 } from '../'
 
+/**
+ * Replace parts of a string.
+ * @name replace(searchValue: string | RegExp, replacer: Replacer, str: string): string
+ */
 export const replace: ReplaceArity3 = curry3(function(
   searchValue: string,
   replacer: string,
@@ -8,6 +12,11 @@ export const replace: ReplaceArity3 = curry3(function(
   return str.replace(searchValue, replacer)
 })
 
+/**
+ * Second parameters to `replace`.
+ * @name Replacer
+ * @type
+ */
 export type Replacer = ((substring: string, ...args: any[]) => string) | string
 
 export interface ReplaceArity3 {

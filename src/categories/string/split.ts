@@ -1,5 +1,9 @@
 import { curry2 } from '../function/curry/curry2'
 
+/**
+ * Splits a string into multiple parts.
+ * @name split(at: string | RegExp, str: string): ReadonlyArray<string>
+ */
 export const split: Split = curry2(function(at: string, str: string): ReadonlyArray<string> {
   return str.split(at)
 })
