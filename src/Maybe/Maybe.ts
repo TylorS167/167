@@ -43,6 +43,9 @@ export const fromMaybe: FromMaybe = curry2(function<A>(defaultValue: A, maybe: M
   return Maybe.isNothing(maybe) ? defaultValue : fromJust(maybe)
 })
 
+export const toMaybe = <A>(value: A | void): Maybe<A> =>
+  value === void 0 ? Nothing : Maybe.of(value)
+
 export interface MaybeChain {
   <A, B>(f: (value: A) => Maybe<B>, maybe: Maybe<A>): Maybe<B>
   <A, B>(f: (value: A) => Maybe<B>): (maybe: Maybe<A>) => Maybe<B>
