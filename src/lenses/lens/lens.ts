@@ -1,13 +1,13 @@
 import { Lens } from '../types'
 
-export function lens<A extends object, B extends A[keyof A]>(
+export function lens<A, B extends A[keyof A]>(
   getter: (a: A) => B,
   setter: (value: B, obj: A) => A): Lens<A, B>
 {
   return new BasicLens<A, B>(getter, setter)
 }
 
-class BasicLens<A extends object, B extends A[keyof A]> implements Lens<A, B> {
+class BasicLens<A, B extends A[keyof A]> implements Lens<A, B> {
   protected getter: (a: A) => B
   protected setter: (value: B, obj: A) => A
 
