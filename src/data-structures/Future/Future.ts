@@ -1,4 +1,4 @@
-import { curry2, curry3, pipe } from '../../categories/function'
+import { curry2, curry3, pipe, reduce } from '../../categories'
 
 import { Arity1 } from '../../'
 
@@ -47,10 +47,9 @@ export namespace Future {
     f: (value: B) => Future<A, C>,
     future: Future<A, B>
   ): Future<A, C> {
-    const fork = (failure: Arity1<A, any>, success: Arity1<C, any>) =>
+    return create((failure: Arity1<A, any>, success: Arity1<C, any>) =>
       future.fork(failure, pipe(f, success))
-
-    return { fork }
+    )
   })
 
   /**
@@ -61,10 +60,9 @@ export namespace Future {
     f: (value: A) => C,
     future: Future<A, B>
   ): Future<C, B> {
-    const fork = (failure: Arity1<C, any>, success: Arity1<B, any>) =>
+    return create((failure: Arity1<C, any>, success: Arity1<B, any>) =>
       future.fork(pipe(f, failure), success)
-
-    return { fork }
+    )
   })
 
   /**
@@ -150,6 +148,22 @@ export namespace Future {
       Promise.all(futures.map(toPromise)).then(pipe(f, success), failure)
 
     return { fork }
+  })
+
+  const append = <A>(xs: ArrayLike<A>) => (x: A) => Array.from(xs).concat(x)
+
+  /**
+   * Forks a list of Futures in sequential order.
+   */
+  export const sequence: FutureSequence = curry2(function<A, B, C>(
+    f: (value: B) => C,
+    futures: ArrayLike<Future<A, B>>
+  ): Future<A, ReadonlyArray<C>> {
+    return reduce(
+      (acc, future) => chain(xs => map(pipe(f, append(xs)), future), acc),
+      Future.of<A, ReadonlyArray<C>>([]),
+      futures
+    )
   })
 }
 
@@ -379,4 +393,9 @@ export interface FutureCombineArray {
   <Err, A>(f: (...args: Array<any>) => A): (
     futures: ReadonlyArray<Future<Err, any>>
   ) => Future<Err, A>
+}
+
+export interface FutureSequence {
+  <A, B, C>(f: (value: B) => C, futures: Array<Future<A, B>>): Future<A, ReadonlyArray<C>>
+  <A, B, C>(f: (value: B) => C): (futures: Array<Future<A, B>>) => Future<A, ReadonlyArray<C>>
 }
