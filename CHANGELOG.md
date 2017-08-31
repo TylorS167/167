@@ -1,3 +1,18 @@
+<a name="0.38.0"></a>
+# [0.38.0](https://github.com/TylorS167/167/compare/v0.37.0...v0.38.0) (2017-08-31)
+
+
+### Bug Fixes
+
+* **and:** accept boolean type values ([208790b](https://github.com/TylorS167/167/commit/208790b))
+
+
+### Features
+
+* **object/lenses:** loosen up type retrictions ([8c7be58](https://github.com/TylorS167/167/commit/8c7be58))
+
+
+
 <a name="0.37.0"></a>
 # [0.37.0](https://github.com/TylorS167/167/compare/v0.36.0...v0.37.0) (2017-08-09)
 
