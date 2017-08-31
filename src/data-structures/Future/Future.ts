@@ -2,20 +2,49 @@ import { curry2, curry3, pipe } from '../../categories/function'
 
 import { Arity1 } from '../../'
 
+/**
+ * Asynchronous Either data type. Similar to a Promise, but lazizer.
+ * @name Future
+ * @type
+ */
 export interface Future<A, B> {
-  readonly fork: (failure: (value: A) => any, success: (value: B) => any) => void
+  readonly fork: Fork<A, B>
 }
 
+export type Fork<A, B> = (failure: Function | Arity1<A, any>, success: Arity1<B, any>) => void
+
 export namespace Future {
+  /**
+   * Converts a Future<A, B> into a Promise<B>.
+   * @name Future.toPromise<A>(future: Future<any, A): Promise<A>
+   */
   export const toPromise = <A>({ fork }: Future<any, A>): Promise<A> =>
     new Promise((resolve, reject) => fork(reject, resolve))
 
-  export const of = <A, B = any>(value: A): Future<B, A> => ({ fork: forkOf<A>(value) })
+  /**
+   * Creates a `Future<A, B>`.
+   * @name Future.create<A, B>()
+   */
+  export const create = <A, B>(fork: Fork<A, B>): Future<A, B> => ({ fork })
 
-  export const reject = <A, B = any>(value: A): Future<A, B> => ({ fork: forkReject(value) })
+  /**
+   * Creates a Future when forked that will resolve with the given value.
+   * @name Future.of<A, B>(value: B): Future<A, B>
+   */
+  export const of = <A = any, B = any>(value: B): Future<A, B> => create(forkOf(value))
 
+  /**
+   * Creates a Future that will reject when forked.
+   * @name Future.reject<A, B>(value: A): Future<A, B>
+   */
+  export const reject = <A = any, B = any>(value: A): Future<A, B> => create(forkReject(value))
+
+  /**
+   * Chaining for `Future<A, B>`.
+   * @name Future.chain<A, B, C>(f: (value: B) => Future<A, C>, future: Future<A, B>): Future<A, C>
+   */
   export const chain: FutureChain = curry2(function<A, B, C>(
-    f: (value: A) => Future<A, C>,
+    f: (value: B) => Future<A, C>,
     future: Future<A, B>
   ): Future<A, C> {
     const fork = (failure: Arity1<A, any>, success: Arity1<C, any>) =>
@@ -24,6 +53,10 @@ export namespace Future {
     return { fork }
   })
 
+  /**
+   * Left chaining for `Future<A, B>`
+   * @name Future.chainLeft<A, B, C>(f: (value: A) => C, future: Future<A, B>): Future<C, B>
+   */
   export const chainLeft: FutureChainLeft = curry2(function<A, B, C>(
     f: (value: A) => C,
     future: Future<A, B>
@@ -34,6 +67,10 @@ export namespace Future {
     return { fork }
   })
 
+  /**
+   * Map the values of a Future.
+   * @name Future.map<A, B, C>(f: Arity1<B, C>, future: Future<A, B>): Future<A, C>
+   */
   export const map: FutureMap = curry2(function<A, B, C>(
     f: (value: B) => C,
     future: Future<A, B>
@@ -41,6 +78,10 @@ export namespace Future {
     return chain(pipe(f, Future.of), future)
   })
 
+  /**
+   * Left mapping for Futures.
+   * @name Future.mapLeft<A, B, C>(f: Arity<A, C>, future: Future<A, B>): Future<C, B>
+   */
   export const mapLeft: FutureMapLeft = curry2(function<A, B, C>(
     f: (value: A) => C,
     future: Future<A, B>
@@ -48,6 +89,10 @@ export namespace Future {
     return chainLeft(pipe(f, Future.reject), future)
   })
 
+  /**
+   * Applicative for Future.
+   * @name Future.ap<A, B, C>(fn: Future<A, Arity1<B, C>>, value: Future<A, B>): Future<A, C>
+   */
   export const ap: FutureAP = curry2(function<A, B, C>(
     fn: Future<A, (value: B) => C>,
     value: Future<A, B>
@@ -55,6 +100,10 @@ export namespace Future {
     return chain(f => map(f, value), fn)
   })
 
+  /**
+   * Fork a Future.
+   * @name Future.fork<A, B>(failure: Arity1<A, any>, success: Arit1<B, any> future: Future<A, B>): void
+   */
   export const fork: FutureFork = curry3(function<A, B>(
     failure: (value: A) => any,
     success: (value: B) => any,
@@ -63,6 +112,9 @@ export namespace Future {
     return future.fork(failure, success)
   })
 
+  /**
+   * Returns true if input provided is a Future.
+   */
   export function isFuture<A, B>(future: any): future is Future<A, B> {
     if (!future || typeof future !== 'object') return false
 
@@ -71,6 +123,10 @@ export namespace Future {
     return typeof fork === 'function' && fork.length === 2
   }
 
+  /**
+   * Combine 2 Futures together.
+   * @name Either.combine<A, B, C, D>(f: Arity2<B, C, D>, ab: Future<A, B>, ac: Future<A, C>): Future<A, D>
+   */
   export const combine: FutureCombine = curry3(function<A, B, C, D>(
     f: (b: B, c: C) => D,
     futureAB: Future<A, B>,
@@ -82,6 +138,10 @@ export namespace Future {
     return { fork }
   })
 
+  /**
+   * Combines many Futures together.
+   * @name Future.combineArray<A>(f: (...args: Array<any>) => A, futures: Array<Future<A, B>): Future<A, Z>
+   */
   export const combineArray: FutureCombineArray = curry2(function<A>(
     f: (...args: Array<any>) => A,
     futures: ReadonlyArray<Future<any, any>>
