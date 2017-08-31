@@ -26,4 +26,12 @@ describe(`and`, () => {
       assert.ok(!and(false, false))
     })
   })
+
+  it(`properly handles boolean types`, () => {
+    function test(a: boolean, b: boolean) {
+      return and(a, b)
+    }
+
+    assert.ok(test(true, true))
+  })
 })
