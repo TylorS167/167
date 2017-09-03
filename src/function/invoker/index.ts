@@ -1,8 +1,11 @@
 import { InvokerFn } from './types'
-import { bind } from '../bind'
-import { curry3 } from '../curry'
+import { curry2 } from '../curry'
 import { curryN } from '../curryN'
 
 export const invoker: InvokerFn =
-  curry3(<O>(arity: number, method: keyof O, obj: O) =>
-    curryN(arity as any, bind((obj as any)[method], obj))) as any as InvokerFn
+  curry2(<O>(arity: number, method: keyof O) =>
+    curryN(arity + 1 as any, function() {
+      const target = arguments[arity]
+
+      return target[method].apply(target, Array.prototype.slice.call(arguments, 0, arity))
+    })) as any as InvokerFn
