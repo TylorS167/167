@@ -1,3 +1,13 @@
+<a name="0.39.0"></a>
+# [0.39.0](https://github.com/TylorS167/167/compare/v0.38.0...v0.39.0) (2017-09-03)
+
+
+### Features
+
+* **function:** improve invoker function signature ([470f464](https://github.com/TylorS167/167/commit/470f464))
+
+
+
 <a name="0.38.0"></a>
 # [0.38.0](https://github.com/TylorS167/167/compare/v0.37.0...v0.38.0) (2017-08-31)
 
