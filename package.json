@@ -9,14 +9,19 @@
   "repository": "https://github.com/TylorS167/167",
   "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "@typed/either": "1.0.0",
+    "@typed/future": "1.0.0",
+    "@typed/maybe": "1.0.0"
+  },
   "devDependencies": {
     "@typed/test": "2.5.0",
     "dox": "0.9.0",
     "glob-expand": "0.2.1",
     "husky": "0.14.3",
-    "lint-staged": "4.0.4",
+    "lint-staged": "4.1.2",
     "prettier": "1.6.1",
-    "typescript": "2.4.2"
+    "typescript": "2.5.2"
   },
   "lint-staged": {
     "*.ts": [
