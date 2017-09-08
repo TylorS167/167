@@ -9,7 +9,7 @@ import { curry2 } from '../curry'
 export const apply: Apply = curry2(function apply<A>(
   list: ArrayLike<any>,
   f: (...args: Array<any>) => A
-): A {
+) {
   switch (list.length) {
     case 0:
       return f()

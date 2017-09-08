@@ -10,7 +10,7 @@ export const hasOwnProperty: HasOwnProperty = invoker<Object, PropertyKey, boole
   'hasOwnProperty'
 )
 
-export interface HasOwnProperty {
+export type HasOwnProperty = {
   <O extends object>(key: PropertyKey, object: O): boolean
   <O extends object>(key: PropertyKey): (object: O) => boolean
   (key: PropertyKey): <O>(object: O) => boolean

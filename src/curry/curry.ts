@@ -25,7 +25,40 @@ import { curry3 } from './curry3'
 import { curry4 } from './curry4'
 import { curry5 } from './curry5'
 
-export interface CurryFn {
+/**
+ * Given a function it returns a curried version of that function.
+ * @name curry(fn: Fuction): CurriedFunction
+ */
+export const curry: CurryFn = function curry(fn: Function) {
+  switch (fn.length) {
+    case 0:
+      return fn
+    case 1:
+      return fn
+    case 2:
+      return curry2(fn as any)
+    case 3:
+      return curry3(fn as any)
+    case 4:
+      return curry4(fn as any)
+    case 5:
+      return curry5(fn as any)
+    default:
+      return curried(fn, [])
+  }
+} as CurryFn
+
+function curried(fn: Function, previousArgs: ReadonlyArray<any>) {
+  return function(...args: Array<any>) {
+    const concatArgs = previousArgs.concat(args)
+
+    if (concatArgs.length >= fn.length) return fn.apply(null, concatArgs)
+
+    return curried(fn, concatArgs)
+  }
+}
+
+export type CurryFn = {
   <A>(f: () => A): () => A
   <A, B>(f: Arity1<A, B>): Arity1<A, B>
   <A, B, C>(f: Arity2<A, B, C>): Curry2<A, B, C>
@@ -70,37 +103,4 @@ export interface CurryFn {
     J,
     K
   >
-}
-
-/**
- * Given a function it returns a curried version of that function.
- * @name curry(fn: Fuction): CurriedFunction
- */
-export const curry: CurryFn = function curry(fn: Function) {
-  switch (fn.length) {
-    case 0:
-      return fn
-    case 1:
-      return fn
-    case 2:
-      return curry2(fn as any)
-    case 3:
-      return curry3(fn as any)
-    case 4:
-      return curry4(fn as any)
-    case 5:
-      return curry5(fn as any)
-    default:
-      return curried(fn, [])
-  }
-} as CurryFn
-
-function curried(fn: Function, previousArgs: ReadonlyArray<any>) {
-  return function(...args: Array<any>) {
-    const concatArgs = previousArgs.concat(args)
-
-    if (concatArgs.length >= fn.length) return fn.apply(null, concatArgs)
-
-    return curried(fn, concatArgs)
-  }
 }

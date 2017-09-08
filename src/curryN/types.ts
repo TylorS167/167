@@ -1,6 +1,6 @@
 import * as t from '../types'
 
-export interface CurryNFn {
+export type CurryNFn = {
   <A>(arity: 0, f: t.Arity0<A>): () => A
   <A, B>(arity: 1, f: t.Arity1N<A, B>): t.Arity1<A, B>
   <A, B, C>(arity: 2, f: t.Arity2N<A, B, C>): t.Curry2<A, B, C>

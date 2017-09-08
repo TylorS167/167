@@ -1,50 +1,47 @@
 import { invoker } from '../invoker'
 
-export const endsWith: EndsWith = invoker<string, string, boolean>(1, 'endsWith')
-export const includes: Includes = invoker<string, string, boolean>(1, 'includes')
-export const startsWith: StartsWith = invoker<string, string, boolean>(1, 'startsWith')
-export const trim: (str: string) => string = invoker<string, string>(0, 'trim')
-export const split: Split = invoker<string, string | RegExp, string>(1, 'split')
-export const toLowerCase: (str: string) => string = invoker<string, string>(0, 'toLowerCase')
-export const toUpperCase: (str: string) => string = invoker<string, string>(0, 'toUpperCase')
-export const substring: SubstringArity3 = invoker<string, number, number, string>(2, 'substring')
-export const substr: SubstrArity3 = invoker<string, number, number, string>(2, 'substr')
-
-export type EndsWith = {
-  (search: string, str: string): boolean
-  (search: string): (str: string) => boolean
-}
-
-export type Includes = EndsWith
-export type StartsWith = EndsWith
-
-export type Split = {
-  (search: string | RegExp, str: string): string
-  (search: string | RegExp): (str: string) => string
-}
-
-export type SubstringArity3 = {
-  (startIndex: number, endIndex: number | void, str: string): string
-  (startIndex: number, endIndex: number | void): SubstringArity1
-  (startIndex: number): SubstringArity2
-}
-
-export type SubstringArity2 = {
-  (endIndex: number | void, str: string): string
-  (endIndex: number | void): SubstringArity1
-}
-
-export type SubstringArity1 = (str: string) => string
-
-export type SubstrArity3 = {
-  (startIndex: number, length: number | void, str: string): string
-  (startIndex: number, length: number | void): SubstrArity1
-  (startIndex: number): SubstrArity2
-}
-
-export type SubstrArity2 = {
-  (length: number | void, str: string): string
-  (length: number | void): SubstrArity1
-}
-
-export type SubstrArity1 = (str: string) => string
+/**
+ * Curried function to call `String.prototype.endsWith`
+ * @name endsWith(search: string, str: string): boolean
+ */
+export const endsWith = invoker(1, 'endsWith')
+/**
+ * Curried function to call `String.prototype.includes`
+ * @name includes(search: string, str: string): boolean
+ */
+export const includes = invoker(1, 'includes')
+/**
+ * Curried function to call `String.prototype.startsWith`
+ * @name startsWith(search: string, str: string): boolean
+ */
+export const startsWith = invoker(1, 'startsWith')
+/**
+ * Curried function to call `String.prototype.trim`
+ * @name trim(str: string): string
+ */
+export const trim = invoker(0, 'trim')
+/**
+ * Curried function to call `String.prototype.split`
+ * @name split(search: string | RegExp, str: string): ReadonlyArray<string>
+ */
+export const split = invoker(1, 'split')
+/**
+ * Curried function to call `String.prototype.toLowerCase`
+ * @name toLowerCase(str: string): string
+ */
+export const toLowerCase = invoker(0, 'toLowerCase')
+/**
+ * Curried function to call `String.prototype.toUpperCase`
+ * @name toUpperCase(str: string): string
+ */
+export const toUpperCase = invoker(0, 'toUpperCase')
+/**
+ * Curried function to call `String.prototype.substring`
+ * @name endsWith(startIndex: number, endIndex: number | void, str: string): boolean
+ */
+export const substring = invoker(2, 'substring')
+/**
+ * Curried function to call `String.prototype.substr`
+ * @name substr(startIndex: number, length: number | void, str: string): boolean
+ */
+export const substr = invoker(2, 'substr')

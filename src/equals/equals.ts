@@ -1,4 +1,4 @@
-import { EqualsArity2 } from './types'
+import { Equals } from './types'
 import { curry2 } from '../curry'
 import { functionName } from '../functionName'
 import { typeOf } from '../typeOf'
@@ -7,7 +7,7 @@ import { typeOf } from '../typeOf'
  * Checks if two values are equal.
  * @name equals<A>(a: A, b: A): boolean
  */
-export const equals: EqualsArity2 = curry2(function equals<A>(x: A, y: A): boolean {
+export const equals: Equals = curry2(function equals<A>(x: A, y: A): boolean {
   return isEqual(x, y, [], [])
 })
 

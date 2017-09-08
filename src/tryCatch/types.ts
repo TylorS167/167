@@ -1,6 +1,8 @@
 import { Either } from '@typed/either'
 
-export interface TryCatch {
+// prettier-ignore
+export type TryCatch = {
+  <A, Err = any>(list: ArrayLike<never>, f: () => A): Either<Err, A>
   <A, B, Err = any>(list: [A], f: (a: A) => B): Either<Err, B>
   <A, B, C, Err = any>(list: [A, B], f: (a: A, b: B) => C): Either<Err, C>
   <A, B, C, D, Err = any>(list: [A, B, C], f: (a: A, b: B, c: C) => D): Either<Err, D>

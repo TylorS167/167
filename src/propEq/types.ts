@@ -1,8 +1,8 @@
-export interface PropEqArity3 {
-  <O, K extends keyof O = keyof O>(key: K, value: O[K], object: O): boolean
-
-  <O, K extends keyof O = keyof O>(key: K): (value: O[K], object: O) => boolean
-  <O, K extends keyof O = keyof O>(key: K, value: O[K]): (object: O) => boolean
-
-  <O, K extends keyof O = keyof O>(key: K): (value: O[K]) => (object: O) => boolean
+export type PropEq = {
+  <K extends string, A>(key: K, value: A, object: { [Key in K]: A }): boolean
+  <K extends string, A>(key: K, value: A): (object: { [Key in K]: A }) => boolean
+  <K extends string>(key: K): <A>(value: A) => (object: { [Key in K]: A }) => boolean
+  <K extends string, A>(key: K): (value: A) => (object: { [Key in K]: A }) => boolean
+  <K extends string>(key: K): <A>(value: A, object: { [Key in K]: A }) => boolean
+  <K extends string, A>(key: K): (value: A, object: { [Key in K]: A }) => boolean
 }

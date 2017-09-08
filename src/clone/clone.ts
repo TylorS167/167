@@ -1,6 +1,10 @@
 import { typeOf } from '../typeOf'
 
-export function clone<A extends object>(obj: A): A {
+/**
+ * Returns a deep clone of a value.
+ * @name clone<A>(obj: A): A
+ */
+export function clone<A>(obj: A): A {
   return _clone(obj, [], [], true)
 }
 

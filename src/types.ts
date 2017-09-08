@@ -107,7 +107,7 @@ export type Predicate2<A> = (a: A, b: A) => boolean
 export type ComparisonNumbers = -1 | 0 | 1
 export type Comparator<A> = (a: A, b: A) => ComparisonNumbers
 
-export interface Equality {
+export type Equality = {
   <A>(a: A, b: A): boolean
   <A>(a: A): (b: A) => boolean
 }
@@ -118,20 +118,20 @@ export type Arity3Bound<that, A, B, C, D> = (this: that, a: A, b: B, c: C) => D
 export type Arity4Bound<that, A, B, C, D, E> = (this: that, a: A, b: B, c: C, d: D) => E
 export type Arity5Bound<that, A, B, C, D, E, F> = (this: that, a: A, b: B, c: C, d: D, e: E) => F
 
-export interface Curry2<A, B, C> {
+export type Curry2<A, B, C> = {
   (a: A): Arity1<B, C>
   (a: A, b: B): C
 }
 
 /* A curried function of 0 to 3 parameters accepted */
-export interface Curry3<A, B, C, D> {
+export type Curry3<A, B, C, D> = {
   (a: A): Curry2<B, C, D>
   (a: A, b: B): Arity1<C, D>
   (a: A, b: B, c: C): D
 }
 
 /* A curried function of 0 to 4 parameters accepted */
-export interface Curry4<A, B, C, D, E> {
+export type Curry4<A, B, C, D, E> = {
   (a: A): Curry3<B, C, D, E>
   (a: A, b: B): Curry2<C, D, E>
   (a: A, b: B, c: C): Arity1<D, E>
@@ -139,7 +139,7 @@ export interface Curry4<A, B, C, D, E> {
 }
 
 /* A curried function of 0 to 5 parameters accepted */
-export interface Curry5<A, B, C, D, E, F> {
+export type Curry5<A, B, C, D, E, F> = {
   (a: A): Curry4<B, C, D, E, F>
   (a: A, b: B): Curry3<C, D, E, F>
   (a: A, b: B, c: C): Curry2<D, E, F>
@@ -147,7 +147,7 @@ export interface Curry5<A, B, C, D, E, F> {
   (a: A, b: B, c: C, d: D, e: E): F
 }
 
-export interface Curry6<A, B, C, D, E, F, G> {
+export type Curry6<A, B, C, D, E, F, G> = {
   (a: A): Curry5<B, C, D, E, F, G>
   (a: A, b: B): Curry4<C, D, E, F, G>
   (a: A, b: B, c: C): Curry3<D, E, F, G>
@@ -156,7 +156,7 @@ export interface Curry6<A, B, C, D, E, F, G> {
   (a: A, b: B, c: C, d: D, e: E, f: F): G
 }
 
-export interface Curry7<A, B, C, D, E, F, G, H> {
+export type Curry7<A, B, C, D, E, F, G, H> = {
   (a: A): Curry6<B, C, D, E, F, G, H>
   (a: A, b: B): Curry5<C, D, E, F, G, H>
   (a: A, b: B, c: C): Curry4<D, E, F, G, H>
@@ -166,7 +166,7 @@ export interface Curry7<A, B, C, D, E, F, G, H> {
   (a: A, b: B, c: C, d: D, e: E, f: F, g: G): H
 }
 
-export interface Curry8<A, B, C, D, E, F, G, H, I> {
+export type Curry8<A, B, C, D, E, F, G, H, I> = {
   (a: A): Curry7<B, C, D, E, F, G, H, I>
   (a: A, b: B): Curry6<C, D, E, F, G, H, I>
   (a: A, b: B, c: C): Curry5<D, E, F, G, H, I>
@@ -177,7 +177,7 @@ export interface Curry8<A, B, C, D, E, F, G, H, I> {
   (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): I
 }
 
-export interface Curry9<A, B, C, D, E, F, G, H, I, J> {
+export type Curry9<A, B, C, D, E, F, G, H, I, J> = {
   (a: A): Curry8<B, C, D, E, F, G, H, I, J>
   (a: A, b: B): Curry7<C, D, E, F, G, H, I, J>
   (a: A, b: B, c: C): Curry6<D, E, F, G, H, I, J>
@@ -189,7 +189,7 @@ export interface Curry9<A, B, C, D, E, F, G, H, I, J> {
   (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I): J
 }
 
-export interface Curry10<A, B, C, D, E, F, G, H, I, J, K> {
+export type Curry10<A, B, C, D, E, F, G, H, I, J, K> = {
   (a: A): Curry9<B, C, D, E, F, G, H, I, J, K>
   (a: A, b: B): Curry8<C, D, E, F, G, H, I, J, K>
   (a: A, b: B, c: C): Curry7<D, E, F, G, H, I, J, K>

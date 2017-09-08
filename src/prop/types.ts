@@ -1,4 +1,4 @@
-export interface Prop {
+export type Prop = {
   <A, K extends keyof A = keyof A>(prop: K, obj: A): A[K]
   <A, K extends keyof A>(prop: K): (obj: A) => A[K]
 
