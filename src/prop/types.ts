@@ -1,4 +1,4 @@
-export interface PropArity2 {
+export interface Prop {
   <A, K extends keyof A = keyof A>(prop: K, obj: A): A[K]
   <A, K extends keyof A>(prop: K): (obj: A) => A[K]
 
