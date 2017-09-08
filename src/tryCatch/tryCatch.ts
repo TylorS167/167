@@ -31,9 +31,7 @@ export const tryCatch: TryCatch = curry2(function apply<A, Err = any>(
 
 function __catch<A, Err = any>(f: () => A): Either<Err, A> {
   try {
-    const a = f()
-
-    return Either.of(a)
+    return Either.of(f())
   } catch (error) {
     return Either.left(error)
   }
