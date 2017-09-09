@@ -4,6 +4,7 @@
   "description": "Type-safe functional utilities",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "jsnext:main": "lib.es2015/index.js",
   "module": "lib.es2015/index.js",
   "repository": "https://github.com/TylorS167/167",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@typed/test": "2.5.0",
+    "@types/node": "8.0.28",
     "dox": "0.9.0",
     "glob-expand": "0.2.1",
     "husky": "0.14.3",
