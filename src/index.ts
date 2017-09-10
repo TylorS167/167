@@ -1,5 +1,6 @@
 export * from './types'
 
+export * from './add'
 export * from './always'
 export * from './append'
 export * from './apply'
