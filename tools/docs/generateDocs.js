@@ -46,7 +46,7 @@ function displayDocumentation({ file, description, name, example, code, type }) 
 
 <p>
 
-${replaceBrackets(description)}
+${description}
 
 </p>
 
