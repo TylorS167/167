@@ -1,16 +1,18 @@
 import { Apply } from './types'
 import { List } from '../types'
-import { curry2 } from '../curry'
 
 /**
  * Given a list of arguments and a function, applies the function with 
  * the given arguments.
  * @name apply<A>(list: List<any>, fn: (...args: Array<any>) => A): A
  */
-export const apply: Apply = curry2(function apply<A>(
-  list: List<any>,
-  f: (...args: Array<any>) => A
-) {
+export const apply: Apply = function<A>(list: List<any>, f?: (...args: Array<any>) => A) {
+  if (!f) return (f: (...args: Array<any>) => A) => __apply(list, f)
+
+  return __apply(list, f)
+}
+
+function __apply<A>(list: List<any>, f: (...args: Array<any>) => A) {
   switch (list.length) {
     case 0:
       return f()
@@ -27,4 +29,4 @@ export const apply: Apply = curry2(function apply<A>(
     default:
       return f.apply(null, list)
   }
-})
+}
