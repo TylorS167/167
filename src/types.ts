@@ -103,6 +103,9 @@ export type Arity10N<A, B, C, D, E, F, G, H, I, J, R> = (
 
 export type Collection<A extends string, B> = Readonly<Record<A, B>>
 
+export type Tuple<A, B> = [A, B]
+export type Tuple3<A, B, C> = [A, B, C]
+
 export type Predicate<A> = (a: A) => boolean
 export type Predicate2<A> = (a: A, b: A) => boolean
 

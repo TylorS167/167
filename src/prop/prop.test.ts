@@ -7,6 +7,7 @@ export const test: Test = describe(`prop`, [
     it(`returns V`, ({ equal }) => {
       equal(1, prop('a', { a: 1 }))
       equal(1, prop('a')({ a: 1 }))
+      equal(1, prop(1, [0, 1]))
     }),
   ]),
 ])
