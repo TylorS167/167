@@ -249,6 +249,13 @@ export type Equality = {
 }
 
 /**
+ * Type-alias available to represent indexes
+ * @name Index
+ * @type
+ */
+export type Index = number
+
+/**
  * @name Arity1Bound
  * @type
  */
