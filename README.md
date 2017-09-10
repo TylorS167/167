@@ -1497,7 +1497,7 @@ export function functionName(fn: Function): string {
 
 <p>
 
-Applies `\>` to 2 values. 
+Applies `>` to 2 values. 
 
 </p>
 
@@ -1524,7 +1524,7 @@ export type GreaterThan = {
 
 <p>
 
-Applies `\>=` to 2 values.
+Applies `>=` to 2 values.
 
 </p>
 
@@ -1797,7 +1797,7 @@ export const lensProp = <A, K extends keyof A = keyof A>(key: K): Lens<A, A[K]> 
 
 <p>
 
-Compares two values using `\<`
+Compares two values using `<`
 
 </p>
 
@@ -1824,7 +1824,7 @@ export type LessThan = {
 
 <p>
 
-Compares 2 values using `\<=`
+Compares 2 values using `<=`
 
 </p>
 
