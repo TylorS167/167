@@ -1,20 +1,23 @@
+import { List } from '../types'
 import { UpdateArity3 } from './types'
+import { arrayFrom } from '../__internal__'
 import { curry3 } from '../curry'
 
+/**
+ * Updates the value of an array
+ * @name update<A>(index: number, value: A, list: Li)
+ */
 export const update: UpdateArity3 = curry3(function update<A>(
   index: number,
   value: A,
-  list: Array<A>
-): ReadonlyArray<A> {
+  list: List<A>
+): List<A> {
   const length = list.length
+  const newList = arrayFrom(list)
 
-  if (length === 0 || index < 0 || index >= length) return list
+  if (length === 0 || index < 0 || index >= length) return newList
 
-  const newList = Array(length)
-
-  for (let i = 0; i < length; ++i)
-    if (i === index) newList[i] = value
-    else newList[i] = list[i]
+  newList[index] = value
 
   return newList
 })

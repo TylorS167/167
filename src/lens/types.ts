@@ -1,7 +1,16 @@
 import { Maybe } from '@typed/maybe'
 
+/**
+ * A common interface for Updating objects
+ * @name Lens
+ * @type
+ */
 export interface Lens<A, B> {
-  view(object: A): Maybe<B>
-  updateAt(f: (previousValue: Maybe<B>) => Maybe<B>, object: A): A
-  updateAt(f: (previousValue: Maybe<B>) => Maybe<B>): (object: A) => A
+  readonly view: (object: A) => Maybe<B>
+  readonly updateAt: LensUpdateAt<A, B>
+}
+
+export type LensUpdateAt<A, B> = {
+  (f: (previousValue: Maybe<B>) => Maybe<B>, object: A): A
+  (f: (previousValue: Maybe<B>) => Maybe<B>): (object: A) => A
 }

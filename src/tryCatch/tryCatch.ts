@@ -1,14 +1,15 @@
 import { Either } from '@typed/either'
+import { List } from '../types'
 import { TryCatch } from './types'
 import { curry2 } from '../curry'
 
 /**
  * Given a list of arguments and a function, applies the function with 
  * the given arguments.
- * @name tryCatch<A>(list: ArrayLike<any>, fn: (...args: Array<any>) => A): Either<Error, A>
+ * @name tryCatch<A>(list: List<any>, fn: (...args: Array<any>) => A): Either<Error, A>
  */
 export const tryCatch: TryCatch = curry2(function apply<A, Err = any>(
-  list: ArrayLike<any>,
+  list: List<any>,
   f: (...args: Array<any>) => A
 ): Either<Err, A> {
   switch (list.length) {

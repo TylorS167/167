@@ -1,6 +1,6 @@
 import { Arity1 } from '../types'
 
-export interface Compose {
+export type Compose = {
   <A, B>(f: Arity1<A, B>): Arity1<A, B>
   <A, B, C>(g: Arity1<B, C>, f: Arity1<A, B>): Arity1<A, C>
   <A, B, C, D>(h: Arity1<C, D>, g: Arity1<B, C>, f: Arity1<A, B>): Arity1<A, D>

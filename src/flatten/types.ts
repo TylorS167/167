@@ -1,21 +1,15 @@
+import { List } from '../types'
+
 export type Flatten = {
-  <A>(list: ArrayLike<A | ArrayLike<A>>): ReadonlyArray<A>
-  <A>(list: ArrayLike<A | ArrayLike<A> | ArrayLike<ArrayLike<A>>>): ReadonlyArray<A>
+  <A>(list: List<A | List<A>>): List<A>
+  <A>(list: List<A | List<A> | List<List<A>>>): List<A>
+  <A>(list: List<A | List<A> | List<List<A>> | List<List<List<A>>>>): List<A>
   <A>(
-    list: ArrayLike<A | ArrayLike<A> | ArrayLike<ArrayLike<A>> | ArrayLike<ArrayLike<ArrayLike<A>>>>
-  ): ReadonlyArray<A>
-  <A>(
-    list: ArrayLike<
-      | A
-      | ArrayLike<A>
-      | ArrayLike<ArrayLike<A>>
-      | ArrayLike<ArrayLike<ArrayLike<A>>>
-      | ArrayLike<ArrayLike<ArrayLike<ArrayLike<A>>>>
-    >
-  ): ReadonlyArray<A>
-  <A>(list: ArrayLike<ArrayLike<A>>): ReadonlyArray<A>
-  <A>(list: ArrayLike<ArrayLike<ArrayLike<A>>>): ReadonlyArray<A>
-  <A>(list: ArrayLike<ArrayLike<ArrayLike<ArrayLike<A>>>>): ReadonlyArray<A>
-  <A>(list: ArrayLike<ArrayLike<ArrayLike<ArrayLike<ArrayLike<A>>>>>): ReadonlyArray<A>
-  <A>(list: ArrayLike<any>): ReadonlyArray<A>
+    list: List<A | List<A> | List<List<A>> | List<List<List<A>>> | List<List<List<List<A>>>>>
+  ): List<A>
+  <A>(list: List<List<A>>): List<A>
+  <A>(list: List<List<List<A>>>): List<A>
+  <A>(list: List<List<List<List<A>>>>): List<A>
+  <A>(list: List<List<List<List<List<A>>>>>): List<A>
+  <A>(list: List<any>): List<A>
 }

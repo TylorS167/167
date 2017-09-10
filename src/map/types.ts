@@ -1,9 +1,10 @@
 import { Either } from '@typed/Either'
 import { Future } from '@typed/Future'
+import { List } from '../types'
 import { Maybe } from '@typed/Maybe'
 
 export type Map = {
-  <A, B>(f: (value: A, index: number) => B, list: ArrayLike<A>): ReadonlyArray<B>
+  <A, B>(f: (value: A, index: number) => B, list: List<A>): List<B>
   <A, B>(f: (value: A) => B, maybe: Maybe<A>): Maybe<B>
   <A, B>(f: (value: A) => B, promise: PromiseLike<A>): Promise<B>
   <A, B, C>(f: (value: B) => C, either: Either<A, B>): Either<A, C>
@@ -13,7 +14,7 @@ export type Map = {
 }
 
 export type MapArity1<A, B> = {
-  (list: ArrayLike<A>): ReadonlyArray<B>
+  (list: List<A>): List<B>
   (maybe: Maybe<A>): Maybe<B>
   (promise: Promise<A>): Promise<B>
   <C>(either: Either<C, A>): Either<C, B>

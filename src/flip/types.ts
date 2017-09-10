@@ -1,6 +1,6 @@
 import * as t from '../types'
 
-export interface Flip {
+export type Flip = {
   <A, B, C>(f: t.Arity2<A, B, C>): t.Curry2<B, A, C>
   <A, B, C, D>(f: t.Arity3<A, B, C, D>): t.Curry3<B, A, C, D>
   <A, B, C, D, E>(f: t.Arity4<A, B, C, D, E>): t.Curry4<B, A, C, D, E>

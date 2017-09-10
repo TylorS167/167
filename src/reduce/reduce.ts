@@ -1,14 +1,15 @@
+import { List } from '../types'
 import { ReduceArity3 } from './types'
 import { curry3 } from '../curry'
 
 /**
  * Fold over the values in an array-like object.
- * @name reduce<A, B>(f: (accumulator: B, value: A) => B, seed: B, list: ArrayLike<A>): B
+ * @name reduce<A, B>(f: (accumulator: B, value: A) => B, seed: B, list: List<A>): B
  */
 export const reduce: ReduceArity3 = curry3(function reduce<A, B>(
   f: (acc: B, value: A, index: number) => B,
   seed: B,
-  list: ArrayLike<A>
+  list: List<A>
 ) {
   const length = list.length
   let acc: B = seed

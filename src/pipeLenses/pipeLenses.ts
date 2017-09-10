@@ -5,6 +5,10 @@ import { PipeLenses } from './types'
 import { curry2 } from '../curry'
 import { reduce } from '../reduce'
 
+/**
+ * Left-to-right composition of Lenses.
+ * @name pipeLenses<A, B>(...lenses: Array<Lens<any, any>>): Lens<A, B>
+ */
 export const pipeLenses: PipeLenses = function pipeLenses(
   ...lenses: Array<Lens<any, any>>
 ): Lens<any, any> {

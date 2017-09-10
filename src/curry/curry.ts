@@ -24,37 +24,28 @@ import { curry2 } from './curry2'
 import { curry3 } from './curry3'
 import { curry4 } from './curry4'
 import { curry5 } from './curry5'
+import { curryN } from '../curryN'
 
 /**
  * Given a function it returns a curried version of that function.
  * @name curry(fn: Fuction): CurriedFunction
  */
-export const curry: CurryFn = function curry(fn: Function) {
+export const curry: CurryFn = function curry(fn: any) {
   switch (fn.length) {
     case 0:
       return fn
     case 1:
       return fn
     case 2:
-      return curry2(fn as any)
+      return curry2(fn as Curry2<any, any, any>)
     case 3:
-      return curry3(fn as any)
+      return curry3(fn as Curry3<any, any, any, any>)
     case 4:
-      return curry4(fn as any)
+      return curry4(fn as Curry4<any, any, any, any, any>)
     case 5:
-      return curry5(fn as any)
+      return curry5(fn as Curry5<any, any, any, any, any, any>)
     default:
-      return curried(fn, [])
-  }
-} as CurryFn
-
-function curried(fn: Function, previousArgs: ReadonlyArray<any>) {
-  return function(...args: Array<any>) {
-    const concatArgs = previousArgs.concat(args)
-
-    if (concatArgs.length >= fn.length) return fn.apply(null, concatArgs)
-
-    return curried(fn, concatArgs)
+      return curryN(fn.length, fn)
   }
 }
 

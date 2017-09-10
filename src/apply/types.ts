@@ -1,6 +1,8 @@
+import { List } from '../types'
+
 // prettier-ignore
 export type Apply = {
-  <A>(list: ArrayLike<never>, f: () => A): A
+  <A>(list: List<never>, f: () => A): A
   <A, B>(list: [A], f: (a: A) => B): B
   <A, B, C>(list: [A, B], f: (a: A, b: B) => C): C
   <A, B, C, D>(list: [A, B, C], f: (a: A, b: B, c: C) => D): D
@@ -21,8 +23,8 @@ export type Apply = {
 
   <A, B, C, D, E, F>(list: [A, B, C, D, E]): (f: (a: A, b: B, c: C, d: D, e: E) => F) => F
 
-  (list: ArrayLike<never>): <A>(f: () => A) => A
-  (list: ArrayLike<any>): <A>(f: (...args: Array<any>) => A) => A
-  <A>(list: ArrayLike<any>, f: (...args: Array<any>) => A): A
-  <A>(list: ArrayLike<any>): (f: (...args: Array<any>) => A) => A
+  (list: List<never>): <A>(f: () => A) => A
+  (list: List<any>): <A>(f: (...args: Array<any>) => A) => A
+  <A>(list: List<any>, f: (...args: Array<any>) => A): A
+  <A>(list: List<any>): (f: (...args: Array<any>) => A) => A
 }

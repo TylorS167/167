@@ -1,13 +1,14 @@
 import { Apply } from './types'
+import { List } from '../types'
 import { curry2 } from '../curry'
 
 /**
  * Given a list of arguments and a function, applies the function with 
  * the given arguments.
- * @name apply<A>(list: ArrayLike<any>, fn: (...args: Array<any>) => A): A
+ * @name apply<A>(list: List<any>, fn: (...args: Array<any>) => A): A
  */
 export const apply: Apply = curry2(function apply<A>(
-  list: ArrayLike<any>,
+  list: List<any>,
   f: (...args: Array<any>) => A
 ) {
   switch (list.length) {

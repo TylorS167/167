@@ -1,4 +1,4 @@
-import { Collection, Maybe } from '../'
+import { List, Maybe, StrMap } from '../'
 
 export type Path = {
   <Z, A extends keyof Z = keyof Z>(path: [A], obj: Z): Maybe<Z[A]>
@@ -36,30 +36,25 @@ export type Path = {
     obj: Z
   ): Maybe<Z[A][B][C][D][E]>
 
-  <A extends string>(path: [A]): <R, Z extends Collection<A, R>>(obj: Z) => R
-  <A extends string, B extends string>(path: [A, B]): <
-    R,
-    Z extends Collection<A, Collection<B, R>>
-  >(
+  <A extends string>(path: [A]): <R, Z extends StrMap<A, R>>(obj: Z) => R
+  <A extends string, B extends string>(path: [A, B]): <R, Z extends StrMap<A, StrMap<B, R>>>(
     obj: Z
   ) => R
   <A extends string, B extends string, C extends string>(path: [A, B, C]): <
     R,
-    Z extends Collection<A, Collection<B, Collection<C, R>>>
+    Z extends StrMap<A, StrMap<B, StrMap<C, R>>>
   >(
     obj: Z
   ) => Maybe<R>
   <A extends string, B extends string, C extends string, D extends string>(path: [A, B, C, D]): <
     R,
-    Z extends Collection<A, Collection<B, Collection<C, Collection<D, R>>>>
+    Z extends StrMap<A, StrMap<B, StrMap<C, StrMap<D, R>>>>
   >(
     obj: Z
   ) => Maybe<R>
   <A extends string, B extends string, C extends string, D extends string, E extends string>(
     path: [A, B, C, D, E]
-  ): <R, Z extends Collection<A, Collection<B, Collection<C, Collection<D, Collection<E, R>>>>>>(
-    obj: Z
-  ) => Maybe<R>
+  ): <R, Z extends StrMap<A, StrMap<B, StrMap<C, StrMap<D, StrMap<E, R>>>>>>(obj: Z) => Maybe<R>
   <
     A extends string,
     B extends string,
@@ -69,13 +64,7 @@ export type Path = {
     F extends string
   >(
     path: [A, B, C, D, E, F]
-  ): <
-    R,
-    Z extends Collection<
-      A,
-      Collection<B, Collection<C, Collection<D, Collection<E, Collection<F, R>>>>>
-    >
-  >(
+  ): <R, Z extends StrMap<A, StrMap<B, StrMap<C, StrMap<D, StrMap<E, StrMap<F, R>>>>>>>(
     obj: Z
   ) => Maybe<R>
   <
@@ -88,13 +77,7 @@ export type Path = {
     G extends string
   >(
     path: [A, B, C, D, E, F, G]
-  ): <
-    R,
-    Z extends Collection<
-      A,
-      Collection<B, Collection<C, Collection<D, Collection<E, Collection<F, Collection<G, R>>>>>>
-    >
-  >(
+  ): <R, Z extends StrMap<A, StrMap<B, StrMap<C, StrMap<D, StrMap<E, StrMap<F, StrMap<G, R>>>>>>>>(
     obj: Z
   ) => Maybe<R>
   <
@@ -110,17 +93,14 @@ export type Path = {
     path: [A, B, C, D, E, F, G, H]
   ): <
     R,
-    Z extends Collection<
+    Z extends StrMap<
       A,
-      Collection<
-        B,
-        Collection<C, Collection<D, Collection<E, Collection<F, Collection<G, Collection<H, R>>>>>>
-      >
+      StrMap<B, StrMap<C, StrMap<D, StrMap<E, StrMap<F, StrMap<G, StrMap<H, R>>>>>>>
     >
   >(
     obj: Z
   ) => Maybe<R>
 
-  <Z, A>(path: ArrayLike<string>, obj: Z): Maybe<A>
-  <Z, A>(path: ArrayLike<string>): (obj: Z) => Maybe<A>
+  <Z, A>(path: List<string>, obj: Z): Maybe<A>
+  <Z, A>(path: List<string>): (obj: Z) => Maybe<A>
 }

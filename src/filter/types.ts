@@ -1,5 +1,7 @@
-export type Filter = {
-  <A>(f: (a: A, index: number) => boolean, list: ArrayLike<A>): ReadonlyArray<A>
+import { List } from '../types'
 
-  <A>(f: (a: A, index: number) => boolean): (list: ArrayLike<A>) => ReadonlyArray<A>
+export type Filter = {
+  <A>(f: (a: A, index: number) => boolean, list: List<A>): List<A>
+
+  <A>(f: (a: A, index: number) => boolean): (list: List<A>) => List<A>
 }

@@ -1,9 +1,14 @@
 import { Lens } from '../lens'
 import { Maybe } from '@typed/maybe'
-import { flip } from '../flip'
-import { invoker } from '../invoker'
+import { curry2 } from '../curry'
 
-export const view: View = (flip(invoker(1, 'view')) as any) as View
+/**
+ * Uses a lenses to view a value contained in an object.
+ * @name view<A, B>(lens: Lens<A, B>, obj: A): Maybe<B>
+ */
+export const view: View = curry2(function<A, B>(lens: Lens<A, B>, obj: A): Maybe<B> {
+  return lens.view(obj)
+})
 
 export type View = {
   <A, B>(lens: Lens<A, B>, obj: A): Maybe<B>

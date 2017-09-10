@@ -1,4 +1,6 @@
-export function isArrayLike(x: any): x is ArrayLike<any> {
+import { List } from '../types'
+
+export function isList(x: any): x is List<any> {
   if (Array.isArray(x)) return true
   if (!x || typeof x !== 'object' || typeof x === 'string') return false
   if (x.nodeType === 1) return !!x.length

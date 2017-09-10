@@ -1,4 +1,5 @@
 import { Lens } from '../lens'
+import { List } from '../types'
 
 export type LensPath = {
   <A, K extends keyof A = keyof A>(path: [K]): Lens<A, A[K]>
@@ -100,5 +101,5 @@ export type LensPath = {
     path: [K, L, M, N, O, P, Q, R, S]
   ): Lens<A, A[K][L][M][N][O][P][Q][R][S][T]>
 
-  <A, B>(path: ArrayLike<string>): Lens<A, B>
+  <A, B>(path: List<string>): Lens<A, B>
 }

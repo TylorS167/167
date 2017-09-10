@@ -19,7 +19,7 @@ const isPlaceholder = (x: any): x is PlaceHolder => x['@@placeholder'] === true
 
 /**
  * Allows partially applying a function
- * @name partial(f: Function, args: ArrayLike<any>): PartiallyAppliedFunction
+ * @name partial(f: Function, args: List<any>): PartiallyAppliedFunction
  */
 export const partial: PartialFn = curry2(
   (f: (...args: Array<any>) => any, args: Array<any>): any => {

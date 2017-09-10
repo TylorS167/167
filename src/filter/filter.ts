@@ -1,4 +1,5 @@
 import { Filter } from './types'
+import { List } from '../types'
 import { curry2 } from '../curry'
 
 /**
@@ -6,12 +7,12 @@ import { curry2 } from '../curry'
  * same type containing the members of the given filterable which satisfy the
  * given predicate.
  * Dispatches to the filter method of the second argument, if present.
- * @name filter<A>(predicate: (value: A, index: number) => boolean, list: ArrayLike<A>): ReadonlyArray<A>
+ * @name filter<A>(predicate: (value: A, index: number) => boolean, list: List<A>): List<A>
  */
 export const filter: Filter = curry2(function filter<A>(
   predicate: (a: A, index: number) => boolean,
-  list: ArrayLike<A>
-): ReadonlyArray<A> {
+  list: List<A>
+): List<A> {
   const length = list.length
   const newList = []
 

@@ -1,3 +1,6 @@
-export * from './isArrayLike'
+export * from './arrayFrom'
+export * from './isList'
 export * from './isFuture'
+export * from './isIterable'
+export * from './isIterator'
 export * from './isPromiseLike'

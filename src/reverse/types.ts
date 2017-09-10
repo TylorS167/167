@@ -1,3 +1,5 @@
+import { List } from '../types'
+
 export type Reverse = {
-  <A>(list: ArrayLike<A>): ReadonlyArray<A>
+  <A>(list: List<A>): List<A>
 }
