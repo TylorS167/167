@@ -100,5 +100,5 @@ export type LensPath = {
     path: [K, L, M, N, O, P, Q, R, S]
   ): Lens<A, A[K][L][M][N][O][P][Q][R][S][T]>
 
-  <A, B>(path: Array<string>): Lens<A, B>
+  <A, B>(path: ArrayLike<string>): Lens<A, B>
 }

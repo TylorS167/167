@@ -9,6 +9,6 @@ import { pipeLenses } from '../pipeLenses'
  * Given a path to a value it returns a Lens that operates on that value.
  * @name lensPath<A, B>(path: Array<string>): Lens<A, B>
  */
-export const lensPath: LensPath = function(path: Array<string>): Lens<any, any> {
+export const lensPath: LensPath = function(path: ArrayLike<string>): Lens<any, any> {
   return apply(map(lensProp, path), pipeLenses)
 }

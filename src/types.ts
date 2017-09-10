@@ -101,6 +101,8 @@ export type Arity10N<A, B, C, D, E, F, G, H, I, J, R> = (
   ...args: Array<any>
 ) => R
 
+export type Collection<A extends string, B> = Readonly<Record<A, B>>
+
 export type Predicate<A> = (a: A) => boolean
 export type Predicate2<A> = (a: A, b: A) => boolean
 
