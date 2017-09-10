@@ -64,4 +64,6 @@ export type PipeLenses = {
     lens9: Lens<I, J>,
     lens10: Lens<J, K>
   ): Lens<A, K>
+
+  <A, B>(...lenses: Array<Lens<any, any>>): Lens<A, B>
 }
