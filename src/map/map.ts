@@ -1,9 +1,10 @@
-import { Future, map as futureMap } from '@typed/future'
 import { map as eitherMap, isLeft, isRight } from '@typed/either'
+import { isFuture, isPromiseLike } from '../__internal__'
 import { isJust, isNothing, map as maybeMap } from '@typed/maybe'
 
 import { Map } from './types'
 import { curry2 } from '../curry'
+import { map as futureMap } from '@typed/future'
 import { length } from '../length'
 
 /**
@@ -19,14 +20,6 @@ export const map: Map = curry2<any, any, any>(function map(f: (value: any) => an
 
   return arrayMap(f, list)
 })
-
-function isFuture(x: any): x is Future<any, any> {
-  return x && typeof x.fork === 'function'
-}
-
-function isPromiseLike(x: any): x is PromiseLike<any> {
-  return x && typeof x.then === 'function'
-}
 
 function arrayMap<A, B>(f: (value: A, index: number) => B, list: ArrayLike<A>): ReadonlyArray<B> {
   const itemCount = length(list)
