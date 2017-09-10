@@ -23,7 +23,7 @@ function __lens<A, B>(getter: (a: A) => B | void, setter: (value: B, a: A) => A)
     return toMaybe(getter(a))
   }
 
-  return { view, updateAt }
+  return { view, updateAt: curry2(updateAt) }
 }
 
 export type LensFn = {

@@ -2,6 +2,7 @@ import { Maybe, chain, fromJust, isNothing } from '@typed/maybe'
 
 import { Lens } from '../lens'
 import { PipeLenses } from './types'
+import { curry2 } from '../curry'
 import { reduce } from '../reduce'
 
 export const pipeLenses: PipeLenses = function pipeLenses(
@@ -28,5 +29,5 @@ function __pipeLenses<A, B, C>(lensAB: Lens<A, B>, lensBC: Lens<B, C>): Lens<A, 
     )
   }
 
-  return { view, updateAt }
+  return { view, updateAt: curry2(updateAt) }
 }

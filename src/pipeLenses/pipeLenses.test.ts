@@ -3,7 +3,6 @@ import { fromMaybe, map } from '@typed/maybe'
 
 import { lensProp } from '../lensProp'
 import { pipeLenses } from './pipeLenses'
-import { view } from '../view'
 
 export const test: Test = describe(`pipeLenses`, [
   describe('view', [
@@ -13,10 +12,10 @@ export const test: Test = describe(`pipeLenses`, [
         const obj = { a: { b: value } }
         const lensAB = lensProp<typeof obj, 'a'>('a')
         const lensBC = lensProp<typeof obj['a'], 'b'>('b')
-        const lensAC = pipeLenses(lensAB, lensBC)
+        const { view } = pipeLenses(lensAB, lensBC)
 
         const INCORRECT_VALUE = value + 1
-        const actual = fromMaybe(INCORRECT_VALUE, view(lensAC, obj))
+        const actual = fromMaybe(INCORRECT_VALUE, view(obj))
 
         equal(value, actual)
       }),
@@ -31,10 +30,10 @@ export const test: Test = describe(`pipeLenses`, [
         const lensAB = lensProp<typeof obj, 'a'>('a')
         const lensBC = lensProp<typeof obj['a'], 'b'>('b')
         const lensCD = lensProp<typeof obj['a']['b'], 'c'>('c')
-        const lensAD = pipeLenses(lensAB, lensBC, lensCD)
+        const { updateAt } = pipeLenses(lensAB, lensBC, lensCD)
 
         const expected = { a: { b: { c: value + 1 } } }
-        const actual = lensAD.updateAt(map(x => x + 1), obj)
+        const actual = updateAt(map(x => x + 1))(obj)
 
         equal(expected, actual)
       }),
