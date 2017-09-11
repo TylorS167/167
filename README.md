@@ -2709,6 +2709,43 @@ export const propEq: PropEq = curry3(function<O, K extends keyof O>(
 <hr />
 
 
+#### range(from: number, to: number): List\<number\>
+
+<p>
+
+Creates a `List` that contains the numbers `from` to the 1 less than the
+number `to`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const range: Range = curry2(__range)
+
+export type Range = {
+  (from: number, to: number): List<number>
+  (from: number): (to: number) => List<number>
+}
+
+function __range(from: number, to: number): List<number> {
+  const length = to - from
+  const list = Array(length)
+
+  for (let i = 0; i < length; ++i) list[i] = i + from
+
+  return list
+}
+
+```
+
+</details>
+<hr />
+
+
 #### reduce\<A, B\>(f: (accumulator: B, value: A) =\> B, seed: B, list: List\<A\>): B
 
 <p>
