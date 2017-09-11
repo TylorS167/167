@@ -36,6 +36,7 @@
     "build:commonjs": "tsc -P .config/tsconfig.commonjs.json",
     "build:es2015": "tsc -P .config/tsconfig.es2015.json",
     "docs": "node tools/docs.js",
+    "commit:docs": "git add README.md && git commit -m 'docs: build docs'",
     "postversion": "yarn changelog && git push origin master --tags && npm login && npm publish --access=public && yarn docs && git add README.md && git commit -m 'generate API documentation' && git push origin master",
     "precommit": "lint-staged",
     "preversion": "yarn test && yarn build",
