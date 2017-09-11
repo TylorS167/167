@@ -815,6 +815,22 @@ export { Future, fork, sequence, all, toPromise } from '@typed/Future'
 ```
 
 
+#### Index
+
+<p>
+
+Type-alias available to represent indexes
+
+</p>
+
+
+```typescript
+
+export type Index = number
+
+```
+
+
 #### Lens
 
 <p>
@@ -978,6 +994,32 @@ const isPlaceholder = (x: any): x is PlaceHolder => x['@@placeholder'] === true
 <hr />
 
 
+#### add(x: number, y: number): number
+
+<p>
+
+Add 2 numbers together
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const add = curry2(__add)
+
+function __add(x: number, y: number): number {
+  return x + y
+}
+
+```
+
+</details>
+<hr />
+
+
 #### always\<A\>(a: A): (...args: Array\<any\>) =\> A
 
 <p>
@@ -1007,6 +1049,41 @@ export function always<A>(a: A) {
 <hr />
 
 
+#### and\<A\>(predicate1: Predicate\<A\>, predicate2: Predicate\<A\>, value: A): boolean
+
+<p>
+
+Applies `&&` between two predicate functions.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const and: And = curry3(__and)
+
+export type And = {
+  <A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A): boolean
+  <A>(predicate1: Predicate<A>, predicate2: Predicate<A>): Predicate<A>
+  <A>(predicate1: Predicate<A>): {
+    (predicate2: Predicate<A>, value: A): boolean
+    (predicate2: Predicate<A>): Predicate<A>
+  }
+}
+
+function __and<A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A): boolean {
+  return predicate1(value) && predicate2(value)
+}
+
+```
+
+</details>
+<hr />
+
+
 #### apply\<A\>(list: List\<any\>, fn: (...args: Array\<any\>) =\> A): A
 
 <p>
@@ -1022,10 +1099,13 @@ the given arguments.
 
 ```typescript
 
-export const apply: Apply = curry2(function apply<A>(
-  list: List<any>,
-  f: (...args: Array<any>) => A
-) {
+export const apply: Apply = function<A>(list: List<any>, f?: (...args: Array<any>) => A) {
+  if (!f) return (f: (...args: Array<any>) => A) => __apply(list, f)
+
+  return __apply(list, f)
+}
+
+function __apply<A>(list: List<any>, f: (...args: Array<any>) => A) {
   switch (list.length) {
     case 0:
       return f()
@@ -1042,7 +1122,7 @@ export const apply: Apply = curry2(function apply<A>(
     default:
       return f.apply(null, list)
   }
-})
+}
 
 ```
 
@@ -1250,7 +1330,11 @@ Curries a function to `n` arity.
 
 ```typescript
 
-export const curryN: CurryNFn = curry2((arity: number, f: ArityN<any>) => curriedN(arity, f, []))
+export const curryN: CurryNFn = curriedN(
+  2,
+  (arity: number, f: ArityN<any>) => curriedN(arity, f, []),
+  []
+)
 
 function curriedN(arity: number, f: ArityN<any>, previousArgs: Array<any>): ArityN<any> {
   if (arity <= 1) return f
@@ -1262,6 +1346,32 @@ function curriedN(arity: number, f: ArityN<any>, previousArgs: Array<any>): Arit
 
     return curriedN(arity, f, concatArgs)
   }
+}
+
+```
+
+</details>
+<hr />
+
+
+#### divide(x: number, y: number): number
+
+<p>
+
+Divides 2 numbers
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const divide = curry2(__divide)
+
+function __divide(x: number, y: number): number {
+  return x / y
 }
 
 ```
@@ -1465,6 +1575,74 @@ export const filter: Filter = curry2(function filter<A>(
 <hr />
 
 
+#### find\<A\>(predicate: Predicate\<A\>, list: List\<A\>): Maybe\<A\>
+
+<p>
+
+Find the value contained in a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const find: Find = curry2(__find)
+
+export type Find = {
+  <A>(predicate: (value: A) => boolean, list: List<A>): Maybe<A>
+  <A>(predicate: (value: A) => boolean): (list: List<A>) => Maybe<A>
+}
+
+const propFlipped: <A>(list: List<A>) => (index: Index) => A = flip(prop)
+
+function __find<A>(predicate: Predicate<A>, list: List<A>): Maybe<A> {
+  return map(propFlipped(list), findIndex(predicate, list))
+}
+
+```
+
+</details>
+<hr />
+
+
+#### findIndex\<A\>(predicate: Predicate\<A\>, list: List\<A\>): Maybe\<Index\>
+
+<p>
+
+Find the index of a value in a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const findIndex: FindIndex = curry2(__findIndex)
+
+export type FindIndex = {
+  <A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index>
+  <A>(predicate: (value: A) => boolean): (list: List<A>) => Maybe<Index>
+}
+
+function __findIndex<A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index> {
+  const itemCount = length(list)
+
+  for (let i = 0; i < itemCount; ++i) if (predicate(list[i])) return Maybe.of(i)
+
+  return Nothing
+}
+
+```
+
+</details>
+<hr />
+
+
 #### functionName(fn: Function): string
 
 <p>
@@ -1595,7 +1773,42 @@ Returns the value passed in
 
 ```typescript
 
-export const id = <A>(value: A): A => value
+export const id: Id = <A>(value: A): A => value
+
+export type Id = {
+  <A>(value: A, ...args: Array<any>): A
+}
+
+```
+
+</details>
+<hr />
+
+
+#### ifElse\<A, B\>(predicate: Predicate\<A\>, thenF: Arity1\<A, B\>, elseF: Arity1\<A, B\>, value: A): B
+
+<p>
+
+Function for handling if/Else statements.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const ifElse: IfElseArity4 = curry4(__ifElse)
+
+function __ifElse<A, B>(
+  ifF: (value: A) => boolean,
+  thenF: (value: A) => B,
+  elseF: (value: A) => B,
+  value: A
+): B {
+  return ifF(value) ? thenF(value) : elseF(value)
+}
 
 ```
 
@@ -1649,6 +1862,301 @@ export const invoker: InvokerFn = (curry2(<O, R>(arity: number, method: keyof O)
     return target[method].apply(target, Array.prototype.slice.call(arguments, 0, arity))
   })
 ) as any) as InvokerFn
+
+```
+
+</details>
+<hr />
+
+
+#### isArray\<A = any\>(x: any): x is Array\<A\>
+
+<p>
+
+Returns true if given value is an Array.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isArray<A = any>(x: any): x is Array<A> {
+  return Array.isArray(x)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isFuture\<A, B\>(x: any): x is Future\<A, B\>
+
+<p>
+
+Returns true if a value is a `Future`
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isFuture<A, B>(x: any): x is Future<A, B> {
+  return x && typeof x.fork === 'function' && x.fork.length === 2
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isIterable\<A\>(x: any): x is Iterable\<A\>
+
+<p>
+
+Returns true if a value is an Iterable.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isIterable<A>(x: any): x is Iterable<A> {
+  return x && typeof x[Symbol.iterator] === 'function' && isIterator(x[Symbol.iterator]())
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isIterator\<A\>(x: any): x is Iterator\<A\>
+
+<p>
+
+Returns true if value is an iterator.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isIterator<A>(x: any): x is Iterator<A> {
+  return x && typeof (x as Iterator<A>).next === 'function'
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isList\<A = any\>(x: any): x is List\<A\>
+
+<p>
+
+Returns true if a value is a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isList<A = any>(x: any): x is List<A> {
+  if (Array.isArray(x)) return true
+  if (!x || typeof x !== 'object' || typeof x === 'string') return false
+  if (x.nodeType === 1) return !!x.length
+  if (x.length === 0) return true
+  if (x.length > 0) return x.hasOwnProperty(0) && x.hasOwnProperty(x.length - 1)
+  return false
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isMap\<A = any, B = any\>(x: any): x is Map\<A, B\>
+
+<p>
+
+Returns true if a value is a `Map`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isMap<A = any, B = any>(x: any): x is Map<A, B> {
+  return (
+    x && typeof (x as Map<A, B>).delete === 'function' && typeof (x as Map<A, B>).set === 'function'
+  )
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isNull(x: any): x is null
+
+<p>
+
+Returns true if the value is null
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isNull(x: any): x is null {
+  return x === null
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isNumber(x: any): x is number
+
+<p>
+
+Returns true if value is a number.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isNumber(x: any): x is number {
+  return typeof x === 'number'
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isObject\<A extends object = Object\>(x: any): x is A
+
+<p>
+
+Returns true if a value is an object.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isObject<A extends object = Object>(x: any): x is A {
+  return x && typeof x === 'object'
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isPromiseLike\<A = any\>(x: any): x is PromiseLike\<A\>
+
+<p>
+
+Returns true if a value is PromiseLike
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isPromiseLike<A = any>(x: any): x is PromiseLike<A> {
+  return x && typeof x.then === 'function'
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isSet\<A = any\>(x: any): x is Set\<A\>
+
+<p>
+
+Returns true if a value is a Set.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isSet<A = any>(x: any): x is Set<A> {
+  return x && typeof (x as Set<A>).delete === 'function' && typeof (x as Set<A>).add === 'function'
+}
+
+```
+
+</details>
+<hr />
+
+
+#### isUndefined(x: any): x is undefined
+
+<p>
+
+Returns true if the value is undefined.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function isUndefined(x: any): x is undefined {
+  return x === void 0
+}
 
 ```
 
@@ -1878,6 +2386,115 @@ function arrayMap<A, B>(f: (value: A, index: number) => B, list: List<A>): List<
   for (let i = 0; i < itemCount; ++i) newList[i] = f(list[i], i)
 
   return newList
+}
+
+```
+
+</details>
+<hr />
+
+
+#### modulo(x: number, y: number): number
+
+<p>
+
+Applies `%` to 2 numbers.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const modulo = curry2(__modulo)
+
+function __modulo(x: number, y: number): number {
+  return x % y
+}
+
+```
+
+</details>
+<hr />
+
+
+#### multiply(x: number, y: number): number
+
+<p>
+
+Multiplies 2 numbers.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const multiply = curry2(__multiply)
+
+function __multiply(x: number, y: number): number {
+  return x * y
+}
+
+```
+
+</details>
+<hr />
+
+
+#### negate(n: number): number
+
+<p>
+
+Negates a number.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const negate = (n: number): number => -n
+
+```
+
+</details>
+<hr />
+
+
+#### or\<A\>(predicate1: Predicate\<A\>, predicate2: Predicate\<A\>, value: A): boolean
+
+<p>
+
+Applies `||` between two predicate functions.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const or: Or = curry3(__or)
+
+export type Or = {
+  <A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A): boolean
+  <A>(predicate1: Predicate<A>, predicate2: Predicate<A>): Predicate<A>
+  <A>(predicate1: Predicate<A>): {
+    (predicate2: Predicate<A>, value: A): boolean
+    (predicate2: Predicate<A>): Predicate<A>
+  }
+}
+
+function __or<A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A): boolean {
+  return predicate1(value) || predicate2(value)
 }
 
 ```
@@ -2270,6 +2887,32 @@ Curried function to call `String.prototype.substr`
 ```typescript
 
 export const substr = invoker(2, 'substr')
+
+```
+
+</details>
+<hr />
+
+
+#### subtract(x: number, y: number): number
+
+<p>
+
+Subtracts one number from another.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const subtract = curry2(__subtract)
+
+function __subtract(x: number, y: number): number {
+  return x - y
+}
 
 ```
 
