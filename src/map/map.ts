@@ -1,5 +1,5 @@
 import { map as eitherMap, isLeft, isRight } from '@typed/either'
-import { isFuture, isPromiseLike } from '../__internal__'
+import { isFuture, isPromiseLike } from '../is'
 import { isJust, isNothing, map as maybeMap } from '@typed/maybe'
 
 import { List } from '../types'

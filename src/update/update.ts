@@ -1,6 +1,6 @@
 import { List } from '../types'
 import { UpdateArity3 } from './types'
-import { arrayFrom } from '../__internal__'
+import { arrayFrom } from '../arrayFrom'
 import { curry3 } from '../curry'
 
 /**

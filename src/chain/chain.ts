@@ -1,5 +1,5 @@
 import { chain as eitherChain, isLeft, isRight } from '@typed/either'
-import { isFuture, isPromiseLike } from '../__internal__'
+import { isFuture, isPromiseLike } from '../is'
 import { isJust, isNothing, chain as maybeChain } from '@typed/maybe'
 
 import { Chain } from './types'

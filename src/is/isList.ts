@@ -1,6 +1,10 @@
 import { List } from '../types'
 
-export function isList(x: any): x is List<any> {
+/**
+ * Returns true if a value is a `List`.
+ * @name isList<A = any>(x: any): x is List<A>
+ */
+export function isList<A = any>(x: any): x is List<A> {
   if (Array.isArray(x)) return true
   if (!x || typeof x !== 'object' || typeof x === 'string') return false
   if (x.nodeType === 1) return !!x.length

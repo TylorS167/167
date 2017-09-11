@@ -1,7 +1,7 @@
-import { arrayFrom, isList } from '../__internal__'
-
 import { Flatten } from './types'
 import { List } from '../types'
+import { arrayFrom } from '../arrayFrom'
+import { isList } from '../is'
 import { reduce } from '../reduce'
 
 /**
