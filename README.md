@@ -13,1025 +13,6 @@ npm install --save 167
 
 All functions are curried!
 
-#### Arity0
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity0<A> = () => A
-
-```
-
-
-#### Arity1
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity1<A, B> = (value: A) => B
-
-```
-
-
-#### Arity10
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity10<A, B, C, D, E, F, G, H, I, J, K> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H,
-  i: I,
-  j: J
-) => K
-
-```
-
-
-#### Arity10N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity10N<A, B, C, D, E, F, G, H, I, J, R> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H,
-  i: I,
-  j: J,
-  ...args: Array<any>
-) => R
-
-```
-
-
-#### Arity1Bound
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity1Bound<that, A, B> = (this: that, a: A) => B
-
-```
-
-
-#### Arity1N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity1N<A, R> = (a: A, ...args: Array<any>) => R
-
-```
-
-
-#### Arity2
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity2<A, B, C> = (a: A, b: B) => C
-
-```
-
-
-#### Arity2Bound
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity2Bound<that, A, B, C> = (this: that, a: A, b: B) => C
-
-```
-
-
-#### Arity2N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity2N<A, B, R> = (a: A, b: B, ...args: Array<any>) => R
-
-```
-
-
-#### Arity3
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity3<A, B, C, D> = (a: A, b: B, c: C) => D
-
-```
-
-
-#### Arity3Bound
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity3Bound<that, A, B, C, D> = (this: that, a: A, b: B, c: C) => D
-
-```
-
-
-#### Arity3N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity3N<A, B, C, R> = (a: A, b: B, c: C, ...args: Array<any>) => R
-
-```
-
-
-#### Arity4
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity4<A, B, C, D, E> = (a: A, b: B, c: C, d: D) => E
-
-```
-
-
-#### Arity4Bound
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity4Bound<that, A, B, C, D, E> = (this: that, a: A, b: B, c: C, d: D) => E
-
-```
-
-
-#### Arity4N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity4N<A, B, C, D, R> = (a: A, b: B, c: C, d: D, ...args: Array<any>) => R
-
-```
-
-
-#### Arity5
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity5<A, B, C, D, E, F> = (a: A, b: B, c: C, d: D, e: E) => F
-
-```
-
-
-#### Arity5Bound
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity5Bound<that, A, B, C, D, E, F> = (this: that, a: A, b: B, c: C, d: D, e: E) => F
-
-```
-
-
-#### Arity5N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity5N<A, B, C, D, E, R> = (a: A, b: B, c: C, d: D, e: E, ...args: Array<any>) => R
-
-```
-
-
-#### Arity6
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity6<A, B, C, D, E, F, G> = (a: A, b: B, c: C, d: D, e: E, f: F) => G
-
-```
-
-
-#### Arity6N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity6N<A, B, C, D, E, F, R> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  ...args: Array<any>
-) => R
-
-```
-
-
-#### Arity7
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity7<A, B, C, D, E, F, G, H> = (a: A, b: B, c: C, d: D, e: E, f: F, g: G) => H
-
-```
-
-
-#### Arity7N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity7N<A, B, C, D, E, F, G, R> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  ...args: Array<any>
-) => R
-
-```
-
-
-#### Arity8
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity8<A, B, C, D, E, F, G, H, I> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H
-) => I
-
-```
-
-
-#### Arity8N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity8N<A, B, C, D, E, F, G, H, R> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H,
-  ...args: Array<any>
-) => R
-
-```
-
-
-#### Arity9
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity9<A, B, C, D, E, F, G, H, I, J> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H,
-  i: I
-) => J
-
-```
-
-
-#### Arity9N
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Arity9N<A, B, C, D, E, F, G, H, I, R> = (
-  a: A,
-  b: B,
-  c: C,
-  d: D,
-  e: E,
-  f: F,
-  g: G,
-  h: H,
-  i: I,
-  ...args: Array<any>
-) => R
-
-```
-
-
-#### ArityN
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type ArityN<R> = (...args: Array<any>) => R
-
-```
-
-
-#### Comparator
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Comparator<A> = (a: A, b: A) => ComparisonNumbers
-
-```
-
-
-#### ComparisonNumber
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type ComparisonNumbers = -1 | 0 | 1
-
-```
-
-
-#### Conditional
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Conditional<A, B> = [Predicate<A>, (value: A) => B]
-
-```
-
-
-#### Curry10
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry10<A, B, C, D, E, F, G, H, I, J, K> = {
-  (a: A): Curry9<B, C, D, E, F, G, H, I, J, K>
-  (a: A, b: B): Curry8<C, D, E, F, G, H, I, J, K>
-  (a: A, b: B, c: C): Curry7<D, E, F, G, H, I, J, K>
-  (a: A, b: B, c: C, d: D): Curry6<E, F, G, H, I, J, K>
-  (a: A, b: B, c: C, d: D, e: E): Curry5<F, G, H, I, J, K>
-  (a: A, b: B, c: C, d: D, e: E, f: F): Curry4<G, H, I, J, K>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Curry3<H, I, J, K>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): Curry2<I, J, K>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I): Arity1<J, K>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I, j: J): K
-}
-
-```
-
-
-#### Curry2
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry2<A, B, C> = {
-  (a: A): Arity1<B, C>
-  (a: A, b: B): C
-}
-
-```
-
-
-#### Curry3
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry3<A, B, C, D> = {
-  (a: A): Curry2<B, C, D>
-  (a: A, b: B): Arity1<C, D>
-  (a: A, b: B, c: C): D
-}
-
-```
-
-
-#### Curry4
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry4<A, B, C, D, E> = {
-  (a: A): Curry3<B, C, D, E>
-  (a: A, b: B): Curry2<C, D, E>
-  (a: A, b: B, c: C): Arity1<D, E>
-  (a: A, b: B, c: C, d: D): E
-}
-
-```
-
-
-#### Curry5
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry5<A, B, C, D, E, F> = {
-  (a: A): Curry4<B, C, D, E, F>
-  (a: A, b: B): Curry3<C, D, E, F>
-  (a: A, b: B, c: C): Curry2<D, E, F>
-  (a: A, b: B, c: C, d: D): Arity1<E, F>
-  (a: A, b: B, c: C, d: D, e: E): F
-}
-
-```
-
-
-#### Curry6
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry6<A, B, C, D, E, F, G> = {
-  (a: A): Curry5<B, C, D, E, F, G>
-  (a: A, b: B): Curry4<C, D, E, F, G>
-  (a: A, b: B, c: C): Curry3<D, E, F, G>
-  (a: A, b: B, c: C, d: D): Curry2<E, F, G>
-  (a: A, b: B, c: C, d: D, e: E): Arity1<F, G>
-  (a: A, b: B, c: C, d: D, e: E, f: F): G
-}
-
-```
-
-
-#### Curry7
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry7<A, B, C, D, E, F, G, H> = {
-  (a: A): Curry6<B, C, D, E, F, G, H>
-  (a: A, b: B): Curry5<C, D, E, F, G, H>
-  (a: A, b: B, c: C): Curry4<D, E, F, G, H>
-  (a: A, b: B, c: C, d: D): Curry3<E, F, G, H>
-  (a: A, b: B, c: C, d: D, e: E): Curry2<F, G, H>
-  (a: A, b: B, c: C, d: D, e: E, f: F): Arity1<G, H>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): H
-}
-
-```
-
-
-#### Curry8
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry8<A, B, C, D, E, F, G, H, I> = {
-  (a: A): Curry7<B, C, D, E, F, G, H, I>
-  (a: A, b: B): Curry6<C, D, E, F, G, H, I>
-  (a: A, b: B, c: C): Curry5<D, E, F, G, H, I>
-  (a: A, b: B, c: C, d: D): Curry4<E, F, G, H, I>
-  (a: A, b: B, c: C, d: D, e: E): Curry3<F, G, H, I>
-  (a: A, b: B, c: C, d: D, e: E, f: F): Curry2<G, H, I>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Arity1<H, I>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): I
-}
-
-```
-
-
-#### Curry9
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Curry9<A, B, C, D, E, F, G, H, I, J> = {
-  (a: A): Curry8<B, C, D, E, F, G, H, I, J>
-  (a: A, b: B): Curry7<C, D, E, F, G, H, I, J>
-  (a: A, b: B, c: C): Curry6<D, E, F, G, H, I, J>
-  (a: A, b: B, c: C, d: D): Curry5<E, F, G, H, I, J>
-  (a: A, b: B, c: C, d: D, e: E): Curry4<F, G, H, I, J>
-  (a: A, b: B, c: C, d: D, e: E, f: F): Curry3<G, H, I, J>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Curry2<H, I, J>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): Arity1<I, J>
-  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I): J
-}
-
-```
-
-
-#### Either
-
-<p>
-
-Either data structure and functions. See [@typed/either](https://github.com/TylorS/typed)
-
-</p>
-
-
-```typescript
-
-export { Either, Left, Right, isLeft, isRight, fromLeft, fromRight } from '@typed/either'
-
-```
-
-
-#### Equality
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Equality = {
-  <A>(a: A, b: A): boolean
-  <A>(a: A): (b: A) => boolean
-}
-
-```
-
-
-#### Index
-
-<p>
-
-Type-alias available to represent indexes
-
-</p>
-
-
-```typescript
-
-export type Index = number
-
-```
-
-
-#### Lens
-
-<p>
-
-A common interface for Updating objects
-
-</p>
-
-
-```typescript
-
-export interface Lens<A, B> {
-  readonly view: (object: A) => Maybe<B>
-  readonly updateAt: LensUpdateAt<A, B>
-}
-
-export type LensUpdateAt<A, B> = {
-  (f: (previousValue: Maybe<B>) => Maybe<B>, object: A): A
-  (f: (previousValue: Maybe<B>) => Maybe<B>): (object: A) => A
-}
-
-```
-
-
-#### List
-
-<p>
-
-An immutable List type.
-
-</p>
-
-
-```typescript
-
-export interface List<A> {
-  readonly [key: number]: A
-  readonly length: number
-}
-
-```
-
-
-#### Maybe
-
-<p>
-
-Maybe data structure and functions. See [@typed/maybe](https://github.com/TylorS/typed)
-
-</p>
-
-
-```typescript
-
-export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe } from '@typed/maybe'
-
-```
-
-
-#### Predicate
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Predicate<A> = (value: A) => boolean
-
-```
-
-
-#### Predicate2
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Predicate2<A> = (a: A, b: A) => boolean
-
-```
-
-
-#### Reducer
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Reducer<A, B> = (seed: B, value: A, index: number) => B
-
-export type ReduceArity3 = {
-  <A, B>(f: Reducer<A, B>, seed: B, list: List<A>): B
-  <A, B>(f: Reducer<A, B>, seed: B): ReduceArity1<A, B>
-  <A, B>(f: Reducer<A, B>): ReduceArity2<A, B>
-}
-
-export type ReduceArity2<A, B> = {
-  (seed: B, list: List<A>): B
-  (seed: B): ReduceArity1<A, B>
-}
-
-export type ReduceArity1<A, B> = {
-  (list: List<A>): B
-}
-
-```
-
-
-#### RightReducer
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type RightReducer<A, B> = (value: A, accumulator: B, index: number) => B
-
-export type ReduceRightArity3 = {
-  <A, B>(f: RightReducer<A, B>, seed: B, list: List<A>): B
-  <A, B>(f: RightReducer<A, B>, seed: B): ReduceRightArity1<A, B>
-  <A, B>(f: RightReducer<A, B>): ReduceRightArity2<A, B>
-}
-
-export interface ReduceRightArity2<A, B> {
-  (seed: B, list: List<A>): B
-  (seed: B): ReduceRightArity1<A, B>
-}
-
-export interface ReduceRightArity1<A, B> {
-  (list: List<A>): B
-}
-
-```
-
-
-#### StrMap
-
-<p>
-
-A StrMap type. Works as a readonly object.
-
-</p>
-
-
-```typescript
-
-export type StrMap<A extends string, B> = Readonly<Record<A, B>>
-
-```
-
-
-#### Tuple
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Tuple<A, B> = [A, B]
-
-```
-
-
-#### Tuple3
-
-<p>
-
-
-
-</p>
-
-
-```typescript
-
-export type Tuple3<A, B, C> = [A, B, C]
-
-```
-
-
 #### __
 
 <p>
@@ -2475,7 +1456,10 @@ item.
 
 export const groupBy: GroupBy = curry2(__groupBy)
 
-function __groupBy<Keys extends string, A>(f: (value: A) => Keys, list: List<A>): StrMap<Keys, List<A>> {
+function __groupBy<Keys extends string, A>(
+  f: (value: A) => Keys,
+  list: List<A>
+): StrMap<Keys, List<A>> {
   const itemCount = list.length
   const strMap = {} as Record<Keys, Array<A>>
 
@@ -2483,10 +1467,8 @@ function __groupBy<Keys extends string, A>(f: (value: A) => Keys, list: List<A>)
     const value = list[i]
     const key = f(value)
 
-    if (strMap[key])
-      strMap[key].push(value)
-    else
-      strMap[key] = [ value ]
+    if (strMap[key]) strMap[key].push(value)
+    else strMap[key] = [value]
   }
 
   return strMap
@@ -2697,30 +1679,28 @@ Inserts a value into a `List`. at a given index.
 
 ```typescript
 
-export const insert: InsertArity3 = curry3(
-  function insert<A>(index: number, value: A, list: List<A>): List<A> {
-    const length = list.length
+export const insert: InsertArity3 = curry3(function insert<A>(
+  index: number,
+  value: A,
+  list: List<A>
+): List<A> {
+  const length = list.length
 
-    if (index < 0)
-      return list
+  if (index < 0) return list
 
-    if (length === 0)
-      return [ value ]
+  if (length === 0) return [value]
 
-    const newList = []
-    let i = 0
+  const newList = []
+  let i = 0
 
-    for (; i < index; ++i)
-      newList[i] = list[i]
+  for (; i < index; ++i) newList[i] = list[i]
 
-    newList[i++] = value
+  newList[i++] = value
 
-    for (; i <= length; ++i)
-      newList[i] = list[i - 1]
+  for (; i <= length; ++i) newList[i] = list[i - 1]
 
-    return newList
-  },
-)
+  return newList
+})
 
 ```
 
@@ -4522,8 +3502,9 @@ Takes the first `n` items of a `List`.
 
 ```typescript
 
-export const take: Take =
-  curry2(<A>(n: number, list: List<A>) => slice(0, Maybe.of(n < 0 ? Infinity : n), list))
+export const take: Take = curry2(<A>(n: number, list: List<A>) =>
+  slice(0, Maybe.of(n < 0 ? Infinity : n), list)
+)
 
 export type Take = {
   <A>(n: number, list: List<A>): List<A>
@@ -4550,8 +3531,9 @@ Takes the last `n` values from a `List`.
 
 ```typescript
 
-export const takeLast: TakeLast =
-  curry2(<A>(n: number, list: List<A>) => drop(n >= 0 ? list.length - n : 0, list))
+export const takeLast: TakeLast = curry2(<A>(n: number, list: List<A>) =>
+  drop(n >= 0 ? list.length - n : 0, list)
+)
 
 export type TakeLast = {
   <A>(n: number, list: List<A>): List<A>
@@ -4951,3 +3933,1022 @@ function __without<A>(values: List<A>, list: List<A>): List<A> {
 
 </details>
 <hr />
+
+
+#### Arity0
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity0<A> = () => A
+
+```
+
+
+#### Arity1
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity1<A, B> = (value: A) => B
+
+```
+
+
+#### Arity10
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity10<A, B, C, D, E, F, G, H, I, J, K> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H,
+  i: I,
+  j: J
+) => K
+
+```
+
+
+#### Arity10N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity10N<A, B, C, D, E, F, G, H, I, J, R> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H,
+  i: I,
+  j: J,
+  ...args: Array<any>
+) => R
+
+```
+
+
+#### Arity1Bound
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity1Bound<that, A, B> = (this: that, a: A) => B
+
+```
+
+
+#### Arity1N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity1N<A, R> = (a: A, ...args: Array<any>) => R
+
+```
+
+
+#### Arity2
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity2<A, B, C> = (a: A, b: B) => C
+
+```
+
+
+#### Arity2Bound
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity2Bound<that, A, B, C> = (this: that, a: A, b: B) => C
+
+```
+
+
+#### Arity2N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity2N<A, B, R> = (a: A, b: B, ...args: Array<any>) => R
+
+```
+
+
+#### Arity3
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity3<A, B, C, D> = (a: A, b: B, c: C) => D
+
+```
+
+
+#### Arity3Bound
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity3Bound<that, A, B, C, D> = (this: that, a: A, b: B, c: C) => D
+
+```
+
+
+#### Arity3N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity3N<A, B, C, R> = (a: A, b: B, c: C, ...args: Array<any>) => R
+
+```
+
+
+#### Arity4
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity4<A, B, C, D, E> = (a: A, b: B, c: C, d: D) => E
+
+```
+
+
+#### Arity4Bound
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity4Bound<that, A, B, C, D, E> = (this: that, a: A, b: B, c: C, d: D) => E
+
+```
+
+
+#### Arity4N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity4N<A, B, C, D, R> = (a: A, b: B, c: C, d: D, ...args: Array<any>) => R
+
+```
+
+
+#### Arity5
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity5<A, B, C, D, E, F> = (a: A, b: B, c: C, d: D, e: E) => F
+
+```
+
+
+#### Arity5Bound
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity5Bound<that, A, B, C, D, E, F> = (this: that, a: A, b: B, c: C, d: D, e: E) => F
+
+```
+
+
+#### Arity5N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity5N<A, B, C, D, E, R> = (a: A, b: B, c: C, d: D, e: E, ...args: Array<any>) => R
+
+```
+
+
+#### Arity6
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity6<A, B, C, D, E, F, G> = (a: A, b: B, c: C, d: D, e: E, f: F) => G
+
+```
+
+
+#### Arity6N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity6N<A, B, C, D, E, F, R> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  ...args: Array<any>
+) => R
+
+```
+
+
+#### Arity7
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity7<A, B, C, D, E, F, G, H> = (a: A, b: B, c: C, d: D, e: E, f: F, g: G) => H
+
+```
+
+
+#### Arity7N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity7N<A, B, C, D, E, F, G, R> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  ...args: Array<any>
+) => R
+
+```
+
+
+#### Arity8
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity8<A, B, C, D, E, F, G, H, I> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H
+) => I
+
+```
+
+
+#### Arity8N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity8N<A, B, C, D, E, F, G, H, R> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H,
+  ...args: Array<any>
+) => R
+
+```
+
+
+#### Arity9
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity9<A, B, C, D, E, F, G, H, I, J> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H,
+  i: I
+) => J
+
+```
+
+
+#### Arity9N
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Arity9N<A, B, C, D, E, F, G, H, I, R> = (
+  a: A,
+  b: B,
+  c: C,
+  d: D,
+  e: E,
+  f: F,
+  g: G,
+  h: H,
+  i: I,
+  ...args: Array<any>
+) => R
+
+```
+
+
+#### ArityN
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type ArityN<R> = (...args: Array<any>) => R
+
+```
+
+
+#### Comparator
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Comparator<A> = (a: A, b: A) => ComparisonNumbers
+
+```
+
+
+#### ComparisonNumber
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type ComparisonNumbers = -1 | 0 | 1
+
+```
+
+
+#### Conditional
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Conditional<A, B> = [Predicate<A>, (value: A) => B]
+
+```
+
+
+#### Curry10
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry10<A, B, C, D, E, F, G, H, I, J, K> = {
+  (a: A): Curry9<B, C, D, E, F, G, H, I, J, K>
+  (a: A, b: B): Curry8<C, D, E, F, G, H, I, J, K>
+  (a: A, b: B, c: C): Curry7<D, E, F, G, H, I, J, K>
+  (a: A, b: B, c: C, d: D): Curry6<E, F, G, H, I, J, K>
+  (a: A, b: B, c: C, d: D, e: E): Curry5<F, G, H, I, J, K>
+  (a: A, b: B, c: C, d: D, e: E, f: F): Curry4<G, H, I, J, K>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Curry3<H, I, J, K>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): Curry2<I, J, K>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I): Arity1<J, K>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I, j: J): K
+}
+
+```
+
+
+#### Curry2
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry2<A, B, C> = {
+  (a: A): Arity1<B, C>
+  (a: A, b: B): C
+}
+
+```
+
+
+#### Curry3
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry3<A, B, C, D> = {
+  (a: A): Curry2<B, C, D>
+  (a: A, b: B): Arity1<C, D>
+  (a: A, b: B, c: C): D
+}
+
+```
+
+
+#### Curry4
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry4<A, B, C, D, E> = {
+  (a: A): Curry3<B, C, D, E>
+  (a: A, b: B): Curry2<C, D, E>
+  (a: A, b: B, c: C): Arity1<D, E>
+  (a: A, b: B, c: C, d: D): E
+}
+
+```
+
+
+#### Curry5
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry5<A, B, C, D, E, F> = {
+  (a: A): Curry4<B, C, D, E, F>
+  (a: A, b: B): Curry3<C, D, E, F>
+  (a: A, b: B, c: C): Curry2<D, E, F>
+  (a: A, b: B, c: C, d: D): Arity1<E, F>
+  (a: A, b: B, c: C, d: D, e: E): F
+}
+
+```
+
+
+#### Curry6
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry6<A, B, C, D, E, F, G> = {
+  (a: A): Curry5<B, C, D, E, F, G>
+  (a: A, b: B): Curry4<C, D, E, F, G>
+  (a: A, b: B, c: C): Curry3<D, E, F, G>
+  (a: A, b: B, c: C, d: D): Curry2<E, F, G>
+  (a: A, b: B, c: C, d: D, e: E): Arity1<F, G>
+  (a: A, b: B, c: C, d: D, e: E, f: F): G
+}
+
+```
+
+
+#### Curry7
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry7<A, B, C, D, E, F, G, H> = {
+  (a: A): Curry6<B, C, D, E, F, G, H>
+  (a: A, b: B): Curry5<C, D, E, F, G, H>
+  (a: A, b: B, c: C): Curry4<D, E, F, G, H>
+  (a: A, b: B, c: C, d: D): Curry3<E, F, G, H>
+  (a: A, b: B, c: C, d: D, e: E): Curry2<F, G, H>
+  (a: A, b: B, c: C, d: D, e: E, f: F): Arity1<G, H>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): H
+}
+
+```
+
+
+#### Curry8
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry8<A, B, C, D, E, F, G, H, I> = {
+  (a: A): Curry7<B, C, D, E, F, G, H, I>
+  (a: A, b: B): Curry6<C, D, E, F, G, H, I>
+  (a: A, b: B, c: C): Curry5<D, E, F, G, H, I>
+  (a: A, b: B, c: C, d: D): Curry4<E, F, G, H, I>
+  (a: A, b: B, c: C, d: D, e: E): Curry3<F, G, H, I>
+  (a: A, b: B, c: C, d: D, e: E, f: F): Curry2<G, H, I>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Arity1<H, I>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): I
+}
+
+```
+
+
+#### Curry9
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Curry9<A, B, C, D, E, F, G, H, I, J> = {
+  (a: A): Curry8<B, C, D, E, F, G, H, I, J>
+  (a: A, b: B): Curry7<C, D, E, F, G, H, I, J>
+  (a: A, b: B, c: C): Curry6<D, E, F, G, H, I, J>
+  (a: A, b: B, c: C, d: D): Curry5<E, F, G, H, I, J>
+  (a: A, b: B, c: C, d: D, e: E): Curry4<F, G, H, I, J>
+  (a: A, b: B, c: C, d: D, e: E, f: F): Curry3<G, H, I, J>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G): Curry2<H, I, J>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H): Arity1<I, J>
+  (a: A, b: B, c: C, d: D, e: E, f: F, g: G, h: H, i: I): J
+}
+
+```
+
+
+#### Either
+
+<p>
+
+Either data structure and functions. See [@typed/either](https://github.com/TylorS/typed)
+
+</p>
+
+
+```typescript
+
+export { Either, Left, Right, isLeft, isRight, fromLeft, fromRight } from '@typed/either'
+
+```
+
+
+#### Equality
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Equality = {
+  <A>(a: A, b: A): boolean
+  <A>(a: A): (b: A) => boolean
+}
+
+```
+
+
+#### Index
+
+<p>
+
+Type-alias available to represent indexes
+
+</p>
+
+
+```typescript
+
+export type Index = number
+
+```
+
+
+#### Lens
+
+<p>
+
+A common interface for Updating objects
+
+</p>
+
+
+```typescript
+
+export interface Lens<A, B> {
+  readonly view: (object: A) => Maybe<B>
+  readonly updateAt: LensUpdateAt<A, B>
+}
+
+export type LensUpdateAt<A, B> = {
+  (f: (previousValue: Maybe<B>) => Maybe<B>, object: A): A
+  (f: (previousValue: Maybe<B>) => Maybe<B>): (object: A) => A
+}
+
+```
+
+
+#### List
+
+<p>
+
+An immutable List type.
+
+</p>
+
+
+```typescript
+
+export interface List<A> {
+  readonly [key: number]: A
+  readonly length: number
+}
+
+```
+
+
+#### Maybe
+
+<p>
+
+Maybe data structure and functions. See [@typed/maybe](https://github.com/TylorS/typed)
+
+</p>
+
+
+```typescript
+
+export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe } from '@typed/maybe'
+
+```
+
+
+#### Predicate
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Predicate<A> = (value: A) => boolean
+
+```
+
+
+#### Predicate2
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Predicate2<A> = (a: A, b: A) => boolean
+
+```
+
+
+#### Reducer
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Reducer<A, B> = (seed: B, value: A, index: number) => B
+
+export type ReduceArity3 = {
+  <A, B>(f: Reducer<A, B>, seed: B, list: List<A>): B
+  <A, B>(f: Reducer<A, B>, seed: B): ReduceArity1<A, B>
+  <A, B>(f: Reducer<A, B>): ReduceArity2<A, B>
+}
+
+export type ReduceArity2<A, B> = {
+  (seed: B, list: List<A>): B
+  (seed: B): ReduceArity1<A, B>
+}
+
+export type ReduceArity1<A, B> = {
+  (list: List<A>): B
+}
+
+```
+
+
+#### RightReducer
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type RightReducer<A, B> = (value: A, accumulator: B, index: number) => B
+
+export type ReduceRightArity3 = {
+  <A, B>(f: RightReducer<A, B>, seed: B, list: List<A>): B
+  <A, B>(f: RightReducer<A, B>, seed: B): ReduceRightArity1<A, B>
+  <A, B>(f: RightReducer<A, B>): ReduceRightArity2<A, B>
+}
+
+export interface ReduceRightArity2<A, B> {
+  (seed: B, list: List<A>): B
+  (seed: B): ReduceRightArity1<A, B>
+}
+
+export interface ReduceRightArity1<A, B> {
+  (list: List<A>): B
+}
+
+```
+
+
+#### StrMap
+
+<p>
+
+A StrMap type. Works as a readonly object.
+
+</p>
+
+
+```typescript
+
+export type StrMap<A extends string, B> = Readonly<Record<A, B>>
+
+```
+
+
+#### Tuple
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Tuple<A, B> = [A, B]
+
+```
+
+
+#### Tuple3
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Tuple3<A, B, C> = [A, B, C]
+
+```

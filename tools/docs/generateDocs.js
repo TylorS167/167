@@ -1,6 +1,6 @@
 const { findFiles } = require('./findFiles')
 const { parseDocumentation } = require('./parseDocumentation')
-const { ascend } = require('167')
+const { ascend, filter } = require('167')
 const { writeFileSync } = require('fs')
 const { join } = require('path')
 
@@ -13,12 +13,18 @@ function generateDocs(packageDirectory) {
   const files = findFiles(packageDirectory)
 
   const parsedDocumentation = parseDocumentation(files)
+  const types = filter(isType, parsedDocumentation)
+  const functions = filter(x => !isType(x), parsedDocumentation)
 
-  const api = parsedDocumentation.map(displayDocumentation).join('\n')
+  const api = [...functions, ...types].map(displayDocumentation).join('\n')
 
   const readme = generateReadme(Object.assign({}, require(PACKAGE_JSON)))
 
   return writeFileSync(README, readme + `\n` + api)
+}
+
+function isType({ type }) {
+  return !!type
 }
 
 function generateReadme(packageJson) {
