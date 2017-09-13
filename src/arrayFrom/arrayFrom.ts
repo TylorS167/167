@@ -1,6 +1,10 @@
 import { List } from '../types'
 import { isIterator } from '../is'
 
+/**
+ * Converts any `Iterable`, `Iterator` or `ArrayLike` to an `Array`.
+ * @name arrayFrom<A>(iterable: Iterable<A> | Iterator<A> | List<A>): Array<A> 
+ */
 export function arrayFrom<A>(iterable: Iterable<A> | Iterator<A> | List<A>): Array<A> {
   if (Array.isArray(iterable)) return iterable
 

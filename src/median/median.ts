@@ -8,6 +8,11 @@ import { pipe } from '../pipe'
 import { slice } from '../slice'
 import { sort } from '../sort'
 
+/**
+ * Calculates the median of a `List`. If the calculated median is `NaN`
+ * a `Nothing` is returned otherwise a `Just` containing the median will be returned.
+ * @name median(numbers: List<number>): Maybe<number>
+ */
 export function median(numbers: List<number>): Maybe<number> {
   const length = numbers.length
 

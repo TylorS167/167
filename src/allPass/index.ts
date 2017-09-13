@@ -3,7 +3,11 @@ import { List, Predicate } from '../types'
 import { curry2 } from '../curry'
 import { not } from '../not'
 
-export const allPath: AllPass = curry2(__allPass)
+/**
+ * Returns true if all predicates return true.
+ * @name allPass<A>(predicates: List<Predicate<A>>, value: A): boolean
+ */
+export const allPass: AllPass = curry2(__allPass)
 
 export type AllPass = {
   <A>(predicates: List<Predicate<A>>, value: A): boolean

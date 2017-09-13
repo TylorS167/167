@@ -5,6 +5,19 @@ import { keys } from '../keys'
 import { length } from '../length'
 import { pipe } from '../pipe'
 
+/**
+ * Returns true if an object or array is empty.
+ * @name isEmpty<A>(obj: A): boolean
+ * @example
+ * import { isEmpty } from '167'
+ * 
+ * isEmpty({}) // true
+ * isEmpty({ a: 1, b: 2 }) // false
+ * isEmpty([]) // true
+ * isEmpty([ 1, 2, 3 ]) // false
+ * isEmpty(void 0) // false
+ * isEmpty(null) // false
+ */
 export const isEmpty: <A>(object: A) => boolean = ifElse(
   x => x === null || x === void 0,
   always(false),

@@ -40,7 +40,7 @@ export type Arity0<A> = () => A
 
 ```typescript
 
-export type Arity1<A, B> = (a: A) => B
+export type Arity1<A, B> = (value: A) => B
 
 ```
 
@@ -557,6 +557,22 @@ export type ComparisonNumbers = -1 | 0 | 1
 ```
 
 
+#### Conditional
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Conditional<A, B> = [Predicate<A>, (value: A) => B]
+
+```
+
+
 #### Curry10
 
 <p>
@@ -799,22 +815,6 @@ export type Equality = {
 ```
 
 
-#### Future\<A, B\>
-
-<p>
-
-Future data structure and functions. See [@typed/future](https://github.com/TylorS/typed)
-
-</p>
-
-
-```typescript
-
-export { Future, fork, sequence, all, toPromise } from '@typed/Future'
-
-```
-
-
 #### Index
 
 <p>
@@ -885,7 +885,7 @@ Maybe data structure and functions. See [@typed/maybe](https://github.com/TylorS
 
 ```typescript
 
-export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe, toMaybe } from '@typed/maybe'
+export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe } from '@typed/maybe'
 
 ```
 
@@ -901,7 +901,7 @@ export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe, toMaybe }
 
 ```typescript
 
-export type Predicate<A> = (a: A) => boolean
+export type Predicate<A> = (value: A) => boolean
 
 ```
 
@@ -918,6 +918,68 @@ export type Predicate<A> = (a: A) => boolean
 ```typescript
 
 export type Predicate2<A> = (a: A, b: A) => boolean
+
+```
+
+
+#### Reducer
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type Reducer<A, B> = (seed: B, value: A, index: number) => B
+
+export type ReduceArity3 = {
+  <A, B>(f: Reducer<A, B>, seed: B, list: List<A>): B
+  <A, B>(f: Reducer<A, B>, seed: B): ReduceArity1<A, B>
+  <A, B>(f: Reducer<A, B>): ReduceArity2<A, B>
+}
+
+export type ReduceArity2<A, B> = {
+  (seed: B, list: List<A>): B
+  (seed: B): ReduceArity1<A, B>
+}
+
+export type ReduceArity1<A, B> = {
+  (list: List<A>): B
+}
+
+```
+
+
+#### RightReducer
+
+<p>
+
+
+
+</p>
+
+
+```typescript
+
+export type RightReducer<A, B> = (value: A, accumulator: B, index: number) => B
+
+export type ReduceRightArity3 = {
+  <A, B>(f: RightReducer<A, B>, seed: B, list: List<A>): B
+  <A, B>(f: RightReducer<A, B>, seed: B): ReduceRightArity1<A, B>
+  <A, B>(f: RightReducer<A, B>): ReduceRightArity2<A, B>
+}
+
+export interface ReduceRightArity2<A, B> {
+  (seed: B, list: List<A>): B
+  (seed: B): ReduceRightArity1<A, B>
+}
+
+export interface ReduceRightArity1<A, B> {
+  (list: List<A>): B
+}
 
 ```
 
@@ -1020,6 +1082,69 @@ function __add(x: number, y: number): number {
 <hr />
 
 
+#### all\<A\>(predicate: Predicate\<A\>, list: List\<A\>): boolean
+
+<p>
+
+Returns `true` if predicate function returns `true` for all values in a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const all = curry2(__all)
+
+function __all<A>(predicate: Predicate<A>, list: List<A>): boolean {
+  for (let i = 0; i < list.length; ++i) if (not(predicate(list[i]))) return false
+
+  return true
+}
+
+```
+
+</details>
+<hr />
+
+
+#### allPass\<A\>(predicates: List\<Predicate\<A\>\>, value: A): boolean
+
+<p>
+
+Returns true if all predicates return true.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const allPass: AllPass = curry2(__allPass)
+
+export type AllPass = {
+  <A>(predicates: List<Predicate<A>>, value: A): boolean
+  <A>(predicates: List<Predicate<A>>): Predicate<A>
+}
+
+function __allPass<A>(predicates: List<Predicate<A>>, value: A): boolean {
+  const predicateCount = predicates.length
+
+  for (let i = 0; i < predicateCount; ++i) if (not(predicates[i](value))) return false
+
+  return true
+}
+
+```
+
+</details>
+<hr />
+
+
 #### always\<A\>(a: A): (...args: Array\<any\>) =\> A
 
 <p>
@@ -1084,6 +1209,134 @@ function __and<A>(predicate1: Predicate<A>, predicate2: Predicate<A>, value: A):
 <hr />
 
 
+#### any\<A\>(predicate: Predicate\<A\>, list: List\<A\>): boolean
+
+<p>
+
+Returns `true` if predicate function returns `true` for any value contained 
+in a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const any: Any = curry2(__any)
+
+function __any<A>(predicate: Predicate<A>, list: List<A>): boolean {
+  for (let i = 0; i < list.length; ++i) if (predicate(list[i])) return true
+
+  return false
+}
+
+```
+
+</details>
+<hr />
+
+
+#### anyPass\<A\>(predicates: List\<Predicate\<A\>\>, value: A): boolean
+
+<p>
+
+Returns true if any predicates returns true, false otherwise.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const anyPass: AnyPass = curry2(__anyPass)
+
+export type AnyPass = {
+  <A>(predicates: List<Predicate<A>>, value: A): boolean
+  <A>(predicates: List<Predicate<A>>): (value: A) => boolean
+}
+
+function __anyPass<A>(predicates: List<Predicate<A>>, value: A): boolean {
+  for (const predicate of Array.from(predicates)) if (predicate(value)) return true
+
+  return false
+}
+
+```
+
+</details>
+<hr />
+
+
+#### ap\<A, B\>(fn: List\<Arity1\<A, B\>\>, values: List\<A\>): List\<B\>
+
+<p>
+
+Apply the function contained in an Applicative to the values contained
+in another Applicative. Works with all data structures supported by `chain` and 
+`map`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const ap: Ap = curry2(__ap)
+
+function __ap<A, B>(fn: List<Arity1<A, B>>, value: List<A>): List<B> {
+  return chain(f => map(f, value), fn)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### append\<A\>(value: A, list: List\<A\>): List\<A\>
+
+<p>
+
+Appends a value to the end of a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const append: Append = curry2(__append)
+
+export type Append = {
+  <A>(value: A, list: List<A>): List<A>
+  <A>(value: A): (list: List<A>) => List<A>
+}
+
+function __append<A>(value: A, list: List<A>): List<A> {
+  const itemCount = length(list)
+  const newList = Array(itemCount + 1)
+
+  for (let i = 0; i < itemCount; ++i) newList[i] = list[i]
+
+  newList[itemCount] = value
+
+  return newList
+}
+
+```
+
+</details>
+<hr />
+
+
 #### apply\<A\>(list: List\<any\>, fn: (...args: Array\<any\>) =\> A): A
 
 <p>
@@ -1123,6 +1376,121 @@ function __apply<A>(list: List<any>, f: (...args: Array<any>) => A) {
       return f.apply(null, list)
   }
 }
+
+```
+
+</details>
+<hr />
+
+
+#### arrayFrom\<A\>(iterable: Iterable\<A\> | Iterator\<A\> | List\<A\>): Array\<A\>
+
+<p>
+
+Converts any `Iterable`, `Iterator` or `ArrayLike` to an `Array`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function arrayFrom<A>(iterable: Iterable<A> | Iterator<A> | List<A>): Array<A> {
+  if (Array.isArray(iterable)) return iterable
+
+  if (isIterator(iterable)) return Array.from(toIterable(iterable))
+
+  return Array.from(iterable as Iterable<A>)
+}
+
+function toIterable<A>(iterator: Iterator<A>): Iterable<A> {
+  return {
+    [Symbol.iterator]() {
+      return iterator
+    },
+  }
+}
+
+```
+
+</details>
+<hr />
+
+
+#### ascend\<A, B\>(f: (a: A) =\> B, a: A, b: A): ComparisonNumbers
+
+<p>
+
+Makes an ascending comparator function out of a function that returns a 
+value that can be compared with < and >.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const ascend: AscendArity3 = curry3(function ascend<A, B>(
+  f: (a: A) => B,
+  a: A,
+  b: A
+): ComparisonNumbers {
+  const aa = f(a)
+  const bb = f(b)
+
+  if (aa < bb) return -1
+
+  if (aa > bb) return 1
+
+  return 0
+})
+
+export type AscendArity3 = {
+  <A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
+  <A, B>(f: (a: A) => B): AscendArity2<A>
+  <A, B>(f: (a: A) => B, a: A): AscendArity1<A>
+}
+
+export type AscendArity2<A> = {
+  (a: A, b: A): ComparisonNumbers
+  (a: A): AscendArity1<A>
+}
+
+export type AscendArity1<A> = (b: A) => ComparisonNumbers
+
+```
+
+</details>
+<hr />
+
+
+#### chain\<A, B\>(f: (value: A) =\> List\<B\>, list: List\<A\>): List\<B\>
+
+<p>
+
+Creates a new `Monad` from the value contained in another.
+Works with `Maybe`, `Either`, `PromiseLike` and `List` data 
+structures.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const chain: Chain = curry2<any, any, any>(function(f: (value: any) => any, list: any): any {
+  if (isJust(list) || isNothing(list)) return maybeChain(f, list)
+  if (isLeft(list) || isRight(list)) return eitherChain(f, list)
+  if (isPromiseLike(list)) return Promise.resolve(list.then(f))
+
+  return arrayChain(f, list)
+})
 
 ```
 
@@ -1198,6 +1566,54 @@ function cloneRegexp(pattern: RegExp): RegExp {
 <hr />
 
 
+#### compose\<A, B\>(...fns: Array\<Function\>): (value: A) =\> B
+
+<p>
+
+Right-to-left function composition.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const compose: Compose = (...fns: Array<(value: any) => any>) => apply(reverse(fns), pipe)
+
+```
+
+</details>
+<hr />
+
+
+#### composeLenses(...lens: Array\<Lens\<any, any\>): Lens\<any, any\>
+
+<p>
+
+Right-to-left lens composition.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const composeLenses: ComposeLenses = function(
+  ...lenses: Array<Lens<any, any>>
+): Lens<any, any> {
+  return apply(reverse(lenses), pipeLenses)
+}
+
+```
+
+</details>
+<hr />
+
+
 #### concat\<A\>(list1: List\<A\>, list2: List\<B\>): List\<B\>
 
 <p>
@@ -1223,6 +1639,67 @@ export const concat: Concat = curry2(function<A>(list1: List<A>, list2: List<A>)
 
   return newList
 })
+
+```
+
+</details>
+<hr />
+
+
+#### cond\<A, B\>(conditionals: List\<Condition\<A, B\>\>, value: A): Maybe\<B\>
+
+<p>
+
+Returns the value of an applied `Conditional`. If no `Conditional` is matched
+then `Nothing` is returned.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const cond: Cond = curry2(__cond)
+
+function __cond<A, B>(conditionals: List<Conditional<A, B>>, value: A): Maybe<B> {
+  for (const [predicate, f] of arrayFrom(conditionals))
+    if (predicate(value)) return Maybe.of(f(value))
+
+  return Nothing
+}
+
+```
+
+</details>
+<hr />
+
+
+#### contains\<A\>(value: A, list: List\<A\>): boolean
+
+<p>
+
+Returns true if a list contains a value, false otherwise.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const contains: Contains = curry2(__contains)
+
+export type Contains = {
+  <A>(value: A, list: List<A>): boolean
+  <A>(value: A): (list: List<A>) => boolean
+}
+
+function __contains<A>(value: A, list: List<A>): boolean {
+  return fromMaybe(false, map(always(true), indexOf(value, list)))
+}
 
 ```
 
@@ -1354,6 +1831,71 @@ function curriedN(arity: number, f: ArityN<any>, previousArgs: Array<any>): Arit
 <hr />
 
 
+#### decrement(num: number): number
+
+<p>
+
+Subtracts `1` from a number.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const decrement = add(-1)
+
+```
+
+</details>
+<hr />
+
+
+#### descend\<A, B\>(f: (a: A) =\> B, a: A, b: A): ComparisonNumbers
+
+<p>
+
+Makes a descending comparator function out of a function that returns a 
+value that can be compared with < and >.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const descend: Descend = curry3(function ascend<A, B>(
+  f: (a: A) => B,
+  a: A,
+  b: A
+): ComparisonNumbers {
+  const aa = f(a)
+  const bb = f(b)
+
+  if (aa < bb) return 1
+
+  if (aa > bb) return -1
+
+  return 0
+})
+
+export type Descend = {
+  <A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
+  <A, B>(f: (a: A) => B, a: A): (b: A) => ComparisonNumbers
+  <A, B>(f: (a: A) => B): (a: A) => (b: A) => ComparisonNumbers
+  <A, B>(f: (a: A) => B): (a: A, b: A) => ComparisonNumbers
+}
+
+```
+
+</details>
+<hr />
+
+
 #### divide(x: number, y: number): number
 
 <p>
@@ -1370,8 +1912,70 @@ Divides 2 numbers
 
 export const divide = curry2(__divide)
 
-function __divide(x: number, y: number): number {
-  return x / y
+function __divide(right: number, left: number): number {
+  return left / right
+}
+
+```
+
+</details>
+<hr />
+
+
+#### drop\<A\>(quantity: number, list: List\<A\>): List\<A\>
+
+<p>
+
+Drops the first `n` items from a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const drop: Drop = curry2(__drop)
+
+export type Drop = {
+  <A>(quanity: number, list: List<A>): List<A>
+  <A>(quanity: number): (list: List<A>) => List<A>
+}
+
+function __drop<A>(quanity: number, list: List<A>): List<A> {
+  return slice(quanity, Nothing, list)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### dropLast\<A\>(quantity: number, list: List\<A\>): List\<A\>
+
+<p>
+
+Drops `n` number of items from the end of a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const dropLast: DropLast = curry2(__dropLast)
+
+export type DropLast = {
+  <A>(quanity: number, list: List<A>): List<A>
+  <A>(quanity: number): (list: List<A>) => List<A>
+}
+
+function __dropLast<A>(quanity: number, list: List<A>): List<A> {
+  return slice(0, Maybe.of(list.length - quanity), list)
 }
 
 ```
@@ -1643,6 +2247,133 @@ function __findIndex<A>(predicate: (value: A) => boolean, list: List<A>): Maybe<
 <hr />
 
 
+#### findLast\<A\>(predicate: Predicate\<A\>, list: List\<A\>): Maybe\<A\>
+
+<p>
+
+Find the last value contained in a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const findLast: FindLast = curry2(__findLast)
+
+export type FindLast = {
+  <A>(predicate: Predicate<A>, list: List<A>): Maybe<A>
+  <A>(predicate: Predicate<A>): (list: List<A>) => Maybe<A>
+}
+
+const propFlipped: <A>(list: List<A>) => (index: Index) => A = flip(prop)
+
+function __findLast<A>(predicate: Predicate<A>, list: List<A>): Maybe<A> {
+  return map(propFlipped(list), findLastIndex(predicate, list))
+}
+
+```
+
+</details>
+<hr />
+
+
+#### findLastIndex\<A\>(predicate: Predicate\<A\>, list: List\<A\>): Maybe\<Index\>
+
+<p>
+
+Find the last index of a value in a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const findLastIndex: FindLastIndex = curry2(__findLastIndex)
+
+export type FindLastIndex = {
+  <A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index>
+  <A>(predicate: (value: A) => boolean): (list: List<A>) => Maybe<Index>
+}
+
+function __findLastIndex<A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index> {
+  const itemCount = length(list)
+
+  for (let i = itemCount - 1; i >= 0; --i) if (predicate(list[i])) return Maybe.of(i)
+
+  return Nothing
+}
+
+```
+
+</details>
+<hr />
+
+
+#### flip\<A, B, C\>(fn: (a: A, b: B) =\> C): Curry2\<B, A, C\>
+
+<p>
+
+Flips the first 2 arguments of a function.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const flip: Flip = function flip<A, B, C>(f: (a: A, b: B, ...args: Array<any>) => C) {
+  return curry(function(b: B, a: A, ...args: Array<any>): C {
+    return apply([a, b, ...args], f)
+  })
+}
+
+```
+
+</details>
+<hr />
+
+
+#### forEach\<A\>(f: (value: A, index: number) =\> any, list: List\<A\>): List\<A\>
+
+<p>
+
+Applies a function to each item in a `List`, returning the list after.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const forEach: ForEach = curry2(__forEach)
+
+export type ForEach = {
+  <A>(f: (value: A, index: number) => any, list: List<A>): List<A>
+  <A>(f: (value: A, index: number) => any): (list: List<A>) => List<A>
+}
+
+function __forEach<A>(f: (value: A, index: number) => any, list: List<A>): List<A> {
+  for (let i = 0; i < list.length; ++i) f(list[i], i)
+
+  return list
+}
+
+```
+
+</details>
+<hr />
+
+
 #### functionName(fn: Function): string
 
 <p>
@@ -1671,7 +2402,7 @@ export function functionName(fn: Function): string {
 <hr />
 
 
-#### greaterThan\<A\>(left: A, right: A): boolean
+#### greaterThan\<A\>(right: A, left: A): boolean
 
 <p>
 
@@ -1685,11 +2416,11 @@ Applies `>` to 2 values.
 
 ```typescript
 
-export const greaterThan: GreaterThan = curry2(<A>(left: A, right: A) => left > right)
+export const greaterThan: GreaterThan = curry2(<A>(right: A, left: A) => left > right)
 
 export type GreaterThan = {
-  <A>(left: A, right: A): boolean
-  <A>(left: A): (right: A) => boolean
+  <A>(right: A, left: A): boolean
+  <A>(right: A): (left: A) => boolean
 }
 
 ```
@@ -1698,7 +2429,7 @@ export type GreaterThan = {
 <hr />
 
 
-#### greaterThanOrEqual\<A\>(left: A, right: A): boolean
+#### greaterThanOrEqual\<A\>(right: A, left: A): boolean
 
 <p>
 
@@ -1713,12 +2444,52 @@ Applies `>=` to 2 values.
 ```typescript
 
 export const greaterThanOrEqual: GreaterThanOrEqual = curry2(
-  <A>(left: A, right: A) => left >= right
+  <A>(right: A, left: A) => left >= right
 )
 
 export type GreaterThanOrEqual = {
-  <A>(left: A, right: A): boolean
-  <A>(left: A): (right: A) => boolean
+  <A>(right: A, left: A): boolean
+  <A>(right: A): (left: A) => boolean
+}
+
+```
+
+</details>
+<hr />
+
+
+#### groupBy\<Keys extends string, A\>(f: Arity1\<A, Keys\>, list: List\<A\>): StrMap\<Keys, List\<A\>\>
+
+<p>
+
+Groups a list by keys returned by applying the provided function to each 
+item.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const groupBy: GroupBy = curry2(__groupBy)
+
+function __groupBy<Keys extends string, A>(f: (value: A) => Keys, list: List<A>): StrMap<Keys, List<A>> {
+  const itemCount = list.length
+  const strMap = {} as Record<Keys, Array<A>>
+
+  for (let i = 0; i < itemCount; ++i) {
+    const value = list[i]
+    const key = f(value)
+
+    if (strMap[key])
+      strMap[key].push(value)
+    else
+      strMap[key] = [ value ]
+  }
+
+  return strMap
 }
 
 ```
@@ -1751,6 +2522,32 @@ export type HasOwnProperty = {
   <O extends object>(key: PropertyKey, object: O): boolean
   <O extends object>(key: PropertyKey): (object: O) => boolean
   (key: PropertyKey): <O>(object: O) => boolean
+}
+
+```
+
+</details>
+<hr />
+
+
+#### head\<A\>(list: List\<A\>): Maybe\<A\>
+
+<p>
+
+Returns the first item of a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function head<A>(list: List<A>): Maybe<A> {
+  const { view } = lensIndex<A>(HEAD_INDEX)
+
+  return view(list)
 }
 
 ```
@@ -1838,6 +2635,99 @@ export const includes = invoker(1, 'includes')
 <hr />
 
 
+#### increment(num: number): number
+
+<p>
+
+Adds 1 to a number.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const increment = add(1)
+
+```
+
+</details>
+<hr />
+
+
+#### indexOf\<A\>(value: A, list: List\<A\>): Maybe\<Index\>
+
+<p>
+
+Returns the index of a value in a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const indexOf: IndexOf = curry2(__indexOf)
+
+function __indexOf<A>(value: A, list: List<A>): Maybe<Index> {
+  return findIndex(equals(value), list)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### insert\<A\>(index: number, value: A, list: List\<A\>): List\<A\>
+
+<p>
+
+Inserts a value into a `List`. at a given index.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const insert: InsertArity3 = curry3(
+  function insert<A>(index: number, value: A, list: List<A>): List<A> {
+    const length = list.length
+
+    if (index < 0)
+      return list
+
+    if (length === 0)
+      return [ value ]
+
+    const newList = []
+    let i = 0
+
+    for (; i < index; ++i)
+      newList[i] = list[i]
+
+    newList[i++] = value
+
+    for (; i <= length; ++i)
+      newList[i] = list[i - 1]
+
+    return newList
+  },
+)
+
+```
+
+</details>
+<hr />
+
+
 #### invoker\<O\>(arity: number, method: keyof O): (...args, object: O) =\> A
 
 <p>
@@ -1893,23 +2783,41 @@ export function isArray<A = any>(x: any): x is Array<A> {
 <hr />
 
 
-#### isFuture\<A, B\>(x: any): x is Future\<A, B\>
+#### isEmpty\<A\>(obj: A): boolean
 
 <p>
 
-Returns true if a value is a `Future`
+Returns true if an object or array is empty.
 
 </p>
 
+
+<details>
+  <summary>See an example</summary>
+  
+```typescript
+import { isEmpty } from '167'
+
+isEmpty({}) // true
+isEmpty({ a: 1, b: 2 }) // false
+isEmpty([]) // true
+isEmpty([ 1, 2, 3 ]) // false
+isEmpty(void 0) // false
+isEmpty(null) // false
+```
+
+</details>
 
 <details>
 <summary>See the code</summary>
 
 ```typescript
 
-export function isFuture<A, B>(x: any): x is Future<A, B> {
-  return x && typeof x.fork === 'function' && x.fork.length === 2
-}
+export const isEmpty: <A>(object: A) => boolean = ifElse(
+  x => x === null || x === void 0,
+  always(false),
+  pipe(keys, length, equals(0))
+)
 
 ```
 
@@ -2164,6 +3072,130 @@ export function isUndefined(x: any): x is undefined {
 <hr />
 
 
+#### join(separator: string, list: List\<string\>): string
+
+<p>
+
+Takes a `List<string>` and concatenates them via with a defined
+separator.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const join: Join = curry2(__join)
+
+export type Join = {
+  (separator: string, list: List<string>): string
+  (separator: string): (list: List<string>) => string
+}
+
+function __join(separator: string, list: List<string>): string {
+  const itemCount = list.length
+
+  let str = ''
+
+  if (itemCount === 0) return str
+
+  str += list[0]
+
+  if (itemCount === 1) return str
+
+  for (let i = 1; i < itemCount; ++i) str += separator + list[i]
+
+  return str
+}
+
+```
+
+</details>
+<hr />
+
+
+#### keys\<A\>(obj: A): List\<keyof A\>
+
+<p>
+
+Returns the keys of an object.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const keys = <A>(obj: A): List<keyof A> => (Object.keys(obj) as any) as List<keyof A>
+
+```
+
+</details>
+<hr />
+
+
+#### last\<A\>(list: List\<A\>): Maybe\<A\>
+
+<p>
+
+Returns the last item in a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function last<A>(list: List<A>): Maybe<A> {
+  const index = list.length - 1
+  const { view } = lensIndex<A>(index)
+
+  return view(list)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### lastIndexOf\<A\>(value: A, list: List\<A\>): Maybe\<Index\>
+
+<p>
+
+Finds the last index of a value in a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const lastIndexOf: LastIndexOf = curry2(__lastIndexOf)
+
+export type LastIndexOf = {
+  <A>(value: A, list: List<A>): Maybe<Index>
+  <A>(value: A): (list: List<A>) => Maybe<Index>
+}
+
+function __lastIndexOf<A>(value: A, list: List<A>): Maybe<Index> {
+  return findLastIndex(equals(value), list)
+}
+
+```
+
+</details>
+<hr />
+
+
 #### length\<A\>(obj: { length: A }): A
 
 <p>
@@ -2301,7 +3333,7 @@ export const lensProp = <A, K extends keyof A = keyof A>(key: K): Lens<A, A[K]> 
 <hr />
 
 
-#### lessThan\<A\>(left: A, right: A): boolean
+#### lessThan\<A\>(right: A, left: A): boolean
 
 <p>
 
@@ -2315,11 +3347,11 @@ Compares two values using `<`
 
 ```typescript
 
-export const lessThan: LessThan = curry2(<A>(left: A, right: A) => left < right)
+export const lessThan: LessThan = curry2(<A>(right: A, left: A) => left < right)
 
 export type LessThan = {
-  <A>(left: A, right: A): boolean
-  <A>(left: A): (right: A) => boolean
+  <A>(right: A, left: A): boolean
+  <A>(right: A): (left: A) => boolean
 }
 
 ```
@@ -2328,7 +3360,7 @@ export type LessThan = {
 <hr />
 
 
-#### lessThanOrEqual\<A\>(left: A, right: A): boolean
+#### lessThanOrEqual\<A\>(right: A, left: A): boolean
 
 <p>
 
@@ -2342,11 +3374,11 @@ Compares 2 values using `<=`
 
 ```typescript
 
-export const lessThanOrEqual: LessThanOrEqual = curry2(<A>(left: A, right: A) => left <= right)
+export const lessThanOrEqual: LessThanOrEqual = curry2(<A>(right: A, left: A) => left <= right)
 
 export type LessThanOrEqual = {
-  <A>(left: A, right: A): boolean
-  <A>(left: A): (right: A) => boolean
+  <A>(right: A, left: A): boolean
+  <A>(right: A): (left: A) => boolean
 }
 
 ```
@@ -2360,7 +3392,7 @@ export type LessThanOrEqual = {
 <p>
 
 Map over the value contained in a data structure.
-Works for `List`, `Maybe`, `Either`, `Future` and `PromiseLike` data strctures.
+Works for `List`, `Maybe`, `Either`, and `PromiseLike` data strctures.
 
 </p>
 
@@ -2373,7 +3405,6 @@ Works for `List`, `Maybe`, `Either`, `Future` and `PromiseLike` data strctures.
 export const map: Map = curry2<any, any, any>(function map(f: (value: any) => any, list: any): any {
   if (isJust(list) || isNothing(list)) return maybeMap(f, list)
   if (isLeft(list) || isRight(list)) return eitherMap(f, list)
-  if (isFuture(list)) return futureMap(f, list)
   if (isPromiseLike(list)) return Promise.resolve(list.then(f))
 
   return arrayMap(f, list)
@@ -2394,7 +3425,110 @@ function arrayMap<A, B>(f: (value: A, index: number) => B, list: List<A>): List<
 <hr />
 
 
-#### modulo(x: number, y: number): number
+#### mean(numbers: List\<number\>): number
+
+<p>
+
+Calculates the average of a list of numbers.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const mean = (numbers: List<number>) => divide(length(numbers), sum(numbers))
+
+```
+
+</details>
+<hr />
+
+
+#### median(numbers: List\<number\>): Maybe\<number\>
+
+<p>
+
+Calculates the median of a `List`. If the calculated median is `NaN`
+a `Nothing` is returned otherwise a `Just` containing the median will be returned.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function median(numbers: List<number>): Maybe<number> {
+  const length = numbers.length
+
+  if (length === 0) return Nothing
+
+  const width = 2 - length % 2
+  const index = (length - width) / 2
+
+  const calculateMedian = pipe<List<number>, Maybe<number>>(
+    sort(ascend(id)),
+    slice(index, Maybe.of(index + width)),
+    mean,
+    numberToMaybe
+  )
+
+  return calculateMedian(numbers)
+}
+
+function numberToMaybe(num: number): Maybe<number> {
+  return Number.isNaN(num) ? Nothing : Maybe.of(num)
+}
+
+```
+
+</details>
+<hr />
+
+
+#### memoize\<F extends Function\>(f: F): F
+
+<p>
+
+Memoizes a function.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const memoize = function<F extends Function>(f: F): F {
+  const cache = new Map<any, any>()
+
+  return (function(): any {
+    const key = reduce((x, y) => x + JSON.stringify(y), '', arguments)
+
+    if (cache.has(key)) return clone(cache.get(key))
+
+    let result = f.apply(this, arguments)
+
+    if (typeof result === 'function') result = memoize(result)
+
+    cache.set(key, result)
+
+    return clone(result)
+  } as any) as F
+}
+
+```
+
+</details>
+<hr />
+
+
+#### modulo(right: number, left: number): number
 
 <p>
 
@@ -2410,8 +3544,75 @@ Applies `%` to 2 numbers.
 
 export const modulo = curry2(__modulo)
 
-function __modulo(x: number, y: number): number {
-  return x % y
+function __modulo(right: number, left: number): number {
+  return left % right
+}
+
+```
+
+</details>
+<hr />
+
+
+#### move\<A\>(from: Index, to: Index, list: List\<A\>): List\<A\>
+
+<p>
+
+Moves a value from one index to another.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const move: MoveArity3 = curry3(function move<A>(
+  fromIndex: number,
+  toIndex: number,
+  list: List<A>
+): List<A> {
+  const length = list.length
+  const newArray = Array(length)
+
+  const outOfBounds = or(lessThan(0), greaterThanOrEqual(length))
+
+  if (outOfBounds(toIndex) || outOfBounds(fromIndex)) return list
+
+  for (let i = 0; i < length; ++i) newArray[i] = list[findMovedIndex(i, fromIndex, toIndex)]
+
+  return newArray
+})
+
+function __findMovedIndex(i: number, fromIndex: number, toIndex: number): number {
+  if (equals(i, toIndex)) return fromIndex
+
+  return ifElse(
+    () => lessThan(toIndex, fromIndex),
+    ifElse(between(fromIndex, toIndex), id, increment),
+    ifElse(between(toIndex, fromIndex), id, decrement),
+    i
+  )
+}
+
+function between(min: number, max: number): (num: number) => boolean {
+  return or(lessThan(min), greaterThan(max))
+}
+
+export type MoveArity3 = {
+  <A>(fromIndex: number, toIndex: number, list: List<A>): List<A>
+  <A>(fromIndex: number, toIndex: number): MoveArity1<A>
+  <A>(fromIndex: number): MoveArity2<A>
+}
+
+export type MoveArity2<A> = {
+  (toIndex: number, list: List<A>): List<A>
+  (toIndex: number): MoveArity1<A>
+}
+
+export type MoveArity1<A> = {
+  (list: List<A>): List<A>
 }
 
 ```
@@ -2461,6 +3662,30 @@ Negates a number.
 ```typescript
 
 export const negate = (n: number): number => -n
+
+```
+
+</details>
+<hr />
+
+
+#### not\<A\>(a: A): boolean
+
+<p>
+
+Applies `!` to a value.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function not<A>(x: A): boolean {
+  return !x
+}
 
 ```
 
@@ -2553,7 +3778,8 @@ export const partial: PartialFn = curry2(
 
 <p>
 
-Given a path to a value it returns a Lens that operates on that value.
+Given a path to a value and an object it returns the values contained
+at that path.
 
 </p>
 
@@ -2659,6 +3885,61 @@ function __pipeLenses<A, B, C>(lensAB: Lens<A, B>, lensBC: Lens<B, C>): Lens<A, 
 <hr />
 
 
+#### prepend\<A\>(value: A, list: List\<A\>): List\<A\>
+
+<p>
+
+Puts at value at the beginning of a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const prepend = curry2(__prepend)
+
+function __prepend<A>(value: A, list: List<A>): List<A> {
+  const itemCount = increment(length(list))
+  const newList = Array(itemCount)
+
+  newList[0] = value
+
+  for (let i = 1; i < itemCount; ++i) newList[i] = list[decrement(i)]
+
+  return newList
+}
+
+```
+
+</details>
+<hr />
+
+
+#### produce(numbers: List\<number\>): number
+
+<p>
+
+Calculates the produce of a list of numbers.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const product: (numbers: List<number>) => number = reduce(multiply, 1)
+
+```
+
+</details>
+<hr />
+
+
 #### prop\<A, K extends keyof A = K\>(key: K, obj: A): A[K]
 
 <p>
@@ -2720,6 +4001,20 @@ number `to`.
 
 
 <details>
+  <summary>See an example</summary>
+  
+```typescript
+import { range, equals } from '167'
+
+const xs = range(1, 4)
+const ys = [1, 2, 3]
+
+equals(xs, ys) // true
+```
+
+</details>
+
+<details>
 <summary>See the code</summary>
 
 ```typescript
@@ -2771,6 +4066,78 @@ export const reduce: ReduceArity3 = curry3(function reduce<A, B>(
   for (let i = 0; i < length; ++i) acc = f(acc, list[i], i)
 
   return acc
+})
+
+```
+
+</details>
+<hr />
+
+
+#### reduceRight\<A, B\>(f: (value: A, acc: B) =\> B, seed: B, list: List\<A\>): B
+
+<p>
+
+Fold over the values in a list from right-to-left.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const reduceRight: ReduceRightArity3 = curry3(function reduce<A, B>(
+  f: RightReducer<A, B>,
+  seed: B,
+  list: List<A>
+): B {
+  const length = list.length
+  let acc: B = seed
+
+  for (let i = length - 1; i >= 0; --i) acc = f(list[i], acc, i)
+
+  return acc
+})
+
+```
+
+</details>
+<hr />
+
+
+#### remove\<A\>(index: number, amount: number, list: List\<A\>): List\<A\>
+
+<p>
+
+Removes items from a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const remove: RemoveArity3 = curry3(function remove<A>(
+  index: number,
+  amount: number,
+  list: List<A>
+): List<A> {
+  const length = list.length
+
+  if (isZero(amount) || isZero(length) || greaterThanOrEqual(length, index)) return list
+  if (isZero(index) && amount >= length) return []
+
+  const newList = Array(length - Math.abs(index) - 1)
+
+  for (let i = 0; i < index; ++i) newList[i] = list[i]
+
+  for (let i = index + amount; i < length; ++i) newList[i - amount] = list[i]
+
+  return newList
 })
 
 ```
@@ -2865,6 +4232,74 @@ export type SetArity1<Key extends string, A> = {
 <hr />
 
 
+#### slice\<A\>(start: number, end: Maybe\<number\>, list: List\<A\>): List\<A\>
+
+<p>
+
+Slices a list between two indexes.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const slice: Slice = curry3(__slice)
+
+export type Slice = {
+  <A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): List<A>
+  <A>(startIndex: number, endIndex: Maybe<number>): (list: List<A>) => List<A>
+  <A>(startIndex: number): {
+    (endIndex: Maybe<number>, list: List<A>): List<A>
+    (endIndex: Maybe<number>): (list: List<A>) => List<A>
+  }
+}
+
+function __slice<A>(startIndex: number, endIndex: Maybe<number>, list: List<A>): List<A> {
+  return arrayFrom(list).slice(startIndex, fromMaybe(void 0, endIndex))
+}
+
+```
+
+</details>
+<hr />
+
+
+#### sort\<A\>(comparator: Comparator\<A\>, list: List\<A\>): List\<A\>
+
+<p>
+
+Sorts a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const sort: Sort = curry2(__sort)
+
+export type Sort = {
+  <A>(comparator: Comparator<A>, list: List<A>): List<A>
+  <A>(comparator: Comparator<A>): (list: List<A>) => List<A>
+}
+
+function __sort<A>(comparator: Comparator<A>, list: List<A>): List<A> {
+  return arrayFrom(list)
+    .slice(0)
+    .sort(comparator)
+}
+
+```
+
+</details>
+<hr />
+
+
 #### split(search: string | RegExp, str: string): List\<string\>
 
 <p>
@@ -2880,6 +4315,76 @@ Curried function to call `String.prototype.split`
 ```typescript
 
 export const split = invoker(1, 'split')
+
+```
+
+</details>
+<hr />
+
+
+#### splitAt\<A\>(index: Index, list: List\<A\>): [List\<A\>, List\<A\>]
+
+<p>
+
+Splits a `List` at a given index.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const splitAt: SplitAt = curry2(__splitAt)
+
+export type SplitAt = {
+  <A>(index: Index, list: List<A>): [List<A>, List<A>]
+  <A>(index: Index): (list: List<A>) => [List<A>, List<A>]
+}
+
+function __splitAt<A>(index: Index, list: List<A>): [List<A>, List<A>] {
+  return [slice(0, Maybe.of(index), list), slice(index, Maybe.of(list.length), list)]
+}
+
+```
+
+</details>
+<hr />
+
+
+#### splitEvery\<A\>(amount: number, list: List\<A\>): List\<List\<A\>\>
+
+<p>
+
+Splits a list into a list of lists containing `n` number of values.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const splitEvery: SplitEvery = curry2(function splitEvery<A>(
+  amount: number,
+  list: List<A>
+): List<List<A>> {
+  if (amount <= 0) return [list]
+
+  const result = []
+  let i = 0
+
+  while (i < list.length) result.push(slice(i, Maybe.of((i += amount)), list))
+
+  return result
+})
+
+export type SplitEvery = {
+  <A>(amount: number, list: List<A>): List<List<A>>
+  <A>(amount: number): (list: List<A>) => List<List<A>>
+}
 
 ```
 
@@ -2931,7 +4436,7 @@ export const substr = invoker(2, 'substr')
 <hr />
 
 
-#### subtract(x: number, y: number): number
+#### subtract(right: number, left: number): number
 
 <p>
 
@@ -2947,8 +4452,110 @@ Subtracts one number from another.
 
 export const subtract = curry2(__subtract)
 
-function __subtract(x: number, y: number): number {
-  return x - y
+function __subtract(right: number, left: number): number {
+  return left - right
+}
+
+```
+
+</details>
+<hr />
+
+
+#### sum(number: List\<number\>): number
+
+<p>
+
+Adds together all of the numbers in a list.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const sum: (numbers: List<number>) => number = reduce(add, 0)
+
+```
+
+</details>
+<hr />
+
+
+#### swap\<A, B\>(either: Either\<A, B\>): Either\<B, A\>
+
+<p>
+
+Swaps the values contained in an `Either`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function swap<A, B>(either: Either<A, B>): Either<B, A> {
+  return isLeft(either) ? Either.of(fromLeft(either)) : Either.left(fromRight(either))
+}
+
+```
+
+</details>
+<hr />
+
+
+#### take\<A\>(n: number, list: List\<A\>): List\<A\>
+
+<p>
+
+Takes the first `n` items of a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const take: Take =
+  curry2(<A>(n: number, list: List<A>) => slice(0, Maybe.of(n < 0 ? Infinity : n), list))
+
+export type Take = {
+  <A>(n: number, list: List<A>): List<A>
+  <A>(n: number): (list: List<A>) => List<A>
+}
+
+```
+
+</details>
+<hr />
+
+
+#### takeLast\<A\>(n: number, list: List\<A\>): List\<A\>
+
+<p>
+
+Takes the last `n` values from a `List`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const takeLast: TakeLast =
+  curry2(<A>(n: number, list: List<A>) => drop(n >= 0 ? list.length - n : 0, list))
+
+export type TakeLast = {
+  <A>(n: number, list: List<A>): List<A>
+  <A>(n: number): (list: List<A>) => List<A>
 }
 
 ```
@@ -2972,6 +4579,39 @@ Curried function to call `String.prototype.toLowerCase`
 ```typescript
 
 export const toLowerCase = invoker(0, 'toLowerCase')
+
+```
+
+</details>
+<hr />
+
+
+#### toMaybe\<A\>(value: A | void): Maybe\<A\>
+
+<p>
+
+Converts a possibly undefined value to a `Maybe`.
+Also converts `Either a b` to `Maybe b`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const toMaybe: ToMaybe = function<A>(value: any): Maybe<A> {
+  if (value === VOID || isLeft(value)) return Nothing
+  if (isRight<any, A>(value)) return Maybe.of(fromRight(value))
+
+  return Maybe.of(value)
+}
+
+export type ToMaybe = {
+  <A, B>(either: Either<A, B>): Maybe<B>
+  <A>(value: A | void): Maybe<A>
+}
 
 ```
 
@@ -3108,6 +4748,57 @@ export function typeOf(value: any): string {
 <hr />
 
 
+#### uniq\<A\>(list: List\<A\>): List\<A\>
+
+<p>
+
+Returns a `List` of unique values.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export function uniq<A>(list: List<A>): List<A> {
+  return arrayFrom(new Set<A>(arrayFrom(list)))
+}
+
+```
+
+</details>
+<hr />
+
+
+#### unpack\<A, B, C\>(f: Arity1\<A, C\>, g: Arity1\<B, C\>, either: Either\<A, B\>): C
+
+<p>
+
+Extracts the value from an `Either` applying function `f` if the `Either<A, B>` is 
+`Left<A>` or function `g` if `Right<B>`.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const unpack: Unpack = curry3(__unpack)
+
+function __unpack<A, B, C>(f: Arity1<A, C>, g: Arity1<B, C>, either: Either<A, B>): C {
+  return isLeft(either) ? f(fromLeft(either)) : g(fromRight(either))
+}
+
+```
+
+</details>
+<hr />
+
+
 #### update\<A\>(index: number, value: A, list: Li)
 
 <p>
@@ -3178,6 +4869,28 @@ export type UpdateAt = {
 <hr />
 
 
+#### values\<A\>(obj: A): List\<A[keyof A]\>
+
+<p>
+
+Returns the values of an object.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const values = <A>(obj: A): List<A[keyof A]> => map(propFlipped(obj), keys(obj))
+
+```
+
+</details>
+<hr />
+
+
 #### view\<A, B\>(lens: Lens\<A, B\>, obj: A): Maybe\<B\>
 
 <p>
@@ -3199,6 +4912,39 @@ export const view: View = curry2(function<A, B>(lens: Lens<A, B>, obj: A): Maybe
 export type View = {
   <A, B>(lens: Lens<A, B>, obj: A): Maybe<B>
   <A, B>(lens: Lens<A, B>): (obj: A) => Maybe<B>
+}
+
+```
+
+</details>
+<hr />
+
+
+#### without\<A\>(values: List\<A\>, list: List\<A\>): List\<A\>
+
+<p>
+
+Returns a list without the specified values.
+
+</p>
+
+
+<details>
+<summary>See the code</summary>
+
+```typescript
+
+export const without: Without = curry2(__without)
+
+export type Without = {
+  <A>(values: List<A>, list: List<A>): List<A>
+  <A>(values: List<A>): (list: List<A>) => List<A>
+}
+
+function __without<A>(values: List<A>, list: List<A>): List<A> {
+  const set = new Set(arrayFrom(values))
+
+  return filter(x => !set.has(x), list)
 }
 
 ```

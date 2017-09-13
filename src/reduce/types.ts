@@ -1,5 +1,9 @@
 import { List } from '../types'
 
+/**
+ * @name Reducer
+ * @type
+ */
 export type Reducer<A, B> = (seed: B, value: A, index: number) => B
 
 export type ReduceArity3 = {

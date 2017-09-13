@@ -1,6 +1,11 @@
 import { ComparisonNumbers } from '../types'
 import { curry3 } from '../curry'
 
+/**
+ * Makes an ascending comparator function out of a function that returns a 
+ * value that can be compared with < and >.
+ * @name ascend<A, B>(f: (a: A) => B, a: A, b: A): ComparisonNumbers
+ */
 export const ascend: AscendArity3 = curry3(function ascend<A, B>(
   f: (a: A) => B,
   a: A,

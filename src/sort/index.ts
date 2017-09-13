@@ -3,6 +3,10 @@ import { Comparator, List } from '../types'
 import { arrayFrom } from '../arrayFrom'
 import { curry2 } from '../curry'
 
+/**
+ * Sorts a `List`.
+ * @name sort<A>(comparator: Comparator<A>, list: List<A>): List<A>
+ */
 export const sort: Sort = curry2(__sort)
 
 export type Sort = {

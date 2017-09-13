@@ -1,6 +1,11 @@
 import { List } from '../types'
 import { curry2 } from '../curry'
 
+/**
+ * Takes a `List<string>` and concatenates them via with a defined
+ * separator.
+ * @name join(separator: string, list: List<string>): string
+ */
 export const join: Join = curry2(__join)
 
 export type Join = {

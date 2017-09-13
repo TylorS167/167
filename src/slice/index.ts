@@ -4,6 +4,10 @@ import { List } from '../types'
 import { arrayFrom } from '../arrayFrom'
 import { curry3 } from '../curry'
 
+/**
+ * Slices a list between two indexes.
+ * @name slice<A>(start: number, end: Maybe<number>, list: List<A>): List<A>
+ */
 export const slice: Slice = curry3(__slice)
 
 export type Slice = {

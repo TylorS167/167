@@ -3,6 +3,10 @@ import { Nothing } from '../Maybe'
 import { curry2 } from '../curry'
 import { slice } from '../slice'
 
+/**
+ * Drops the first `n` items from a `List`.
+ * @name drop<A>(quantity: number, list: List<A>): List<A>
+ */
 export const drop: Drop = curry2(__drop)
 
 export type Drop = {

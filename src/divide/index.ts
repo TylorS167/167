@@ -6,6 +6,6 @@ import { curry2 } from '../curry'
  */
 export const divide = curry2(__divide)
 
-function __divide(x: number, y: number): number {
-  return x / y
+function __divide(right: number, left: number): number {
+  return left / right
 }

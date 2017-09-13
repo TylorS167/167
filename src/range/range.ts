@@ -5,6 +5,13 @@ import { curry2 } from '../curry'
  * Creates a `List` that contains the numbers `from` to the 1 less than the
  * number `to`.
  * @name range(from: number, to: number): List<number>
+ * @example
+ * import { range, equals } from '167'
+ * 
+ * const xs = range(1, 4)
+ * const ys = [1, 2, 3]
+ * 
+ * equals(xs, ys) // true
  */
 export const range: Range = curry2(__range)
 

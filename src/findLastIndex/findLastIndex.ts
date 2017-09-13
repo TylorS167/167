@@ -5,7 +5,7 @@ import { curry2 } from '../curry'
 import { length } from '../length'
 
 /**
- * Find the index of a value in a list.
+ * Find the last index of a value in a list.
  * @name findLastIndex<A>(predicate: Predicate<A>, list: List<A>): Maybe<Index>
  */
 export const findLastIndex: FindLastIndex = curry2(__findLastIndex)

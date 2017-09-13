@@ -3,6 +3,10 @@ import { Maybe } from '../Maybe'
 import { curry2 } from '../curry'
 import { slice } from '../slice'
 
+/**
+ * Drops `n` number of items from the end of a `List`.
+ * @name dropLast<A>(quantity: number, list: List<A>): List<A>
+ */
 export const dropLast: DropLast = curry2(__dropLast)
 
 export type DropLast = {
