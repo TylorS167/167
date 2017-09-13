@@ -221,7 +221,7 @@ export type Tuple3<A, B, C> = [A, B, C]
  * @name Predicate
  * @type
  */
-export type Predicate<A> = (a: A) => boolean
+export type Predicate<A> = (value: A) => boolean
 /**
  * @name Predicate2
  * @type
