@@ -7,6 +7,12 @@ import { arrayChain } from './arrayChain'
 import { curry2 } from '../curry'
 import { chain as futureChain } from '@typed/future'
 
+/**
+ * Creates a new `Monad` from the value contained in another.
+ * Works with `Maybe`, `Either`, `Future`, `PromiseLike` and `List` data 
+ * structures.
+ * @name chain<A, B>(f: (value: A) => List<B>, list: List<A>): List<B>
+ */
 export const chain: Chain = curry2<any, any, any>(function(f: (value: any) => any, list: any): any {
   if (isJust(list) || isNothing(list)) return maybeChain(f, list)
   if (isLeft(list) || isRight(list)) return eitherChain(f, list)

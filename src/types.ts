@@ -7,7 +7,7 @@ export type Arity0<A> = () => A
  * @name Arity1
  * @type
  */
-export type Arity1<A, B> = (a: A) => B
+export type Arity1<A, B> = (value: A) => B
 /**
  * @name Arity2
  * @type
