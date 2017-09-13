@@ -3,4 +3,4 @@
  * @name Maybe
  * @type
  */
-export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe, toMaybe } from '@typed/maybe'
+export { Maybe, Just, Nothing, isJust, isNothing, fromJust, fromMaybe } from '@typed/maybe'
