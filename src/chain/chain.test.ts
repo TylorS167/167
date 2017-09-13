@@ -1,4 +1,3 @@
-import { Future, toPromise } from '@typed/future'
 import { Test, describe, given, it } from '@typed/test'
 
 import { Either } from '@typed/either'
@@ -36,19 +35,6 @@ export const test: Test = describe(`chain`, [
 
       equal(expected, chain(f)(either))
       equal(expected, chain(f, either))
-    }),
-  ]),
-
-  given(`(b -> C) and Future a b`, [
-    it(`returns a Future a c`, ({ equal }) => {
-      const future = Future.of(1)
-      const f = (x: number) => Future.of(x + 1)
-      const expected = 2
-
-      return Promise.all([
-        toPromise(chain(f)(future)).then(equal(expected)),
-        toPromise(chain(f, future)).then(equal(expected)),
-      ])
     }),
   ]),
 

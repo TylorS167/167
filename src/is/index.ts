@@ -1,5 +1,4 @@
 export * from './isArray'
-export * from './isFuture'
 export * from './isIterable'
 export * from './isIterator'
 export * from './isList'
