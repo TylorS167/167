@@ -2,11 +2,11 @@ import { curry2 } from '../curry'
 
 /**
  * Compares two values using `<`
- * @name lessThan<A>(left: A, right: A): boolean
+ * @name lessThan<A>(right: A, left: A): boolean
  */
-export const lessThan: LessThan = curry2(<A>(left: A, right: A) => left < right)
+export const lessThan: LessThan = curry2(<A>(right: A, left: A) => left < right)
 
 export type LessThan = {
-  <A>(left: A, right: A): boolean
-  <A>(left: A): (right: A) => boolean
+  <A>(right: A, left: A): boolean
+  <A>(right: A): (left: A) => boolean
 }
