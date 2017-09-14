@@ -1,4 +1,4 @@
-import { List } from '../types'
+import { List, StrMap } from '../types'
 
 export type Prop = {
   <A>(prop: number, obj: List<A>): A
@@ -8,5 +8,5 @@ export type Prop = {
   (prop: number): <A>(obj: List<A>) => A
   <A, K extends keyof A>(prop: K): (obj: A) => A[K]
 
-  <K extends string>(prop: K): <A>(obj: { readonly [Key in K]: A }) => A
+  <K extends string>(prop: K): <A>(obj: StrMap<K, A>) => A
 }

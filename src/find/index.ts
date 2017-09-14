@@ -13,8 +13,8 @@ import { prop } from '../prop'
 export const find: Find = curry2(__find)
 
 export type Find = {
-  <A>(predicate: (value: A) => boolean, list: List<A>): Maybe<A>
-  <A>(predicate: (value: A) => boolean): (list: List<A>) => Maybe<A>
+  <A>(predicate: Predicate<any>, list: List<A>): Maybe<Readonly<A>>
+  (predicate: Predicate<any>): <A>(list: List<A>) => Maybe<Readonly<A>>
 }
 
 const propFlipped: <A>(list: List<A>) => (index: Index) => A = flip(prop)

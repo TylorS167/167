@@ -194,7 +194,7 @@ export type Arity10N<A, B, C, D, E, F, G, H, I, J, R> = (
  * @name StrMap
  * @type
  */
-export type StrMap<A extends string, B> = Readonly<Record<A, B>>
+export type StrMap<A extends string, B> = { readonly [K in A]: B }
 
 /**
  * An immutable List type.

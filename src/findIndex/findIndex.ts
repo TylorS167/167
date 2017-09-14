@@ -1,4 +1,4 @@
-import { Index, List } from '../types'
+import { Index, List, Predicate } from '../types'
 import { Maybe, Nothing } from '@typed/maybe'
 
 import { curry2 } from '../curry'
@@ -11,8 +11,8 @@ import { length } from '../length'
 export const findIndex: FindIndex = curry2(__findIndex)
 
 export type FindIndex = {
-  <A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index>
-  <A>(predicate: (value: A) => boolean): (list: List<A>) => Maybe<Index>
+  <A>(predicate: Predicate<any>, list: List<A>): Maybe<Index>
+  (predicate: Predicate<any>): <A>(list: List<A>) => Maybe<Index>
 }
 
 function __findIndex<A>(predicate: (value: A) => boolean, list: List<A>): Maybe<Index> {
