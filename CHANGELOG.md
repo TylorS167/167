@@ -1,3 +1,13 @@
+<a name="0.40.0"></a>
+# [0.40.0](https://github.com/TylorS167/167/compare/v0.39.0...v0.40.0) (2017-09-21)
+
+
+### Bug Fixes
+
+* takeWhile ([91758a5](https://github.com/TylorS167/167/commit/91758a5))
+
+
+
 <a name="0.39.0"></a>
 # [0.39.0](https://github.com/TylorS167/167/compare/v0.38.0...v0.39.0) (2017-09-03)
 
