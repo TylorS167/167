@@ -22,6 +22,6 @@ export const dropLastWhile: DropLastWhileArity2 = curry2(
       i--
     }
 
-    return dropLast(0, list)
+    return []
   },
 )

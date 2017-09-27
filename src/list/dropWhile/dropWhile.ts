@@ -21,6 +21,6 @@ export const dropWhile: DropWhileArity2 = curry2(
       i++
     }
 
-    return drop(0, list)
+    return []
   },
 )

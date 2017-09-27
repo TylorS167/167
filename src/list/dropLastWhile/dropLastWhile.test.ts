@@ -10,6 +10,7 @@ describe('dropLastWhile', () => {
 
       assert.deepEqual(dropLastWhile(f, array), [ 1, 2, 3 ])
       assert.deepEqual(dropLastWhile(f, [ 1, 2, 3, 4, 5, 2, 3, 4, 5 ]), [ 1, 2, 3, 4, 5, 2, 3 ])
+      assert.deepEqual(dropLastWhile((n: number) => n !== 99, [ 1, 2, 3, 4, 5 ]), [])
     })
   })
 })
