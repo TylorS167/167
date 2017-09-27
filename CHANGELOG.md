@@ -1,3 +1,13 @@
+<a name="0.41.0"></a>
+# [0.41.0](https://github.com/TylorS167/167/compare/v0.40.0...v0.41.0) (2017-09-27)
+
+
+### Bug Fixes
+
+* return empty array from drop*While ([7646e9b](https://github.com/TylorS167/167/commit/7646e9b))
+
+
+
 <a name="0.40.0"></a>
 # [0.40.0](https://github.com/TylorS167/167/compare/v0.39.0...v0.40.0) (2017-09-21)
 
