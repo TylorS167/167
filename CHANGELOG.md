@@ -1,3 +1,13 @@
+<a name="0.42.0"></a>
+# [0.42.0](https://github.com/TylorS167/167/compare/v0.41.0...v0.42.0) (2017-10-03)
+
+
+### Bug Fixes
+
+* **list:** don't return undefined for zero ([1629bb3](https://github.com/TylorS167/167/commit/1629bb3)), closes [#13](https://github.com/TylorS167/167/issues/13)
+
+
+
 <a name="0.41.0"></a>
 # [0.41.0](https://github.com/TylorS167/167/compare/v0.40.0...v0.41.0) (2017-09-27)
 
