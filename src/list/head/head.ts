@@ -8,5 +8,5 @@ export const head: HeadArity1 = function head<A>(list: Array<A>): A | void {
   if (typeof list === 'string')
     return (list as any)[0] || ''
 
-  return list[0] || void 0
+  return list[0]
 } as HeadArity1
