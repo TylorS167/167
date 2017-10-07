@@ -5,7 +5,8 @@ import { unnest } from './unnest'
 describe('unnest', () => {
   describe('[ a | [a] ]', () => {
     it('-> [a]', () => {
-      assert.deepEqual(unnest([ 1, [ 1, 2 ] ]), [ 1, 1, 2 ])
+      const arr: ReadonlyArray<number | ReadonlyArray<number>> = [ 1, [ 1, 2 ] ]
+      assert.deepEqual(unnest(arr), [ 1, 1, 2 ])
     })
   })
 })
