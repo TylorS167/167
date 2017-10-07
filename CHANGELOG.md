@@ -1,3 +1,13 @@
+<a name="0.43.0"></a>
+# [0.43.0](https://github.com/TylorS167/167/compare/v0.42.0...v0.43.0) (2017-10-07)
+
+
+### Bug Fixes
+
+* fix unnest type signature to work with ArrayLike ([e2cf2dd](https://github.com/TylorS167/167/commit/e2cf2dd)), closes [#15](https://github.com/TylorS167/167/issues/15)
+
+
+
 <a name="0.42.0"></a>
 # [0.42.0](https://github.com/TylorS167/167/compare/v0.41.0...v0.42.0) (2017-10-03)
 
